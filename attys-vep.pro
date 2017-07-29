@@ -8,7 +8,7 @@ LIBS += \
     -liir \
     -lbluetooth
 
-INCLUDEPATH += ../AttysComm/
+INCLUDEPATH += ../AttysComm/c/
 
 TMAKE_CXXFLAGS += -fno-exceptions
 
@@ -18,18 +18,18 @@ SOURCES = \
     main.cpp \
     attys-vep.cpp \
     stim.cpp \
-    ../AttysComm/AttysComm.cpp \
-    ../AttysComm/AttysScan.cpp \
-    ../AttysComm/base64.c
+    ../AttysComm/c/AttysComm.cpp \
+    ../AttysComm/c/AttysScan.cpp \
+    ../AttysComm/c/base64.c
 
 HEADERS = \
     attys-vep.h \
     psthplot.h \
     dataplot.h \
     stim.h \
-    ../AttysComm/AttysComm.h \
-    ../AttysComm/AttysScan.h \
-    ../AttysComm/base64.h
+    ../AttysComm/c/AttysComm.h \
+    ../AttysComm/c/AttysScan.h \
+    ../AttysComm/c/base64.h
 
 CONFIG		+= qt release c++11
 
