@@ -9,6 +9,8 @@
  ***************************************************************************/
 
 #include "attys-vep.h"
+#include "AttysComm.h"
+#include "AttysScan.h"
 
 #include <QApplication>
 
@@ -17,7 +19,7 @@ int main(int argc, char **argv)
   QApplication app(argc, argv);
 
   // see if we have any Attys!
-  int ret = attysScan(NULL,1);
+  int ret = attysScan.scan(NULL,1);
   
   // zero on success and non zero on failure
   if (ret) {
@@ -25,12 +27,12 @@ int main(int argc, char **argv)
   }
         
   // none detected
-  if (nAttysDevices<1) {
+  if (attysScan.nAttysDevices<1) {
 	  printf("No Attys present or not paired.\n");
 	  return -1;
   }
 
-  MainWindow   mainWindow;
+  MainWindow mainWindow;
   mainWindow.show();
   
   return app.exec();

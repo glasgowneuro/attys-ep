@@ -22,6 +22,9 @@
 #include <QComboBox>
 #include <QTimer>
 
+#include "AttysComm.h"
+#include "AttysScan.h"
+
 #include <unistd.h>
 
 MainWindow::MainWindow( QWidget *parent ) :
@@ -34,14 +37,17 @@ MainWindow::MainWindow( QWidget *parent ) :
     linearAverage(0)
 {
 
-	sampling_rate = attysComm[0]->getSamplingRateInHz();
+	sampling_rate = attysScan.attysComm[0]->getSamplingRateInHz();
 
 	psthLength = DEFAULT_SWEEP_LENGTH / (1000 / sampling_rate);
 
 	attysCallback = new AttysCallback(this);
-	attysComm[0]->registerCallback(attysCallback);
+	attysScan.attysComm[0]->registerCallback(attysCallback);
+
+	// set the PGA to max gain
+	attysScan.attysComm[0]->setAdc0_gain_index(AttysComm::ADC_GAIN_12);
 	
-	// 50Hz or 60Hz mains notch filter
+	// 50Hz or 60Hz mains notch filter (see header)
 	iirnotch = new Iir::Butterworth::BandStop<IIRORDER>;
 	assert( iirnotch != NULL );
 	iirnotch->setup (IIRORDER, sampling_rate, NOTCH_F, NOTCH_F/10.0);
@@ -70,8 +76,8 @@ MainWindow::MainWindow( QWidget *parent ) :
 	
 	// two plots
 	RawDataPlot = new DataPlot(xData, yData, psthLength, 
-				   attysComm[0]->getADCFullScaleRange(0),
-				   -attysComm[0]->getADCFullScaleRange(0),
+				   attysScan.attysComm[0]->getADCFullScaleRange(0),
+				   -attysScan.attysComm[0]->getADCFullScaleRange(0),
 				   this);
 	RawDataPlot->setMaximumSize(10000,300);
 	RawDataPlot->setStyleSheet(styleSheet);
@@ -118,6 +124,7 @@ MainWindow::MainWindow( QWidget *parent ) :
 	savePsth->setText("save data");
 	PSTHfunLayout->addWidget(savePsth);
 	connect(savePsth, SIGNAL(clicked()), SLOT(slotSavePsth()));
+	int inpWidth = savePsth->width()*3/2;
 
 	// psth params
 	QGroupBox   *PSTHcounterGroup = new QGroupBox( "Parameters", this );
@@ -139,6 +146,7 @@ MainWindow::MainWindow( QWidget *parent ) :
 	cntSLength->setIncSteps(QwtCounter::Button2, 100);
 	cntSLength->setRange(1, MAX_PSTH_LENGTH);
 	cntSLength->setValue(DEFAULT_SWEEP_LENGTH);
+	cntSLength->setMaximumWidth(inpWidth);
 	PSTHcounterLayout->addWidget(cntSLength);
 	connect(cntSLength, 
 		SIGNAL(valueChanged(double)), 
@@ -153,6 +161,7 @@ MainWindow::MainWindow( QWidget *parent ) :
 	cntBinw->setIncSteps(QwtCounter::Button2, 10);
 	cntBinw->setRange(1, 100);
 	cntBinw->setValue(psthBinw);
+	cntBinw->setMaximumWidth(inpWidth);
 	PSTHcounterLayout->addWidget(cntBinw);
 	connect(cntBinw, SIGNAL(valueChanged(double)), SLOT(slotSetPsthBinw(double)));
 	
@@ -160,6 +169,7 @@ MainWindow::MainWindow( QWidget *parent ) :
 	PSTHcounterLayout->addWidget(thresholdLabel);
 	
 	editSpikeT = new QTextEdit("0");
+	editSpikeT->setMaximumWidth(inpWidth);
 	QFont editFont("Courier",14);
 	QFontMetrics editMetrics(editFont);
 	editSpikeT->setMaximumHeight ( editMetrics.height()*1.2 );
@@ -195,15 +205,15 @@ MainWindow::MainWindow( QWidget *parent ) :
                  SLOT(slotNewSweep()) );
         sweepTimer->start( DEFAULT_SWEEP_LENGTH );
 
-	attysComm[0]->start();
+	attysScan.attysComm[0]->start();
 
 }
 
 MainWindow::~MainWindow()
 {
 	sweepTimer->stop();
-	attysComm[0]->unregisterCallback();
-	attysComm[0]->quit();
+	attysScan.attysComm[0]->unregisterCallback();
+	attysScan.attysComm[0]->quit();
 }
 
 void MainWindow::initData() {

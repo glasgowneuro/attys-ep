@@ -23,9 +23,9 @@ Installation
 
 You need the following libraries to compile and run the program:
 
-attys_scope, Qt5 and Qwt
-
-These are all part of, for example, UBUNTU Linux.
+- attys_scope (https://github.com/glasgowneuro/attys_scope)
+- Qt5 / Qwt (standard UBUNTU packages)
+- IIR filter library (http://www.berndporr.me.uk/iir/)
 
 Run "qmake", which should generate a Makefile and "make" to compile
 everything.
