@@ -1,0 +1,31 @@
+attys-vep
+-----------
+
+This program performs averaging over repetitive stimuli. It can
+work on discrete events such as spikes or on continous data
+such as visually evoked potentials.
+
+This program uses the Attys (www.attys.tech) for the VEPs.
+The AttysComm class is used with is part of attys_scope.
+
+License
+-------
+
+This piece of software is released under the GNU General Public License.
+
+http://www.gnu.org/licenses/licenses.html#GPL
+
+So please go ahead and modify/extend it.
+
+
+Installation
+------------
+
+You need the following libraries to compile and run the program:
+
+attys_scope, Qt5 and Qwt
+
+These are all part of, for example, UBUNTU Linux.
+
+Run "qmake", which should generate a Makefile and "make" to compile
+everything.
