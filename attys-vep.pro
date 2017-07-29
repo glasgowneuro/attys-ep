@@ -28,7 +28,7 @@ HEADERS = \
     ../attys_scope/AttysComm.h \
     ../attys_scope/base64.h
 
-CONFIG		+= qt debug c++11
+CONFIG		+= qt release c++11
 
 QT             	+= widgets
 QT += printsupport

@@ -31,7 +31,7 @@
 #define MAX_PSTH_LENGTH 5000
 
 // in ms
-#define DEFAULT_SWEEP_LENGTH 600
+#define DEFAULT_SWEEP_LENGTH 500
 
 #define NOTCH_F 50 // filter out 50Hz noise
 #define IIRORDER 6
@@ -122,6 +122,8 @@ protected:
   void hasData(float,float *sample);
 
   AttysCallback* attysCallback;
+
+  void initData();
 
 public:
 

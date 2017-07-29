@@ -51,16 +51,8 @@ MainWindow::MainWindow( QWidget *parent ) :
 	assert( iirhp != NULL );
 	iirhp->setup (2, sampling_rate, 0.5);
 
-	//  Initialize data for plots
-	for(int i=0; i<MAX_PSTH_LENGTH; i++)
-	{
-		xData[i] = i/(double)sampling_rate*1000;
-		yData[i] = 0;
-		timeData[i] = double(i)*psthBinw; // psth time axis
-		spikeCountData[i] = 0;
-		psthData[i] = 0;
-	}
-	
+	initData();
+
 	char styleSheet[] = "padding:0px;margin:0px;border:0px;";
 
 	QHBoxLayout *mainLayout = new QHBoxLayout( this );
@@ -202,7 +194,19 @@ MainWindow::MainWindow( QWidget *parent ) :
 MainWindow::~MainWindow()
 {
 	attysComm[0]->unregisterCallback();
-	delete attysComm[0];
+	attysComm[0]->quit();
+}
+
+void MainWindow::initData() {
+	//  Initialize data for plots
+	for(int i=0; i<MAX_PSTH_LENGTH; i++)
+	{
+		xData[i] = i/(double)sampling_rate*1000;
+		yData[i] = 0;
+		timeData[i] = i/(double)sampling_rate*1000;
+		spikeCountData[i] = 0;
+		psthData[i] = 0;
+	}
 }
 
 void MainWindow::slotSavePsth()
@@ -233,10 +237,7 @@ void MainWindow::slotClearPsth()
 {
 	time = 0;
 	trialIndex = 0;
-	for(int i=0; i<psthLength/psthBinw; i++) {
-		psthData[i] = 0;
-		spikeCountData[i] = 0;
-	}
+	initData();
 	spikeDetected = false;
 	psthActTrial = 0;
 	MyPsthPlot->replot();
@@ -261,33 +262,23 @@ void MainWindow::slotTriggerPsth()
 
 void MainWindow::slotSetPsthLength(double l)
 {
-	psthLength = (int)(sampling_rate * 1000 / l);
-	
-	for(int i=0; i<psthLength/psthBinw; i++) {
-		psthData[i] = 0;
-		spikeCountData[i] = 0;
-		timeData[i] = double(i)*psthBinw/(double)sampling_rate*1000;
-	}
+	psthLength = (int)(l / (1000.0 / sampling_rate));
+
+	initData();
 	spikeDetected = false;
 	psthActTrial = 0;
 	time = 0;
 	trialIndex = 0;
 	sweepTimer->stop();
-	printf("psthLength=%d\n",psthLength);
-	sweepTimer->start(l);
-	
-	RawDataPlot->setPsthLength((int) l);
+	sweepTimer->start((int)l);
+	RawDataPlot->setPsthLength(psthLength);
 	MyPsthPlot->setPsthLength(psthLength/psthBinw);
 }
 
 void MainWindow::slotSetPsthBinw(double b)
 {
 	psthBinw = (int)b;
-	for(int i=0; i<psthLength/psthBinw; i++) {
-		psthData[i] = 0;
-		spikeCountData[i] = 0;
-		timeData[i] = double(i)*psthBinw/(double)sampling_rate*1000;
-	}
+	initData();
 	spikeDetected = false;
 	psthActTrial = 0;
 	time = 0;
