@@ -37,6 +37,7 @@ MainWindow::MainWindow( QWidget *parent ) :
     linearAverage(0)
 {
 
+	attysScan.attysComm[0]->setAdc_samplingrate_index(AttysComm::ADC_RATE_250HZ);
 	sampling_rate = attysScan.attysComm[0]->getSamplingRateInHz();
 
 	psthLength = DEFAULT_SWEEP_LENGTH / (1000 / sampling_rate);
@@ -50,12 +51,12 @@ MainWindow::MainWindow( QWidget *parent ) :
 	// 50Hz or 60Hz mains notch filter (see header)
 	iirnotch = new Iir::Butterworth::BandStop<IIRORDER>;
 	assert( iirnotch != NULL );
-	iirnotch->setup (IIRORDER, sampling_rate, NOTCH_F, NOTCH_F/10.0);
+	iirnotch->setup (IIRORDER, sampling_rate, NOTCH_F, 2.5);
 
 	// highpass
 	iirhp = new Iir::Butterworth::HighPass<2>;
 	assert( iirhp != NULL );
-	iirhp->setup (2, sampling_rate, 0.5);
+	iirhp->setup (IIRORDER, sampling_rate, 0.5);
 
 	initData();
 

@@ -35,7 +35,7 @@
 #define DEFAULT_SWEEP_LENGTH 500
 
 #define NOTCH_F 50 // filter out 50Hz noise
-#define IIRORDER 6
+#define IIRORDER 2
 
 
 class MainWindow : public QWidget
@@ -85,7 +85,7 @@ class MainWindow : public QWidget
 
   Iir::Butterworth::BandStop<IIRORDER>* iirnotch;
 
-  Iir::Butterworth::HighPass<2>* iirhp;
+  Iir::Butterworth::HighPass<IIRORDER>* iirhp;
 
   QComboBox *averagePsth;
   QwtCounter *cntBinw;
