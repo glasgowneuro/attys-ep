@@ -175,6 +175,14 @@ MainWindow::MainWindow( QWidget *parent ) :
 	thresholdMarker->setLineStyle(QwtPlotMarker::HLine);
 
 	slotAveragePsth(0);
+
+	stimulus = new Stimulus(this);
+	stimulus->setMinimumSize(300,300);
+	stimulus->show();
+	connect ( this,
+		  SIGNAL(sweepStarted()),
+		  stimulus,
+		  SLOT(slotInvert()) );
 	
 	// Generate timer event every 50ms
 	startTimer(50);
@@ -323,6 +331,9 @@ void MainWindow::slotAveragePsth(int idx)
 
 void MainWindow::slotNewSweep() {
 	trialIndex = 0;
+	if (psthOn) {
+		emit sweepStarted();
+	}
 }
 
 void MainWindow::timerEvent(QTimerEvent *) {

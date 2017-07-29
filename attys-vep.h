@@ -25,6 +25,7 @@
 
 #include "psthplot.h"
 #include "dataplot.h"
+#include "stim.h"
 #include <Iir.h>
 
 // maximal length of the PSTH (for memory alloctaion) in samples
@@ -91,6 +92,7 @@ class MainWindow : public QWidget
   QTextEdit *editSpikeT;
   QPushButton *triggerPsth;
   QwtPlotMarker *thresholdMarker;
+  Stimulus *stimulus;
 
   QTimer *sweepTimer;
 
@@ -124,6 +126,9 @@ protected:
   AttysCallback* attysCallback;
 
   void initData();
+
+signals:
+  void sweepStarted();
 
 public:
 

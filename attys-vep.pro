@@ -17,6 +17,7 @@ SOURCES = \
     dataplot.cpp \
     main.cpp \
     attys-vep.cpp \
+    stim.cpp \
     ../attys_scope/AttysComm.cpp \
     ../attys_scope/base64.c
 
@@ -24,6 +25,7 @@ HEADERS = \
     attys-vep.h \
     psthplot.h \
     dataplot.h \
+    stim.h \
     ../attys_scope/AttysComm.h \
     ../attys_scope/base64.h
 
