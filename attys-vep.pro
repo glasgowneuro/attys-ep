@@ -5,7 +5,6 @@ OBJECTS_DIR = obj
 LIBS += \
     -L/usr/local/lib \
     -lqwt-qt5 \
-    -lcomedi \
     -liir \
     -lbluetooth
 

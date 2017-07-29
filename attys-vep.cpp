@@ -193,6 +193,7 @@ MainWindow::MainWindow( QWidget *parent ) :
 
 MainWindow::~MainWindow()
 {
+	sweepTimer->stop();
 	attysComm[0]->unregisterCallback();
 	attysComm[0]->quit();
 }
@@ -263,14 +264,13 @@ void MainWindow::slotTriggerPsth()
 void MainWindow::slotSetPsthLength(double l)
 {
 	psthLength = (int)(l / (1000.0 / sampling_rate));
-
+	if (psthLength > MAX_PSTH_LENGTH) psthLength = MAX_PSTH_LENGTH;
 	initData();
 	spikeDetected = false;
 	psthActTrial = 0;
 	time = 0;
 	trialIndex = 0;
-	sweepTimer->stop();
-	sweepTimer->start((int)l);
+	sweepTimer->setInterval((int)l);
 	RawDataPlot->setPsthLength(psthLength);
 	MyPsthPlot->setPsthLength(psthLength/psthBinw);
 }
@@ -323,7 +323,6 @@ void MainWindow::slotAveragePsth(int idx)
 
 void MainWindow::slotNewSweep() {
 	trialIndex = 0;
-	//printf("sweep\n");
 }
 
 void MainWindow::timerEvent(QTimerEvent *) {
