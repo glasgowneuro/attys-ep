@@ -9,7 +9,7 @@
  *   (at your option) any later version.                                   *
  ***************************************************************************/
 
-#include "attys-vep.h"
+#include "attys-ep.h"
 
 #include <QHBoxLayout>
 #include <QVBoxLayout>

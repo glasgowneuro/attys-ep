@@ -16,14 +16,14 @@ SOURCES = \
     psthplot.cpp \
     dataplot.cpp \
     main.cpp \
-    attys-vep.cpp \
+    attys-ep.cpp \
     stim.cpp \
     ../AttysComm/c/AttysComm.cpp \
     ../AttysComm/c/AttysScan.cpp \
     ../AttysComm/c/base64.c
 
 HEADERS = \
-    attys-vep.h \
+    attys-ep.h \
     psthplot.h \
     dataplot.h \
     stim.h \

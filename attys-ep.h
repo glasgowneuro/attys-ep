@@ -1,7 +1,7 @@
 /***************************************************************************
  *   Copyright (C) 2003 by Matthias H. Hennig                              *
  *   hennig@cn.stir.ac.uk                                                  *
- *   Copyright (C) 2005 by Bernd Porr                                      *
+ *   Copyright (C) 2005-2017 by Bernd Porr                                      *
  *   mail@berndporr.me.uk                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -10,8 +10,8 @@
  *   (at your option) any later version.                                   *
  ***************************************************************************/
 
-#ifndef PHYSIO_PSTH_H
-#define PHYSIO_PSTH_H
+#ifndef ATTYS_EP
+#define ATTYS_EP
 
 #include <QWidget>
 #include <QPushButton>

@@ -1,12 +1,13 @@
-attys-vep
+attys-ep
 -----------
 
-This program performs averaging over repetitive stimuli. It can
-work on discrete events such as spikes or on continous data
-such as visually evoked potentials.
+This program performs averaging over repetitive stimuli. It
+works on continous data such as visually evoked potentials and
+also on discrete events such as spikes. Its main application
+is for visually evoked potentials.
 
-This program uses the Attys (www.attys.tech) for the VEPs.
-The AttysComm class is used with is part of attys_scope.
+This program uses the Attys (www.attys.tech) to measure the
+(EEG-) signal.
 
 License
 -------
@@ -23,7 +24,7 @@ Installation
 
 You need the following libraries to compile and run the program:
 
-- attys_scope (https://github.com/glasgowneuro/attys_scope)
+- AttysComm (https://github.com/glasgowneuro/AttysComm)
 - Qt5 / Qwt (standard UBUNTU packages)
 - IIR filter library (http://www.berndporr.me.uk/iir/)
 
