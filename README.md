@@ -1,11 +1,11 @@
 # attys-ep
 
 Visually evoked potential app for [Attys](http://www.attys.tech)
-for Linux
+for Windows/Linux
 
 ![alt tag](screenshot.png)
 
-This program performs averaging over repetitive stimuli. It
+attys-ep performs averaging over repetitive stimuli. It
 works on continous data such as visually evoked potentials and
 also on discrete events such as spikes.
 
@@ -22,7 +22,7 @@ You need the following libraries to compile and run the program:
 - Qt5 / Qwt (standard UBUNTU packages)
 - IIR filter library (http://www.berndporr.me.uk/iir/)
 
-Run "qmake", which should generate a Makefile and "make" to compile
+Run "qmake", which generates a Makefile and "make" to compile
 everything.
 
 ## Windows
@@ -40,5 +40,5 @@ everything.
 
 # Running attys-ep
 
-Just type: "./attys-ep" or click on the file
+Just type: "./attys-ep" or start it from the start menu under Windows.
 
