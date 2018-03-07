@@ -20,8 +20,8 @@
 #include <QComboBox>
 
 #include "AttysComm.h"
-#include <qwt/qwt_counter.h>
-#include <qwt/qwt_plot_marker.h>
+#include <qwt_counter.h>
+#include <qwt_plot_marker.h>
 
 #include "psthplot.h"
 #include "dataplot.h"

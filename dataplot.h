@@ -11,8 +11,8 @@
 #ifndef DATAPLOT_H
 #define DATAPLOT_H
 
-#include <qwt/qwt_plot.h>
-#include <qwt/qwt_plot_curve.h>
+#include <qwt_plot.h>
+#include <qwt_plot_curve.h>
 
 // in samples (1sec)
 #define SCALE_UPDATE_PERIOD 250

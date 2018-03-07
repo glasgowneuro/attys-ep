@@ -25,8 +25,6 @@
 #include "AttysComm.h"
 #include "AttysScan.h"
 
-#include <unistd.h>
-
 MainWindow::MainWindow( QWidget *parent ) :
     QWidget(parent),
     psthBinw(20),
