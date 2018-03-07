@@ -10,6 +10,7 @@ LIBS += \
     -lbluetooth
 
 INCLUDEPATH += ../AttysComm/c/
+INCLUDEPATH += /usr/include/qwt
 
 TMAKE_CXXFLAGS += -fno-exceptions
 
