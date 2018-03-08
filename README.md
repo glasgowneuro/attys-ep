@@ -34,8 +34,10 @@ everything.
 * git clone https://github.com/glasgowneuro/AttysComm.git in the parent directory or modify the .pro file
 * "qmake -tp vc" and then re-target the project twice (right click on attys_scope in the Solutions Explorer -> Retarget Projects) 
 * Open the .sln file
-* Build solution
-
+* Build attys-ep
+* go to the "release" subdirectory
+* run "windeployqt attys-ep.exe" which copies all the DLLs into this directory which are needed to run the app
+* Build the msi installer which will be in the "installer" subdirectory.
 
 
 # Running attys-ep
