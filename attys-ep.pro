@@ -65,7 +65,7 @@ INCLUDEPATH += ../AttysComm/c/
 INCLUDEPATH += /qwt/src
 
 SOURCES = \
-    psthplot.cpp \
+    vepplot.cpp \
     dataplot.cpp \
     main.cpp \
     attys-ep.cpp \
@@ -76,7 +76,7 @@ SOURCES = \
 
 HEADERS = \
     attys-ep.h \
-    psthplot.h \
+    vepplot.h \
     dataplot.h \
     stim.h \
     ../AttysComm/c/AttysComm.h \
