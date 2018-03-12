@@ -15,7 +15,7 @@ INCLUDEPATH += /usr/include/qwt
 TMAKE_CXXFLAGS += -fno-exceptions
 
 SOURCES = \
-    psthplot.cpp \
+    vepplot.cpp \
     dataplot.cpp \
     main.cpp \
     attys-ep.cpp \
@@ -26,7 +26,7 @@ SOURCES = \
 
 HEADERS = \
     attys-ep.h \
-    psthplot.h \
+    vepplot.h \
     dataplot.h \
     stim.h \
     ../AttysComm/c/AttysComm.h \
@@ -36,7 +36,6 @@ HEADERS = \
 CONFIG		+= qt release c++11
 
 QT             	+= widgets
-QT += printsupport
 
 RESOURCES     = application.qrc
 
