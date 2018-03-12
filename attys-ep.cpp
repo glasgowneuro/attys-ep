@@ -27,18 +27,13 @@
 
 MainWindow::MainWindow( QWidget *parent ) :
     QWidget(parent),
-    psthBinw(20),
-    spikeThres(1),
-    psthOn(0),
-    spikeDetected(false),
-    time(0),
-    linearAverage(0)
-{
+    vepOn(0),
+    time(0) {
 
 	attysScan.attysComm[0]->setAdc_samplingrate_index(AttysComm::ADC_RATE_250HZ);
 	sampling_rate = attysScan.attysComm[0]->getSamplingRateInHz();
 
-	psthLength = DEFAULT_SWEEP_LENGTH / (1000 / sampling_rate);
+	vepLength = DEFAULT_SWEEP_LENGTH / (1000 / sampling_rate);
 
 	attysCallback = new AttysCallback(this);
 	attysScan.attysComm[0]->registerCallback(attysCallback);
@@ -74,7 +69,7 @@ MainWindow::MainWindow( QWidget *parent ) :
 	mainLayout->setStretchFactor(plotLayout,4);
 	
 	// two plots
-	RawDataPlot = new DataPlot(xData, yData, psthLength, 
+	RawDataPlot = new DataPlot(xData, yData, vepLength, 
 				   attysScan.attysComm[0]->getADCFullScaleRange(0),
 				   -attysScan.attysComm[0]->getADCFullScaleRange(0),
 				   this);
@@ -85,112 +80,78 @@ MainWindow::MainWindow( QWidget *parent ) :
 
 	plotLayout->addSpacing(20);
 	
-	MyPsthPlot = new PsthPlot(timeData, psthData, psthLength/psthBinw, this);
-	MyPsthPlot->setMaximumSize(10000,300);
-	MyPsthPlot->setStyleSheet(styleSheet);
-	plotLayout->addWidget(MyPsthPlot);
-	MyPsthPlot->show();
+	vepPlot = new VEPPlot(timeData, vepAveragedData, vepLength, this);
+	vepPlot->setMaximumSize(10000,300);
+	vepPlot->setStyleSheet(styleSheet);
+	plotLayout->addWidget(vepPlot);
+	vepPlot->show();
 	
 	/*---- Buttons ----*/
 
 	// psth functions
-	QGroupBox   *PSTHfunGroup  = new QGroupBox( "Actions", this );
-	QVBoxLayout *PSTHfunLayout = new QVBoxLayout;
+	QGroupBox   *VEPfunGroup  = new QGroupBox( "Actions", this );
+	QVBoxLayout *vepFunLayout = new QVBoxLayout;
 
-	PSTHfunGroup->setLayout(PSTHfunLayout);
-	PSTHfunGroup->setAlignment(Qt::AlignJustify);
-	PSTHfunGroup->setSizePolicy( QSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed) );
-	controlLayout->addWidget( PSTHfunGroup );
+	VEPfunGroup->setLayout(vepFunLayout);
+	VEPfunGroup->setAlignment(Qt::AlignJustify);
+	VEPfunGroup->setSizePolicy( QSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed) );
+	controlLayout->addWidget( VEPfunGroup );
 
-	averagePsth = new QComboBox(PSTHfunGroup);
-	averagePsth->addItem(tr("VEP"));
-	averagePsth->addItem(tr("PSTH"));
-	PSTHfunLayout->addWidget(averagePsth);
-	connect( averagePsth, SIGNAL(currentIndexChanged(int)), SLOT(slotAveragePsth(int)) );
+	vpChoices = new QComboBox(VEPfunGroup);
+	vpChoices->addItem(tr("VEP"));
+	vpChoices->addItem(tr("P300"));
+	vepFunLayout->addWidget(vpChoices);
+	connect( vpChoices, SIGNAL(currentIndexChanged(int)), SLOT(slotSelectVEPType(int)) );
 
-	triggerPsth = new QPushButton(PSTHfunGroup);
-	triggerPsth->setText("PSTH on");
-	triggerPsth->setCheckable(true);
-	PSTHfunLayout->addWidget(triggerPsth);
-	connect(triggerPsth, SIGNAL(clicked()), SLOT(slotTriggerPsth()));
+	runVEP = new QPushButton(VEPfunGroup);
+	runVEP->setText("VEP on/off");
+	runVEP->setCheckable(true);
+	vepFunLayout->addWidget(runVEP);
+	connect(runVEP, SIGNAL(clicked()), SLOT(slotRunVEP()));
 
-	QPushButton *clearPsth = new QPushButton(PSTHfunGroup);
-	clearPsth->setText("clear data");
-	PSTHfunLayout->addWidget(clearPsth);
-	connect(clearPsth, SIGNAL(clicked()), SLOT(slotClearPsth()));
+	QPushButton *clearVEP = new QPushButton(VEPfunGroup);
+	clearVEP->setText("clear data");
+	vepFunLayout->addWidget(clearVEP);
+	connect(clearVEP, SIGNAL(clicked()), SLOT(slotClearVEP()));
 	
-	QPushButton *savePsth = new QPushButton(PSTHfunGroup);
-	savePsth->setText("save data");
-	PSTHfunLayout->addWidget(savePsth);
-	connect(savePsth, SIGNAL(clicked()), SLOT(slotSavePsth()));
-	int inpWidth = savePsth->width()*3/2;
+	QPushButton *saveVEP = new QPushButton(VEPfunGroup);
+	saveVEP->setText("save data");
+	vepFunLayout->addWidget(saveVEP);
+	connect(saveVEP, SIGNAL(clicked()), SLOT(slotSaveVEP()));
+	int inpWidth = saveVEP->width()*3/2;
 
-	// psth params
-	QGroupBox   *PSTHcounterGroup = new QGroupBox( "Parameters", this );
-	QVBoxLayout *PSTHcounterLayout = new QVBoxLayout;
+	// VEP params
+	QGroupBox   *vepCounterGroup = new QGroupBox( "Parameters", this );
+	QVBoxLayout *vepCounterLayout = new QVBoxLayout;
 
-	PSTHcounterGroup->setLayout(PSTHcounterLayout);
-	PSTHcounterGroup->setSizePolicy( QSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed) );
-	PSTHcounterGroup->setAlignment(Qt::AlignJustify);
-	PSTHcounterGroup->setSizePolicy( QSizePolicy(QSizePolicy::Fixed,
+	vepCounterGroup->setLayout(vepCounterLayout);
+	vepCounterGroup->setSizePolicy( QSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed) );
+	vepCounterGroup->setAlignment(Qt::AlignJustify);
+	vepCounterGroup->setSizePolicy( QSizePolicy(QSizePolicy::Fixed,
 					       QSizePolicy::Fixed) );
-	controlLayout->addWidget( PSTHcounterGroup );
+	controlLayout->addWidget( vepCounterGroup );
 
-	QLabel *psthLengthLabel = new QLabel("Sweep length", PSTHcounterGroup);
-	PSTHcounterLayout->addWidget(psthLengthLabel);
+	QLabel *vepLengthLabel = new QLabel("Sweep length", vepCounterGroup);
+	vepCounterLayout->addWidget(vepLengthLabel);
 
-	QwtCounter *cntSLength = new QwtCounter(PSTHcounterGroup);
+	QwtCounter *cntSLength = new QwtCounter(vepCounterGroup);
 	cntSLength->setNumButtons(2);
 	cntSLength->setIncSteps(QwtCounter::Button1, 10);
 	cntSLength->setIncSteps(QwtCounter::Button2, 100);
-	cntSLength->setRange(1, MAX_PSTH_LENGTH);
+	cntSLength->setRange(1, MAX_VEP_LENGTH);
 	cntSLength->setValue(DEFAULT_SWEEP_LENGTH);
 	cntSLength->setMaximumWidth(inpWidth);
-	PSTHcounterLayout->addWidget(cntSLength);
+	vepCounterLayout->addWidget(cntSLength);
 	connect(cntSLength, 
 		SIGNAL(valueChanged(double)), 
-		SLOT(slotSetPsthLength(double)));
+		SLOT(slotSetVEPLength(double)));
 	
-	QLabel *binwidthLabel = new QLabel("Binwidth", PSTHcounterGroup);
-	PSTHcounterLayout->addWidget(binwidthLabel);
-	
-	cntBinw = new QwtCounter(PSTHcounterGroup);
-	cntBinw->setNumButtons(2);
-	cntBinw->setIncSteps(QwtCounter::Button1, 1);
-	cntBinw->setIncSteps(QwtCounter::Button2, 10);
-	cntBinw->setRange(1, 100);
-	cntBinw->setValue(psthBinw);
-	cntBinw->setMaximumWidth(inpWidth);
-	PSTHcounterLayout->addWidget(cntBinw);
-	connect(cntBinw, SIGNAL(valueChanged(double)), SLOT(slotSetPsthBinw(double)));
-	
-	QLabel *thresholdLabel = new QLabel("Spike Threshold", PSTHcounterGroup);
-	PSTHcounterLayout->addWidget(thresholdLabel);
-	
-	editSpikeT = new QTextEdit("0");
-	editSpikeT->setMaximumWidth(inpWidth);
-	QFont editFont("Courier",14);
-	QFontMetrics editMetrics(editFont);
-	editSpikeT->setMaximumHeight ( editMetrics.height()*1.2 );
-	editSpikeT->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-	editSpikeT->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-	editSpikeT->setFont(editFont);
-	PSTHcounterLayout->addWidget(editSpikeT);
-	connect(editSpikeT, SIGNAL(textChanged()), SLOT(slotSetSpikeThres()));
-	
-	thresholdMarker = new QwtPlotMarker();
-	thresholdMarker->setValue(0,0);
-	thresholdMarker->attach(RawDataPlot);
-	thresholdMarker->setLineStyle(QwtPlotMarker::HLine);
-
-	slotAveragePsth(0);
-
-	stimulus = new Stimulus(this);
-	stimulus->setMinimumSize(300,300);
-	stimulus->show();
+	vepStimulus = new Stimulus(this);
+	vepStimulus->setMinimumSize(300,300);
+	vepStimulus->show();
 	connect ( this,
 		  SIGNAL(sweepStarted()),
-		  stimulus,
+		  vepStimulus,
 		  SLOT(slotInvert()) );
 	
 	// Generate timer event every 50ms
@@ -205,7 +166,6 @@ MainWindow::MainWindow( QWidget *parent ) :
         sweepTimer->start( DEFAULT_SWEEP_LENGTH );
 
 	attysScan.attysComm[0]->start();
-
 }
 
 MainWindow::~MainWindow()
@@ -217,17 +177,17 @@ MainWindow::~MainWindow()
 
 void MainWindow::initData() {
 	//  Initialize data for plots
-	for(int i=0; i<MAX_PSTH_LENGTH; i++)
+	for(int i=0; i<MAX_VEP_LENGTH; i++)
 	{
 		xData[i] = i/(double)sampling_rate*1000;
 		yData[i] = 0;
 		timeData[i] = i/(double)sampling_rate*1000;
-		spikeCountData[i] = 0;
-		psthData[i] = 0;
+		vepSummedUpData[i] = 0;
+		vepAveragedData[i] = 0;
 	}
 }
 
-void MainWindow::slotSavePsth()
+void MainWindow::slotSaveVEP()
 {
 	QString fileName = QFileDialog::getSaveFileName();
 	
@@ -239,8 +199,8 @@ void MainWindow::slotSavePsth()
 		{
 			QTextStream out(&file);
 			
-			for(int i=0; i<psthLength/psthBinw; i++)
-				out << timeData[i] << "\t" << psthData[i] << "\n";
+			for(int i=0; i<vepLength; i++)
+				out << timeData[i] << "\t" << vepAveragedData[i] << "\n";
 			
 			file.close();
 		}
@@ -251,96 +211,59 @@ void MainWindow::slotSavePsth()
 	}
 }
 
-void MainWindow::slotClearPsth()
+void MainWindow::slotClearVEP()
 {
 	time = 0;
 	trialIndex = 0;
 	initData();
-	spikeDetected = false;
-	psthActTrial = 0;
-	MyPsthPlot->replot();
+	vepActTrial = 0;
+	vepPlot->replot();
 }
 
-void MainWindow::slotTriggerPsth()
+void MainWindow::slotRunVEP()
 {
-	if(psthOn == 0)
+	// toggle VEP recording
+	if(vepOn == 0)
 	{
-		psthOn = 1;
-		MyPsthPlot->startDisplay();
+		vepOn = 1;
+		vepPlot->startDisplay();
 		trialIndex = 0;
 	}
 	else
 	{
-		MyPsthPlot->stopDisplay();
-		psthOn = 0;
-		psthActTrial = 0;
-		spikeDetected = false;
+		vepOn = 0;
+		vepPlot->stopDisplay();
+		vepActTrial = 0;
 	}
 }
 
-void MainWindow::slotSetPsthLength(double l)
+void MainWindow::slotSetVEPLength(double l)
 {
-	psthLength = (int)(l / (1000.0 / sampling_rate));
-	if (psthLength > MAX_PSTH_LENGTH) psthLength = MAX_PSTH_LENGTH;
+	vepLength = (int)(l / (1000.0 / sampling_rate));
+	if (vepLength > MAX_VEP_LENGTH) vepLength = MAX_VEP_LENGTH;
 	initData();
-	spikeDetected = false;
-	psthActTrial = 0;
+	vepActTrial = 0;
 	time = 0;
 	trialIndex = 0;
 	sweepTimer->setInterval((int)l);
-	RawDataPlot->setPsthLength(psthLength);
-	MyPsthPlot->setPsthLength(psthLength/psthBinw);
+	RawDataPlot->setVEPLength(vepLength);
+	vepPlot->setVEPLength(vepLength);
 }
 
-void MainWindow::slotSetPsthBinw(double b)
+void MainWindow::slotSelectVEPType(int idx)
 {
-	psthBinw = (int)b;
-	initData();
-	spikeDetected = false;
-	psthActTrial = 0;
-	time = 0;
-	trialIndex = 0;
-	MyPsthPlot->setPsthLength(psthLength/psthBinw);
-}
-
-void MainWindow::slotSetSpikeThres()
-{
-	QString t = editSpikeT->toPlainText();
-	spikeThres = t.toFloat();
-	thresholdMarker->setValue(0,spikeThres);
-	printf("%lf\n",spikeThres);
-	spikeDetected = false;
-}
-
-void MainWindow::slotAveragePsth(int idx)
-{
-	linearAverage = (idx == 0);
-	if ( linearAverage )
-	{
-		cntBinw->setEnabled(false);
-		editSpikeT->setEnabled(false);
-		MyPsthPlot->setYaxisLabel("Averaged Data");
-		MyPsthPlot->setAxisTitle(QwtPlot::yLeft, "average/V");
-		MyPsthPlot->setTitle("VEP");
-		triggerPsth->setText("Averaging on");
-		psthBinw = 1;
-		cntBinw->setValue(psthBinw);
-	}
-	else
-	{
-		cntBinw->setEnabled(true);
-		editSpikeT->setEnabled(true);
-		MyPsthPlot->setYaxisLabel("Spikes/s");
-		MyPsthPlot->setAxisTitle(QwtPlot::yLeft, "Spikes/s");
-		MyPsthPlot->setTitle("PSTH");
-		triggerPsth->setText("PSTH on");
-	}
+	// todo: add P300 here
+	editSpikeT->setEnabled(false);
+	vepPlot->setYaxisLabel("Averaged Data");
+	vepPlot->setAxisTitle(QwtPlot::yLeft, "average/V");
+	vepPlot->setTitle("VEP");
+	runVEP->setText("Averaging on");
 }
 
 
 void MainWindow::slotNewSweep() {
 	trialIndex = 0;
-	if (psthOn) {
+	if (vepOn) {
 		emit sweepStarted();
 	}
 }
@@ -356,37 +279,24 @@ void MainWindow::hasData(float,float *sample)
 	// we take the 1st channel
 	float yNew = sample[AttysComm::INDEX_Analogue_channel_1];
 
+	// highpass filtering of the data
 	yNew=iirhp->filter(yNew);
 
+	// removing 50Hz notch
 	yNew=iirnotch->filter(yNew);
 
+	// plot the data
 	RawDataPlot->setNewData(yNew);
 
 	// buffer full
-	if (!(trialIndex<psthLength)) return;
+	if (!(trialIndex<vepLength)) return;
 
-	if( linearAverage && psthOn )
+	// Are we recording?
+	if( vepOn )
 	{
-		spikeCountData[trialIndex] += yNew;		
-		psthData[trialIndex] = spikeCountData[trialIndex] / (time/psthLength + 1);
-	}
-	else if( !spikeDetected && yNew>spikeThres )
-	{
-		if(psthOn)
-		{
-			int psthIndex = trialIndex / psthBinw;
-			
-			spikeCountData[psthIndex] += 1;
-			
-			psthData[psthIndex] = ( spikeCountData[psthIndex]*1000 ) / 
-				( psthBinw * (time/psthLength + 1) );
-			
-			spikeDetected = true;
-		}
-	}
-	else if( yNew < spikeThres )
-	{
-		spikeDetected = false;
+		// average the VEP
+		vepSummedUpData[trialIndex] += yNew;		
+		vepAveragedData[trialIndex] = vepSummedUpData[trialIndex] / (time/vepLength + 1);
 	}
     
 	time++;

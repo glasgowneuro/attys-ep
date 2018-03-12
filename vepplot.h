@@ -18,7 +18,7 @@
 
 /** The PSTH plot widget
 */
-class PsthPlot : public QwtPlot
+class VEPPlot : public QwtPlot
 {
   ///pointer to the curve widget
   QwtPlotCurve *dataCurve;
@@ -41,8 +41,8 @@ protected:
   virtual void timerEvent(QTimerEvent *e);
 
 public:
-  PsthPlot(double *xData, double *yData, int length, QWidget *parent = 0);
-  void setPsthLength(int length);
+  VEPPlot(double *xData, double *yData, int length, QWidget *parent = 0);
+  void setVEPLength(int length);
   void startDisplay();
   void stopDisplay();
   void setYaxisLabel(const QString &label) { setAxisTitle(QwtPlot::yLeft, label); }

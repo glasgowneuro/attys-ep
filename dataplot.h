@@ -25,7 +25,7 @@ public:
 	DataPlot(double *xData, double *yData, int length,
 		 double max, double min, 
 		 QWidget *parent = 0);
-  void setPsthLength(int length);
+  void setVEPLength(int length);
   void setNewData(double yNew);
 
 private:

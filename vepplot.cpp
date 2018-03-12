@@ -8,21 +8,21 @@
  *   (at your option) any later version.                                   *
  ***************************************************************************/
 
-#include "psthplot.h"
+#include "vepplot.h"
 
 #include <QTimerEvent>
 
-PsthPlot::PsthPlot(double *xData, double *yData, int length, QWidget *parent) :
+VEPPlot::VEPPlot(double *xData, double *yData, int length, QWidget *parent) :
     QwtPlot(parent),
     xData(xData),
     yData(yData)
 {
   // Assign a title
-  setTitle("PSTH");
+  setTitle("VEP");
   setAxisTitle(QwtPlot::xBottom, "Time/ms");
-  setAxisTitle(QwtPlot::yLeft, "Spikes/s");
+  setAxisTitle(QwtPlot::yLeft, "VEP/V");
 
-  dataCurve = new QwtPlotCurve("PSTH");
+  dataCurve = new QwtPlotCurve("VEP");
   dataCurve->setRawSamples(xData, yData, length);
   dataCurve->attach(this);
   dataCurve->setPen( QPen(Qt::blue, 2) );
@@ -36,23 +36,23 @@ PsthPlot::PsthPlot(double *xData, double *yData, int length, QWidget *parent) :
   setAutoReplot(false);
 }
 
-void PsthPlot::setPsthLength(int length)
+void VEPPlot::setVEPLength(int length)
 {
 	nDatapoints = length;	
 	dataCurve->setRawSamples(xData, yData, length);
 }
 
-void PsthPlot::startDisplay()
+void VEPPlot::startDisplay()
 {
 	currtimer=startTimer(150);
 }
 
-void PsthPlot::stopDisplay()
+void VEPPlot::stopDisplay()
 {
 	killTimer(currtimer);
 }
 
-void PsthPlot::timerEvent(QTimerEvent *)
+void VEPPlot::timerEvent(QTimerEvent *)
 {
 	updateCtr--;
 	if (updateCtr==0) {

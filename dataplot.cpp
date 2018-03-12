@@ -35,7 +35,7 @@ DataPlot::DataPlot(double *xData, double *yData, int length,
   dataCurve->attach(this);
 }
 
-void DataPlot::setPsthLength(int length)
+void DataPlot::setVEPLength(int length)
 {
   psthLength = length;
   dataCurve->setRawSamples(xData, yData, psthLength);
