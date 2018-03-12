@@ -55,8 +55,8 @@ OBJECTS_DIR = obj
 
 LIBS += \
     -L/qwt/lib \
-    -lqwt \
-	-L/iir1/Release \
+    -lqwtd \
+	-L/iir1/Debug \
     -liir_static \
 	-lws2_32
 
@@ -83,10 +83,9 @@ HEADERS = \
     ../AttysComm/c/AttysScan.h \
     ../AttysComm/c/base64.h
 
-CONFIG		+= qt release c++11
+CONFIG		+= qt debug c++11
 
-QT             	+= widgets
-QT += printsupport
+QT   	+= widgets
 
 RESOURCES     = application.qrc
 

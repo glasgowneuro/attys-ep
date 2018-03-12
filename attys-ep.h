@@ -69,6 +69,14 @@ class MainWindow : public QWidget
   
   // time counter
   long int time;
+
+  // mode
+  // 0 = VEP
+  // 1 = P300
+  int mode = 0;
+
+  // P300 oddball
+  int oddballCtr = 10;
   
   Iir::Butterworth::BandStop<IIRORDER>* iirnotch;
 
@@ -111,7 +119,7 @@ protected:
   void initData();
 
 signals:
-  void sweepStarted();
+  void sweepStarted(int);
 
 public:
 

@@ -15,8 +15,6 @@
 #include <QVBoxLayout>
 #include <QGroupBox>
 #include <QLabel>
-#include <QPrinter>
-#include <QPrintDialog>
 #include <QFileDialog>
 #include <QTextStream>
 #include <QComboBox>
@@ -62,7 +60,7 @@ MainWindow::MainWindow( QWidget *parent ) :
 	mainLayout->addLayout(controlLayout);
 	
 	QVBoxLayout *plotLayout = new QVBoxLayout;
-	//plotLayout->addStrut(400);
+
 	mainLayout->addLayout(plotLayout);
 	
 	mainLayout->setStretchFactor(controlLayout,1);
@@ -79,7 +77,8 @@ MainWindow::MainWindow( QWidget *parent ) :
 	RawDataPlot->show();
 
 	plotLayout->addSpacing(20);
-	
+
+
 	vepPlot = new VEPPlot(timeData, vepAveragedData, vepLength, this);
 	vepPlot->setMaximumSize(10000,300);
 	vepPlot->setStyleSheet(styleSheet);
@@ -150,9 +149,9 @@ MainWindow::MainWindow( QWidget *parent ) :
 	vepStimulus->setMinimumSize(300,300);
 	vepStimulus->show();
 	connect ( this,
-		  SIGNAL(sweepStarted()),
+		  SIGNAL(sweepStarted(int)),
 		  vepStimulus,
-		  SLOT(slotInvert()) );
+		  SLOT(slotInvert(int)) );
 	
 	// Generate timer event every 50ms
 	startTimer(50);
@@ -252,19 +251,29 @@ void MainWindow::slotSetVEPLength(double l)
 
 void MainWindow::slotSelectVEPType(int idx)
 {
-	// todo: add P300 here
-	editSpikeT->setEnabled(false);
-	vepPlot->setYaxisLabel("Averaged Data");
-	vepPlot->setAxisTitle(QwtPlot::yLeft, "average/V");
-	vepPlot->setTitle("VEP");
-	runVEP->setText("Averaging on");
+	mode = idx;
 }
 
 
 void MainWindow::slotNewSweep() {
-	trialIndex = 0;
+	int oddball = 0;
 	if (vepOn) {
-		emit sweepStarted();
+		switch (mode) {
+		case 0:
+			oddball = 0;
+			trialIndex = 0;
+			break;
+		case 1:
+			if (oddballCtr == 0) {
+				oddballCtr = 7 + rand() / (RAND_MAX/6);
+				oddball = 1;
+				trialIndex = 0;
+			} else {
+				oddball = 0;
+				oddballCtr--;
+			}
+		}
+		emit sweepStarted(oddball);
 	}
 }
 
