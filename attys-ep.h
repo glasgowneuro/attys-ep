@@ -28,7 +28,7 @@
 #include "stim.h"
 #include <Iir.h>
 
-// maximal length of the PSTH (for memory alloctaion) in samples
+// maximal length of the VEP (for memory alloctaion) in samples
 #define MAX_VEP_LENGTH 5000
 
 // in ms
@@ -44,10 +44,10 @@ class MainWindow : public QWidget
     
   // show the raw serai data here
   DataPlot *RawDataPlot;
-  // here the PSTH will be shown
+  // here the VEP will be shown
   VEPPlot *vepPlot;
   
-  // length of the PSTH, this is the length on one trial
+  // length of the VEP, this is the length on one trial
   int vepLength;
 
   // sampling rate
@@ -56,7 +56,7 @@ class MainWindow : public QWidget
   // sample index within one sweep
   int trialIndex;
 
-  // boo, activate/deactivate the psth plot
+  // boo, activate/deactivate the vep plot
   int vepOn;
 
   // count trials while recording
@@ -64,7 +64,8 @@ class MainWindow : public QWidget
   
   // data
   double xData[MAX_VEP_LENGTH], yData[MAX_VEP_LENGTH];
-  // PSTH, t is time, p is spike count, psth is spikes/sec
+  
+  // VEP
   double timeData[MAX_VEP_LENGTH], vepSummedUpData[MAX_VEP_LENGTH], vepAveragedData[MAX_VEP_LENGTH];
   
   // time counter

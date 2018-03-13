@@ -8,15 +8,15 @@
  *   (at your option) any later version.                                   *
  ***************************************************************************/
 
-#ifndef PSTHPLOT_H
-#define PSTHPLOT_H
+#ifndef VEPPLOT_H
+#define VEPPLOT_H
 
 #include <qwt_plot.h>
 #include <qwt_plot_curve.h>
 
 #include <QTimerEvent>
 
-/** The PSTH plot widget
+/** The VEP plot widget
 */
 class VEPPlot : public QwtPlot
 {
@@ -26,7 +26,7 @@ class VEPPlot : public QwtPlot
   // pointer to the x and y data
   double *xData, *yData;
   
-  // PSTH curve
+  // VEP curve
   long cPsthData;
   ///timer id
   int currtimer;
