@@ -44,3 +44,7 @@ everything.
 
 Just type: "./attys-ep" or start it from the start menu under Windows.
 
+
+# Credits
+
+attys-ep is based in part on the work of the Qwt project (http://qwt.sf.net).
