@@ -9,9 +9,6 @@ attys-ep performs averaging over repetitive stimuli. It
 works on continous data such as visually evoked potentials and
 also on discrete events such as spikes.
 
-Attys-ep is based in part on the work of the Qwt project (http://qwt.sf.net)
-which provides the QT widgets to visualise the data.
-
 # Installation
 
 ## Linux
