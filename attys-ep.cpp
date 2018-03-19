@@ -1,7 +1,7 @@
 /***************************************************************************
  *   Copyright (C) 2003 by Matthias H. Hennig                              *
  *   hennig@cn.stir.ac.uk                                                  *
- *   Copyright (C) 2005-2017 by Bernd Porr                                 *
+ *   Copyright (C) 2005-2018 by Bernd Porr                                 *
  *   mail@berndporr.me.uk                                                  *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -52,7 +52,9 @@ MainWindow::MainWindow( QWidget *parent ) :
 	initData();
 
 	char styleSheet[] = "padding:0px;margin:0px;border:0px;";
-
+	char styleSheetCombo[] = "padding:0px;margin:0px;border:0px;margin-right:2px;font: 16px";
+	char styleSheetGroupBox[] = "padding:1px;margin:0px;border:0px";
+	char styleSheetButton[] = "background-color: rgb(224, 224, 224); border: none; outline: none; border-width: 0px; font: 16px; padding: 5px;";
 	QHBoxLayout *mainLayout = new QHBoxLayout( this );
 
 	QVBoxLayout *controlLayout = new QVBoxLayout;
@@ -88,7 +90,8 @@ MainWindow::MainWindow( QWidget *parent ) :
 	/*---- Buttons ----*/
 
 	// psth functions
-	QGroupBox   *VEPfunGroup  = new QGroupBox( "Actions", this );
+	QGroupBox   *VEPfunGroup  = new QGroupBox( this );
+	VEPfunGroup->setStyleSheet(styleSheetGroupBox);
 	QVBoxLayout *vepFunLayout = new QVBoxLayout;
 
 	VEPfunGroup->setLayout(vepFunLayout);
@@ -97,12 +100,14 @@ MainWindow::MainWindow( QWidget *parent ) :
 	controlLayout->addWidget( VEPfunGroup );
 
 	vpChoices = new QComboBox(VEPfunGroup);
+	vpChoices->setStyleSheet(styleSheetCombo);
 	vpChoices->addItem(tr("VEP"));
 	vpChoices->addItem(tr("P300"));
 	vepFunLayout->addWidget(vpChoices);
 	connect( vpChoices, SIGNAL(currentIndexChanged(int)), SLOT(slotSelectVEPType(int)) );
 
 	runVEP = new QPushButton(VEPfunGroup);
+	runVEP->setStyleSheet(styleSheetButton);
 	runVEP->setText("VEP on/off");
 	runVEP->setCheckable(true);
 	vepFunLayout->addWidget(runVEP);
@@ -110,17 +115,20 @@ MainWindow::MainWindow( QWidget *parent ) :
 
 	QPushButton *clearVEP = new QPushButton(VEPfunGroup);
 	clearVEP->setText("clear data");
+	clearVEP->setStyleSheet(styleSheetButton);
 	vepFunLayout->addWidget(clearVEP);
 	connect(clearVEP, SIGNAL(clicked()), SLOT(slotClearVEP()));
 	
 	QPushButton *saveVEP = new QPushButton(VEPfunGroup);
 	saveVEP->setText("save data");
+	saveVEP->setStyleSheet(styleSheetButton);
 	vepFunLayout->addWidget(saveVEP);
 	connect(saveVEP, SIGNAL(clicked()), SLOT(slotSaveVEP()));
 	int inpWidth = saveVEP->width()*3/2;
 
 	// VEP params
-	QGroupBox   *vepCounterGroup = new QGroupBox( "Parameters", this );
+	QGroupBox   *vepCounterGroup = new QGroupBox( this );
+	vepCounterGroup->setStyleSheet(styleSheetGroupBox);
 	QVBoxLayout *vepCounterLayout = new QVBoxLayout;
 
 	vepCounterGroup->setLayout(vepCounterLayout);
@@ -134,9 +142,8 @@ MainWindow::MainWindow( QWidget *parent ) :
 	vepCounterLayout->addWidget(vepLengthLabel);
 
 	QwtCounter *cntSLength = new QwtCounter(vepCounterGroup);
-	cntSLength->setNumButtons(2);
-	cntSLength->setIncSteps(QwtCounter::Button1, 10);
-	cntSLength->setIncSteps(QwtCounter::Button2, 100);
+	cntSLength->setNumButtons(1);
+  	cntSLength->setIncSteps(QwtCounter::Button1, 10000);
 	cntSLength->setRange(1, MAX_VEP_LENGTH);
 	cntSLength->setValue(DEFAULT_SWEEP_LENGTH);
 	cntSLength->setMaximumWidth(inpWidth);
