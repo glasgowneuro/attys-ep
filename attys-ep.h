@@ -78,13 +78,15 @@ class MainWindow : public QWidget
 
   // P300 oddball
   int oddballCtr = 10;
-  
+
+  // 50/60 Hz notch
   Iir::Butterworth::BandStop<IIRORDER>* iirnotch;
 
+  // highpass
   Iir::Butterworth::HighPass<IIRORDER>* iirhp;
 
   QComboBox *vpChoices;
-  QTextEdit *editSpikeT;
+  QComboBox* notchFreq;
   QPushButton *runVEP;
   Stimulus *vepStimulus;
 
@@ -99,27 +101,39 @@ private slots:
   void slotSaveVEP();
   void slotSelectVEPType(int idx);
   void slotNewSweep();
+  void slotSelectNotchFreq(int);
 
 protected:
 
-  /// timer to plot the data
+  // set notch frequency
+  void setNotch(double f);
+
+  // timer to plot the data
   virtual void timerEvent(QTimerEvent *e);
 
+  // implements the callback via this interface
   struct AttysCallback : AttysComm::CallbackInterface {
+	  // pointer to an instance of the parent class
 	  MainWindow* mainwindow;
+	  // new constructor
 	  AttysCallback(MainWindow* _mainwindow) { mainwindow = _mainwindow; };
+	  // is called from the Attys whenever a sample has arrived
 	  virtual void hasSample(float ts,float *data) {
 		  mainwindow->hasData(ts,data);
 	  };
   };
 
+  // callback called from the interface below
   void hasData(float,float *sample);
 
+  // interface which is registered with the Attys
   AttysCallback* attysCallback;
 
+  // inits everything
   void initData();
 
 signals:
+  // timer event that a new sweep begins
   void sweepStarted(int);
 
 public:

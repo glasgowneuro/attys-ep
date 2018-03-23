@@ -42,7 +42,7 @@ MainWindow::MainWindow( QWidget *parent ) :
 	// 50Hz or 60Hz mains notch filter (see header)
 	iirnotch = new Iir::Butterworth::BandStop<IIRORDER>;
 	assert( iirnotch != NULL );
-	iirnotch->setup (IIRORDER, sampling_rate, NOTCH_F, 2.5);
+	setNotch(NOTCH_F);
 
 	// highpass
 	iirhp = new Iir::Butterworth::HighPass<2>;
@@ -52,7 +52,7 @@ MainWindow::MainWindow( QWidget *parent ) :
 	initData();
 
 	char styleSheet[] = "padding:0px;margin:0px;border:0px;";
-	char styleSheetCombo[] = "padding:0px;margin:0px;border:0px;margin-right:2px;font: 16px";
+	char styleSheetCombo[] = "padding:1px;margin:0px;border:0px;margin-right:2px;font:18px";
 	char styleSheetGroupBox[] = "padding:1px;margin:0px;border:0px";
 	char styleSheetButton[] = "background-color: rgb(224, 224, 224); border: none; outline: none; border-width: 0px; font: 16px; padding: 5px;";
 	QHBoxLayout *mainLayout = new QHBoxLayout( this );
@@ -89,7 +89,7 @@ MainWindow::MainWindow( QWidget *parent ) :
 	
 	/*---- Buttons ----*/
 
-	// psth functions
+	// vep functions
 	QGroupBox   *VEPfunGroup  = new QGroupBox( this );
 	VEPfunGroup->setStyleSheet(styleSheetGroupBox);
 	QVBoxLayout *vepFunLayout = new QVBoxLayout;
@@ -98,6 +98,13 @@ MainWindow::MainWindow( QWidget *parent ) :
 	VEPfunGroup->setAlignment(Qt::AlignJustify);
 	VEPfunGroup->setSizePolicy( QSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed) );
 	controlLayout->addWidget( VEPfunGroup );
+
+	notchFreq = new QComboBox(VEPfunGroup);
+	notchFreq->setStyleSheet(styleSheetCombo);
+        notchFreq->addItem(tr("50Hz bandstop"));
+        notchFreq->addItem(tr("60Hz bandstop"));
+        vepFunLayout->addWidget(notchFreq);
+        connect(  notchFreq, SIGNAL(currentIndexChanged(int)), SLOT(slotSelectNotchFreq(int)) );
 
 	vpChoices = new QComboBox(VEPfunGroup);
 	vpChoices->setStyleSheet(styleSheetCombo);
@@ -192,6 +199,26 @@ void MainWindow::initData() {
 		vepAveragedData[i] = 0;
 	}
 }
+
+
+void MainWindow::setNotch(double f) {
+	iirnotch->setup(IIRORDER, sampling_rate, f, 2.5);
+}
+
+
+void MainWindow::slotSelectNotchFreq(int f) {
+	switch (f) {
+	case 0:
+		setNotch(50);
+		break;
+	case 1:
+		setNotch(60);
+		break;
+	}
+}
+
+
+
 
 void MainWindow::slotSaveVEP()
 {
