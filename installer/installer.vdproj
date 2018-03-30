@@ -15,6 +15,18 @@
     {
         "Entry"
         {
+        "MsmKey" = "8:_06B2666AF3CF4A459A54E31FCC469E1C"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_07C47CDC16C4499B9AE0FF5CD6716C5A"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_195AC376EEBD42BFBFD0FF5C601B86B3"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -34,6 +46,12 @@
         "Entry"
         {
         "MsmKey" = "8:_26FE11474255451E8D375DC00B146E35"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_2AEEA7D6FA564870ACD428640C480EA1"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -153,13 +171,13 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_84BDA5B0A6584D7BAC0FFE6D1B5F582C"
+        "MsmKey" = "8:_82B4C42BB8FA4D94B46EEAD1934AFCB3"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_854C1EAD9E764784A8AC409F510AE45C"
+        "MsmKey" = "8:_84BDA5B0A6584D7BAC0FFE6D1B5F582C"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -183,12 +201,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_8DE011C5AA804E58BF8B9781D737FA06"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_9C50500DAB614EC0B5676EFB11F3039F"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -207,13 +219,19 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_A261B5866DD44E5991D3AE6851161D96"
+        "MsmKey" = "8:_BB7DD606C9C645A782E52C4438346F7D"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_BB7DD606C9C645A782E52C4438346F7D"
+        "MsmKey" = "8:_BF28A2E1BA6B4B079BB75F5626D9E547"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_C17C2802F1AB4BADADDF8AEC13AE9D1E"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -249,13 +267,13 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_E725A183999B450F98BE608212D6967D"
+        "MsmKey" = "8:_E711ABB1059949FBBB5C58672A502E8E"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_E7C35C39414942BF961613E408C4BC22"
+        "MsmKey" = "8:_E725A183999B450F98BE608212D6967D"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -352,6 +370,46 @@
         }
         "File"
         {
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_06B2666AF3CF4A459A54E31FCC469E1C"
+            {
+            "SourcePath" = "8:C:\\Qt\\Qt5.7.0\\5.7\\msvc2015_64\\bin\\Qt5Svgd.dll"
+            "TargetName" = "8:Qt5Svgd.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_3D683A79DF9A4B1DA51443FEF3444F5F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_07C47CDC16C4499B9AE0FF5CD6716C5A"
+            {
+            "SourcePath" = "8:C:\\Qt\\Qt5.7.0\\5.7\\msvc2015_64\\bin\\Qt5OpenGLd.dll"
+            "TargetName" = "8:Qt5OpenGLd.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_3D683A79DF9A4B1DA51443FEF3444F5F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_195AC376EEBD42BFBFD0FF5C601B86B3"
             {
             "SourcePath" = "8:..\\release\\translations\\qt_cs.qm"
@@ -418,6 +476,26 @@
             "TargetName" = "8:qt_ko.qm"
             "Tag" = "8:"
             "Folder" = "8:_E94334843A544087915FF4FC01F98956"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2AEEA7D6FA564870ACD428640C480EA1"
+            {
+            "SourcePath" = "8:C:\\Qt\\Qt5.7.0\\5.7\\msvc2015_64\\bin\\Qt5Bluetoothd.dll"
+            "TargetName" = "8:Qt5Bluetoothd.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_3D683A79DF9A4B1DA51443FEF3444F5F"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -812,12 +890,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_84BDA5B0A6584D7BAC0FFE6D1B5F582C"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_82B4C42BB8FA4D94B46EEAD1934AFCB3"
             {
-            "SourcePath" = "8:..\\release\\imageformats\\qdds.dll"
-            "TargetName" = "8:qdds.dll"
+            "SourcePath" = "8:C:\\Qt\\Qt5.7.0\\5.7\\msvc2015_64\\bin\\Qt5Guid.dll"
+            "TargetName" = "8:Qt5Guid.dll"
             "Tag" = "8:"
-            "Folder" = "8:_B805F1B4587F448BB4417AA7750E1D2C"
+            "Folder" = "8:_3D683A79DF9A4B1DA51443FEF3444F5F"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -832,12 +910,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_854C1EAD9E764784A8AC409F510AE45C"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_84BDA5B0A6584D7BAC0FFE6D1B5F582C"
             {
-            "SourcePath" = "8:..\\release\\Qt5Widgets.dll"
-            "TargetName" = "8:Qt5Widgets.dll"
+            "SourcePath" = "8:..\\release\\imageformats\\qdds.dll"
+            "TargetName" = "8:qdds.dll"
             "Tag" = "8:"
-            "Folder" = "8:_3D683A79DF9A4B1DA51443FEF3444F5F"
+            "Folder" = "8:_B805F1B4587F448BB4417AA7750E1D2C"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -892,26 +970,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8DE011C5AA804E58BF8B9781D737FA06"
-            {
-            "SourcePath" = "8:..\\release\\Qt5Svg.dll"
-            "TargetName" = "8:Qt5Svg.dll"
-            "Tag" = "8:"
-            "Folder" = "8:_3D683A79DF9A4B1DA51443FEF3444F5F"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9C50500DAB614EC0B5676EFB11F3039F"
             {
             "SourcePath" = "8:..\\release\\translations\\qt_ca.qm"
@@ -952,10 +1010,30 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A261B5866DD44E5991D3AE6851161D96"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_BB7DD606C9C645A782E52C4438346F7D"
             {
-            "SourcePath" = "8:..\\release\\Qt5Core.dll"
-            "TargetName" = "8:Qt5Core.dll"
+            "SourcePath" = "8:..\\release\\translations\\qt_de.qm"
+            "TargetName" = "8:qt_de.qm"
+            "Tag" = "8:"
+            "Folder" = "8:_E94334843A544087915FF4FC01F98956"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_BF28A2E1BA6B4B079BB75F5626D9E547"
+            {
+            "SourcePath" = "8:C:\\Qt\\Qt5.7.0\\5.7\\msvc2015_64\\bin\\Qt5PrintSupportd.dll"
+            "TargetName" = "8:Qt5PrintSupportd.dll"
             "Tag" = "8:"
             "Folder" = "8:_3D683A79DF9A4B1DA51443FEF3444F5F"
             "Condition" = "8:"
@@ -972,12 +1050,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_BB7DD606C9C645A782E52C4438346F7D"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C17C2802F1AB4BADADDF8AEC13AE9D1E"
             {
-            "SourcePath" = "8:..\\release\\translations\\qt_de.qm"
-            "TargetName" = "8:qt_de.qm"
+            "SourcePath" = "8:C:\\Qt\\Qt5.7.0\\5.7\\msvc2015_64\\bin\\Qt5Cored.dll"
+            "TargetName" = "8:Qt5Cored.dll"
             "Tag" = "8:"
-            "Folder" = "8:_E94334843A544087915FF4FC01F98956"
+            "Folder" = "8:_3D683A79DF9A4B1DA51443FEF3444F5F"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1092,12 +1170,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E725A183999B450F98BE608212D6967D"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E711ABB1059949FBBB5C58672A502E8E"
             {
-            "SourcePath" = "8:..\\release\\imageformats\\qgif.dll"
-            "TargetName" = "8:qgif.dll"
+            "SourcePath" = "8:C:\\Qt\\Qt5.7.0\\5.7\\msvc2015_64\\bin\\Qt5Widgetsd.dll"
+            "TargetName" = "8:Qt5Widgetsd.dll"
             "Tag" = "8:"
-            "Folder" = "8:_B805F1B4587F448BB4417AA7750E1D2C"
+            "Folder" = "8:_3D683A79DF9A4B1DA51443FEF3444F5F"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1112,12 +1190,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E7C35C39414942BF961613E408C4BC22"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E725A183999B450F98BE608212D6967D"
             {
-            "SourcePath" = "8:..\\release\\Qt5Gui.dll"
-            "TargetName" = "8:Qt5Gui.dll"
+            "SourcePath" = "8:..\\release\\imageformats\\qgif.dll"
+            "TargetName" = "8:qgif.dll"
             "Tag" = "8:"
-            "Folder" = "8:_3D683A79DF9A4B1DA51443FEF3444F5F"
+            "Folder" = "8:_B805F1B4587F448BB4417AA7750E1D2C"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
