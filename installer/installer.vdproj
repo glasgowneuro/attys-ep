@@ -195,6 +195,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_9DD608F1E16648C9BE3F5232F8FE757B"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_A116B54ABB2C4A73BB5D0E72BA78B94E"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -256,12 +262,6 @@
         "Entry"
         {
         "MsmKey" = "8:_F85102C311A5403E8F5500ED8227312A"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_FE043667479B4899BD6ED768D76030B4"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -1844,11 +1844,11 @@
         }
         "MergeModule"
         {
-            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_FE043667479B4899BD6ED768D76030B4"
+            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_9DD608F1E16648C9BE3F5232F8FE757B"
             {
             "UseDynamicProperties" = "11:TRUE"
             "IsDependency" = "11:FALSE"
-            "SourcePath" = "8:C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Redist\\MSVC\\14.10.25008\\MergeModules\\Microsoft_VC150_CRT_x64.msm"
+            "SourcePath" = "8:C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Redist\\MSVC\\14.10.25008\\MergeModules\\Microsoft_VC150_DebugCRT_x64.msm"
                 "Properties"
                 {
                 }
