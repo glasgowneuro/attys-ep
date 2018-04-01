@@ -52,10 +52,12 @@ LIBS += \
     -lqwtd \
 	-L/iir1/Debug \
     -liir_static \
-	-lws2_32
+    -lws2_32 \
+    -L ../AttysComm/cpp \
+    -lattyscomm_static
 
 INCLUDEPATH += /iir1
-INCLUDEPATH += ../AttysComm/c/
+INCLUDEPATH += ../AttysComm/cpp
 INCLUDEPATH += /qwt/src
 
 SOURCES = \
@@ -63,19 +65,13 @@ SOURCES = \
     dataplot.cpp \
     main.cpp \
     attys-ep.cpp \
-    stim.cpp \
-    ../AttysComm/c/AttysComm.cpp \
-    ../AttysComm/c/AttysScan.cpp \
-    ../AttysComm/c/base64.c
+    stim.cpp
 
 HEADERS = \
     attys-ep.h \
     vepplot.h \
     dataplot.h \
-    stim.h \
-    ../AttysComm/c/AttysComm.h \
-    ../AttysComm/c/AttysScan.h \
-    ../AttysComm/c/base64.h
+    stim.h
 
 CONFIG		+= qt debug c++11
 
