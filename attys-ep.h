@@ -112,7 +112,7 @@ protected:
   virtual void timerEvent(QTimerEvent *e);
 
   // implements the callback via this interface
-  struct AttysCallback : AttysComm::CallbackInterface {
+  struct AttysCallback : AttysCommListener {
 	  // pointer to an instance of the parent class
 	  MainWindow* mainwindow;
 	  // new constructor

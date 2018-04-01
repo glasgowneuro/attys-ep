@@ -7,6 +7,7 @@ LIBS += \
     -L/usr/local/lib \
     -lqwt-qt5 \
     -liir \
+    -lattyscomm \
     -lbluetooth
 
 INCLUDEPATH += ../AttysComm/c/
@@ -19,19 +20,13 @@ SOURCES = \
     dataplot.cpp \
     main.cpp \
     attys-ep.cpp \
-    stim.cpp \
-    ../AttysComm/c/AttysComm.cpp \
-    ../AttysComm/c/AttysScan.cpp \
-    ../AttysComm/c/base64.c
+    stim.cpp
 
 HEADERS = \
     attys-ep.h \
     vepplot.h \
     dataplot.h \
-    stim.h \
-    ../AttysComm/c/AttysComm.h \
-    ../AttysComm/c/AttysScan.h \
-    ../AttysComm/c/base64.h
+    stim.h
 
 CONFIG		+= qt release c++11
 
