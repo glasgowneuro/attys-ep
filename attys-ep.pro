@@ -53,7 +53,7 @@ LIBS += \
 	-L/iir1/Debug \
     -liir_static \
     -lws2_32 \
-    -L ../AttysComm/cpp \
+    -L../AttysComm/cpp/Debug \
     -lattyscomm_static
 
 INCLUDEPATH += /iir1
