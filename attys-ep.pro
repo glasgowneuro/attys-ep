@@ -47,13 +47,22 @@ MOC_DIR = moc
 
 OBJECTS_DIR = obj
 
-LIBS += \
+Debug:LIBS += \
     -L/qwt/lib \
     -lqwtd \
 	-L/iir1/Debug \
     -liir_static \
     -lws2_32 \
     -L../AttysComm/cpp/Debug \
+    -lattyscomm_static
+
+Release:LIBS += \
+    -L/qwt/lib \
+    -lqwt \
+	-L/iir1/Release \
+    -liir_static \
+    -lws2_32 \
+    -L../AttysComm/cpp/Release \
     -lattyscomm_static
 
 INCLUDEPATH += /iir1
@@ -73,7 +82,8 @@ HEADERS = \
     dataplot.h \
     stim.h
 
-CONFIG		+= qt debug c++11
+Debug:CONFIG		+= qt debug c++11
+Release:CONFIG		+= qt release c++11
 
 QT   	+= widgets
 
