@@ -34,6 +34,9 @@ QT             	+= widgets
 
 RESOURCES     = application.qrc
 
+target.path     = /usr/local/bin
+INSTALLS        += target
+
 }
 
 
