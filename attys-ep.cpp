@@ -23,6 +23,8 @@
 #include "AttysComm.h"
 #include "AttysScan.h"
 
+#define NOTCH_BW 2.5
+
 MainWindow::MainWindow( QWidget *parent ) :
     QWidget(parent),
     vepOn(0),
@@ -198,7 +200,7 @@ void MainWindow::initData() {
 
 
 void MainWindow::setNotch(double f) {
-	iirnotch.setup(sampling_rate, f);
+	iirnotch.setup(sampling_rate, f, NOTCH_BW);
 }
 
 

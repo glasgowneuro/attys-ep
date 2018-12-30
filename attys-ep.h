@@ -80,7 +80,7 @@ class MainWindow : public QWidget
   int oddballCtr = 10;
 
   // 50/60 Hz notch
-  Iir::RBJ::IIRNotch iirnotch;
+  Iir::Butterworth::BandStop<IIRORDER> iirnotch;
 
   // highpass
   Iir::Butterworth::HighPass<IIRORDER> iirhp;
