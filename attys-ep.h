@@ -35,7 +35,7 @@
 #define DEFAULT_SWEEP_LENGTH 500
 
 #define NOTCH_F 50 // filter out 50Hz noise
-#define IIRORDER 2
+#define IIRORDER 4
 
 
 class MainWindow : public QWidget
@@ -80,10 +80,10 @@ class MainWindow : public QWidget
   int oddballCtr = 10;
 
   // 50/60 Hz notch
-  Iir::Butterworth::BandStop<IIRORDER>* iirnotch;
+  Iir::RBJ::IIRNotch iirnotch;
 
   // highpass
-  Iir::Butterworth::HighPass<IIRORDER>* iirhp;
+  Iir::Butterworth::HighPass<IIRORDER> iirhp;
 
   QComboBox *vpChoices;
   QComboBox* notchFreq;

@@ -40,14 +40,10 @@ MainWindow::MainWindow( QWidget *parent ) :
 	attysScan.attysComm[0]->setAdc0_gain_index(AttysComm::ADC_GAIN_12);
 	
 	// 50Hz or 60Hz mains notch filter (see header)
-	iirnotch = new Iir::Butterworth::BandStop<IIRORDER>;
-	assert( iirnotch != NULL );
 	setNotch(NOTCH_F);
 
 	// highpass
-	iirhp = new Iir::Butterworth::HighPass<2>;
-	assert( iirhp != NULL );
-	iirhp->setup (IIRORDER, sampling_rate, 0.5);
+	iirhp.setup (sampling_rate, 0.5);
 
 	initData();
 
@@ -202,7 +198,7 @@ void MainWindow::initData() {
 
 
 void MainWindow::setNotch(double f) {
-	iirnotch->setup(IIRORDER, sampling_rate, f, 2.5);
+	iirnotch.setup(sampling_rate, f);
 }
 
 
@@ -323,10 +319,10 @@ void MainWindow::hasData(float,float *sample)
 	float yNew = sample[AttysComm::INDEX_Analogue_channel_1];
 
 	// highpass filtering of the data
-	yNew=iirhp->filter(yNew);
+	yNew=iirhp.filter(yNew);
 
 	// removing 50Hz notch
-	yNew=iirnotch->filter(yNew);
+	yNew=iirnotch.filter(yNew);
 
 	// plot the data
 	RawDataPlot->setNewData(yNew);
