@@ -25,10 +25,10 @@ everything.
 ## Windows
 * Install: Visual Studio 2017 community edition
 * clone iir1 in your root directory: https://github.com/berndporr/iir1 and compile it (debug and release version)
-* Download the open source version of QT5, 64 bits for visual C++ 2015/2017 from www.qt.io:
-  https://download.qt.io/official_releases/qt/5.7/5.7.0/qt-opensource-windows-x86-msvc2015_64-5.7.0.exe
+* Download the open source version of QT5, 64 bits for visual C++ 2015/2017 from www.qt.io.
 * Download Qwt from http://qwt.sf.net (the latest version 6.x), unpack it in the parent directory and compile it (as debug and release)
 * git clone https://github.com/glasgowneuro/AttysComm.git in the parent directory or modify the .pro file
+* Edit attys-ep and adjust the path variables so that AttysComm and IIR can be found
 * "qmake -tp vc" and then re-target the project twice (right click on attys_scope in the Solutions Explorer -> Retarget Projects) 
 * Open the .sln file
 * Build attys-ep
