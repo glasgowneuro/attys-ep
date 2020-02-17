@@ -231,6 +231,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_A59044D227FB4C7BA7E223F9329928C7"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_A5AAA4F21D6C4D98AF93075947700146"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -1094,6 +1100,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A59044D227FB4C7BA7E223F9329928C7"
+            {
+            "SourcePath" = "8:..\\release\\styles\\qwindowsvistastyle.dll"
+            "TargetName" = "8:qwindowsvistastyle.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_8DF0EFC5F95A46DBA85AC649B201F03A"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A5AAA4F21D6C4D98AF93075947700146"
             {
             "SourcePath" = "8:..\\release\\attys-ep.lib"
@@ -1394,6 +1420,17 @@
                         {
                         }
                     }
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_8DF0EFC5F95A46DBA85AC649B201F03A"
+                    {
+                    "Name" = "8:styles"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_3EE548CDAD364A079ADE591A4CA403F3"
+                        "Folders"
+                        {
+                        }
+                    }
                     "{9EF0B969-E518-4E46-987F-47570745A589}:_DA532ECF828246A6B9388A817C3064EB"
                     {
                     "Name" = "8:iconengines"
@@ -1456,15 +1493,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:attys-ep"
-        "ProductCode" = "8:{8F8D1502-F3A2-4928-A523-0C36E4E2006D}"
-        "PackageCode" = "8:{35A0587C-AF9E-48ED-BA61-A3A531FBE4E4}"
+        "ProductCode" = "8:{96B83F43-E606-4BF7-9707-A3865DF91C64}"
+        "PackageCode" = "8:{2E64086E-7941-437F-ABBF-C45EE4594FA4}"
         "UpgradeCode" = "8:{5C798038-39B3-4EBC-8FD1-181B7FD6627E}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.2"
+        "ProductVersion" = "8:1.0.3"
         "Manufacturer" = "8:glasgow_neuro"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -2066,7 +2103,7 @@
             {
             "UseDynamicProperties" = "11:TRUE"
             "IsDependency" = "11:FALSE"
-            "SourcePath" = "8:C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Redist\\MSVC\\14.10.25008\\MergeModules\\Microsoft_VC150_CRT_x64.msm"
+            "SourcePath" = "8:C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Redist\\MSVC\\14.16.27012\\MergeModules\\Microsoft_VC141_CRT_x64.msm"
                 "Properties"
                 {
                 }
