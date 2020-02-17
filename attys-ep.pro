@@ -10,7 +10,6 @@ LIBS += \
     -lattyscomm \
     -lbluetooth
 
-INCLUDEPATH += ../AttysComm/c/
 INCLUDEPATH += /usr/include/qwt
 
 TMAKE_CXXFLAGS += -fno-exceptions
@@ -56,7 +55,7 @@ Debug:LIBS += \
 	-L/iir1/Debug \
     -liir_static \
     -lws2_32 \
-    -L../AttysComm/cpp/Debug \
+    -L../attys-comm/Debug \
     -lattyscomm_static
 
 Release:LIBS += \
@@ -65,11 +64,11 @@ Release:LIBS += \
 	-L/iir1/Release \
     -liir_static \
     -lws2_32 \
-    -L../AttysComm/cpp/Release \
+    -L../attys-comm/Release \
     -lattyscomm_static
 
 INCLUDEPATH += /iir1
-INCLUDEPATH += ../AttysComm/cpp
+INCLUDEPATH += ../attys-comm
 INCLUDEPATH += /qwt/src
 
 SOURCES = \
