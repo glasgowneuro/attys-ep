@@ -25,7 +25,7 @@ VEPPlot::VEPPlot(double *xData, double *yData, int length, QWidget *parent) :
   dataCurve = new QwtPlotCurve("VEP");
   dataCurve->setRawSamples(xData, yData, length);
   dataCurve->attach(this);
-  dataCurve->setPen( QPen(Qt::blue, 2) );
+  dataCurve->setPen( QPen(Qt::cyan, 2) );
   dataCurve->setStyle(QwtPlotCurve::Steps);
 
   max = 0;

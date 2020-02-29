@@ -29,7 +29,7 @@ DataPlot::DataPlot(double *xData, double *yData, int length,
 
   // Insert new curve for raw data
   dataCurve = new QwtPlotCurve("Raw Data");
-  dataCurve->setPen( QPen(Qt::red, 2) );
+  dataCurve->setPen( QPen(Qt::yellow, 2) );
   dataCurve->setRawSamples(xData, yData, length);
   psthLength = length;
   dataCurve->attach(this);

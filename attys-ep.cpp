@@ -1,7 +1,7 @@
 /***************************************************************************
  *   Copyright (C) 2003 by Matthias H. Hennig                              *
  *   hennig@cn.stir.ac.uk                                                  *
- *   Copyright (C) 2005-2018 by Bernd Porr                                 *
+ *   Copyright (C) 2005-2020 by Bernd Porr                                 *
  *   mail@berndporr.me.uk                                                  *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -49,10 +49,14 @@ MainWindow::MainWindow( QWidget *parent ) :
 
 	initData();
 
+	setStyleSheet("background-color:rgb(32,32,32);color: white;");
+	setAutoFillBackground( true );
+
 	char styleSheet[] = "padding:0px;margin:0px;border:0px;";
-	char styleSheetCombo[] = "padding:1px;margin:0px;border:0px;margin-right:2px;font:18px";
+	char styleSheetCombo[] = "padding:0px;margin:0px;border:0px;margin-right:2px;font: 16px";
 	char styleSheetGroupBox[] = "padding:1px;margin:0px;border:0px";
-	char styleSheetButton[] = "background-color: rgb(224, 224, 224); border: none; outline: none; border-width: 0px; font: 16px; padding: 5px;";
+	char styleSheetButton[] = "background-color: grey; border: none; outline: none; border-width: 0px; font: 16px; padding: 5px; color: white;";
+
 	QHBoxLayout *mainLayout = new QHBoxLayout( this );
 
 	QVBoxLayout *controlLayout = new QVBoxLayout;
@@ -99,15 +103,15 @@ MainWindow::MainWindow( QWidget *parent ) :
 
 	notchFreq = new QComboBox(VEPfunGroup);
 	notchFreq->setStyleSheet(styleSheetCombo);
-        notchFreq->addItem(tr("50Hz bandstop"));
-        notchFreq->addItem(tr("60Hz bandstop"));
+        notchFreq->addItem(tr("50Hz bandstop "));
+        notchFreq->addItem(tr("60Hz bandstop "));
         vepFunLayout->addWidget(notchFreq);
         connect(  notchFreq, SIGNAL(currentIndexChanged(int)), SLOT(slotSelectNotchFreq(int)) );
 
 	vpChoices = new QComboBox(VEPfunGroup);
 	vpChoices->setStyleSheet(styleSheetCombo);
-	vpChoices->addItem(tr("VEP"));
-	vpChoices->addItem(tr("P300"));
+	vpChoices->addItem(tr("VEP "));
+	vpChoices->addItem(tr("P300 "));
 	vepFunLayout->addWidget(vpChoices);
 	connect( vpChoices, SIGNAL(currentIndexChanged(int)), SLOT(slotSelectVEPType(int)) );
 
@@ -315,7 +319,7 @@ void MainWindow::timerEvent(QTimerEvent *) {
 }
 
 
-void MainWindow::hasData(float,float *sample)
+void MainWindow::hasData(double,float *sample)
 {
 	// we take the 1st channel
 	float yNew = sample[AttysComm::INDEX_Analogue_channel_1];

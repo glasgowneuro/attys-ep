@@ -118,13 +118,13 @@ protected:
 	  // new constructor
 	  AttysCallback(MainWindow* _mainwindow) { mainwindow = _mainwindow; };
 	  // is called from the Attys whenever a sample has arrived
-	  virtual void hasSample(float ts,float *data) {
+	  virtual void hasSample(double ts,float *data) {
 		  mainwindow->hasData(ts,data);
 	  };
   };
 
   // callback called from the interface below
-  void hasData(float,float *sample);
+  void hasData(double,float *sample);
 
   // interface which is registered with the Attys
   AttysCallback* attysCallback;
