@@ -1,4 +1,4 @@
-unix {
+unix:!macx {
 MOC_DIR = moc
 
 OBJECTS_DIR = obj
@@ -28,6 +28,48 @@ HEADERS = \
     stim.h
 
 CONFIG		+= qt release c++11
+
+QT             	+= widgets
+
+RESOURCES     = application.qrc
+
+target.path     = /usr/local/bin
+INSTALLS        += target
+
+}
+
+
+
+macx {
+MOC_DIR = moc
+
+OBJECTS_DIR = obj
+
+LIBS += \
+    -L/usr/local/lib \
+    -liir \
+    -lattyscomm
+
+INCLUDEPATH += /usr/local/include
+
+include ( /usr/local/Cellar/qwt/6.1.4/features/qwt.prf )
+    
+TMAKE_CXXFLAGS += -fno-exceptions
+
+SOURCES = \
+    vepplot.cpp \
+    dataplot.cpp \
+    main.cpp \
+    attys-ep.cpp \
+    stim.cpp
+
+HEADERS = \
+    attys-ep.h \
+    vepplot.h \
+    dataplot.h \
+    stim.h
+
+CONFIG		+= qt release c++11 qwt
 
 QT             	+= widgets
 
