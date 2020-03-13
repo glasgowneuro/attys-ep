@@ -1,6 +1,6 @@
 /***************************************************************************
  *   Copyright (C) 2003 by Matthias H. Hennig                              *
- *             (C) 2013-2018 by Bernd Porr                                 *
+ *             (C) 2013-2020 by Bernd Porr                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -38,7 +38,7 @@ int main(int argc, char **argv)
   }
         
   // none detected
-  if (attysScan.nAttysDevices<1) {
+  if (attysScan.getNAttysDevices()<1) {
 	  printf("No Attys present or not paired.\n");
 	  splash->showMessage("Cound not connect\nand/or no devices paired.");
 	  app.processEvents();

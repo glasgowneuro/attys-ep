@@ -30,16 +30,16 @@ MainWindow::MainWindow( QWidget *parent ) :
     vepOn(0),
     time(0) {
 
-	attysScan.attysComm[0]->setAdc_samplingrate_index(AttysComm::ADC_RATE_250HZ);
-	sampling_rate = attysScan.attysComm[0]->getSamplingRateInHz();
+	attysScan.getAttysComm(0)->setAdc_samplingrate_index(AttysComm::ADC_RATE_250HZ);
+	sampling_rate = attysScan.getAttysComm(0)->getSamplingRateInHz();
 
 	vepLength = DEFAULT_SWEEP_LENGTH / (1000 / sampling_rate);
 
 	attysCallback = new AttysCallback(this);
-	attysScan.attysComm[0]->registerCallback(attysCallback);
+	attysScan.getAttysComm(0)->registerCallback(attysCallback);
 
 	// set the PGA to max gain
-	attysScan.attysComm[0]->setAdc0_gain_index(AttysComm::ADC_GAIN_12);
+	attysScan.getAttysComm(0)->setAdc0_gain_index(AttysComm::ADC_GAIN_12);
 	
 	// 50Hz or 60Hz mains notch filter (see header)
 	setNotch(NOTCH_F);
@@ -72,8 +72,8 @@ MainWindow::MainWindow( QWidget *parent ) :
 	
 	// two plots
 	RawDataPlot = new DataPlot(xData, yData, vepLength, 
-				   attysScan.attysComm[0]->getADCFullScaleRange(0),
-				   -attysScan.attysComm[0]->getADCFullScaleRange(0),
+				   attysScan.getAttysComm(0)->getADCFullScaleRange(0),
+				   -attysScan.getAttysComm(0)->getADCFullScaleRange(0),
 				   this);
 	RawDataPlot->setMaximumSize(10000,300);
 	RawDataPlot->setStyleSheet(styleSheet);
@@ -180,14 +180,14 @@ MainWindow::MainWindow( QWidget *parent ) :
                  SLOT(slotNewSweep()) );
         sweepTimer->start( DEFAULT_SWEEP_LENGTH );
 
-	attysScan.attysComm[0]->start();
+	attysScan.getAttysComm(0)->start();
 }
 
 MainWindow::~MainWindow()
 {
 	sweepTimer->stop();
-	attysScan.attysComm[0]->unregisterCallback();
-	attysScan.attysComm[0]->quit();
+	attysScan.getAttysComm(0)->unregisterCallback();
+	attysScan.getAttysComm(0)->quit();
 }
 
 void MainWindow::initData() {
