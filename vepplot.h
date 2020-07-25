@@ -26,8 +26,6 @@ class VEPPlot : public QwtPlot
   // pointer to the x and y data
   double *xData, *yData;
   
-  // VEP curve
-  long cPsthData;
   ///timer id
   int currtimer;
 
