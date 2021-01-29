@@ -37,6 +37,22 @@ everything.
 * run "windeployqt attys-ep.exe qwt.dll" which copies all the DLLs into this directory which are needed to run the app
 * Build the msi installer which will be in the "installer" subdirectory.
 
+## MacOS packages
+
+Add these two taps
+
+```
+brew tap berndporr/dsp
+brew tap glasgowneuro/attys
+```
+
+and install attys-ep
+
+```
+brew install attys-ep
+```
+
+
 
 # Running attys-ep
 
