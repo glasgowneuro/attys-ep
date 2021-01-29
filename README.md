@@ -39,6 +39,8 @@ everything.
 
 ## MacOS packages
 
+Install homebrew: https://docs.brew.sh/Installation
+
 Add these two taps
 
 ```
