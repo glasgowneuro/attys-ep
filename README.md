@@ -39,6 +39,12 @@ everything.
 
 ## MacOS packages
 
+### DMG
+
+Download `attys-ep.dmg` and drop its contents in the applications folder.
+
+### Homebrew
+
 Install homebrew: https://brew.sh/
 
 Add these two taps
@@ -58,7 +64,7 @@ brew install attys-ep
 
 # Running attys-ep
 
-Just type: "./attys-ep" or start it from the start menu under Windows.
+Just type: "attys-ep" or start it from the applications menu.
 
 
 # Credits
