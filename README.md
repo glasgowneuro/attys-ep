@@ -19,7 +19,7 @@ Add these two repositories...
 sudo add-apt-repository ppa:berndporr/attys
 sudo add-apt-repository ppa:berndporr/dsp
 ```
-...and then select `attys-ecg` in your favourite package manager. This will then install also
+...and then select `attys-ep` in your favourite package manager. This will then install also
 the other required packages.
 
 ### Compilation from source
