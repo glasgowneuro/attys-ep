@@ -13,6 +13,17 @@ also on discrete events such as spikes.
 
 ## Linux
 
+### Linux Ubuntu packages for xenial and bionic
+Add these two repositories...
+```
+sudo add-apt-repository ppa:berndporr/attys
+sudo add-apt-repository ppa:berndporr/dsp
+```
+...and then select `attys-ecg` in your favourite package manager. This will then install also
+the other required packages.
+
+### Compilation from source
+
 You need the following libraries to compile and run the program:
 
 - AttysComm (https://github.com/glasgowneuro/AttysComm)
@@ -23,6 +34,13 @@ Run "qmake", which generates a Makefile and "make" to compile
 everything.
 
 ## Windows
+
+### msi installer
+
+https://github.com/glasgowneuro/attys-ep/blob/master/installer/Release/attys-ep-installer.msi
+
+### Installation from source
+
 * Install: Visual Studio 2017 community edition
 * clone iir1 in your root directory: https://github.com/berndporr/iir1 and compile it (debug and release version)
 * Download the open source version of QT5, 64 bits for visual C++ 2015/2017 from www.qt.io.
