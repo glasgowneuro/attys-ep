@@ -82,6 +82,8 @@ brew install attys-ep
 
 # Running attys-ep
 
+![alt tag](setup.jpg)
+
 Just type: "attys-ep" or start it from the applications menu.
 
 
