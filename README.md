@@ -41,7 +41,7 @@ https://github.com/glasgowneuro/attys-ep/blob/master/installer/Release/attys-ep-
 
 ### Installation from source
 
-* Install: Visual Studio 2017 community edition
+* Install: Visual Studio 2019 community edition
 * clone iir1 in your root directory: https://github.com/berndporr/iir1 and compile it (debug and release version)
 * Download the open source version of QT5, 64 bits for visual C++ 2015/2017 from www.qt.io.
 * Download Qwt from http://qwt.sf.net (the latest version 6.x), unpack it in the parent directory and compile it (as debug and release)
