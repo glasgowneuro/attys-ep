@@ -26,9 +26,9 @@ the other required packages.
 
 You need the following libraries to compile and run the program:
 
-- AttysComm (https://github.com/glasgowneuro/AttysComm)
-- Qt5 / Qwt (standard UBUNTU packages)
-- IIR filter library (http://www.berndporr.me.uk/iir/)
+- attys-comm (https://github.com/glasgowneuro/attys-comm): `apt-get install attyscomm-dev`
+- Qt5 / Qwt standard UBUNTU packages: `apt-get install qt5-default libqwt-headers libqwt-qt5-dev`
+- IIR filter library (https://github.com/berndporr/iir1): `apt-get install iir1-dev`
 
 Run "qmake", which generates a Makefile and "make" to compile
 everything.
