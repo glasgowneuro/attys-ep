@@ -13,7 +13,7 @@ also on discrete events such as spikes.
 
 ## Linux
 
-### Linux Ubuntu packages for xenial and bionic
+### Linux Ubuntu packages for Ubuntu LTS
 Add these two repositories...
 ```
 sudo add-apt-repository ppa:berndporr/attys
@@ -43,7 +43,7 @@ https://github.com/glasgowneuro/attys-ep/blob/master/installer/Release/attys-ep-
 
 * Install: Visual Studio 2019 community edition
 * clone iir1 in your root directory: https://github.com/berndporr/iir1 and compile it (debug and release version)
-* Download the open source version of QT5, 64 bits for visual C++ 2015/2017 from www.qt.io.
+* Download the open source version of QT5, 64 bits for visual C++ 2017/2019 from www.qt.io.
 * Download Qwt from http://qwt.sf.net (the latest version 6.x), unpack it in the parent directory and compile it (as debug and release)
 * git clone https://github.com/glasgowneuro/AttysComm.git in the parent directory or modify the .pro file
 * Edit attys-ep and adjust the path variables so that AttysComm and IIR can be found
@@ -56,10 +56,6 @@ https://github.com/glasgowneuro/attys-ep/blob/master/installer/Release/attys-ep-
 * Build the msi installer which will be in the "installer" subdirectory.
 
 ## MacOS packages
-
-### DMG
-
-Download `attys-ep.dmg` and drop its contents in the applications folder.
 
 ### Homebrew
 
