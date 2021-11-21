@@ -187,6 +187,9 @@ MainWindow::MainWindow( QWidget *parent ) :
         sweepTimer->start( DEFAULT_SWEEP_LENGTH );
 
 	attysScan.getAttysComm(0)->start();
+	
+	// audiobeep class
+	audiobeep = new AudioBeep(this);	// uses default parameters set in audiobeep.h
 }
 
 MainWindow::~MainWindow()
@@ -254,6 +257,8 @@ void MainWindow::slotSaveVEP()
 
 void MainWindow::slotClearVEP()
 {
+	// creo q habria q incluir aqui el sonido, pero comprobar q empieza a record cndo le doy a clear data - sino alomejor es save data 
+	// audiobeep->play();
 	time = 0;
 	trialIndex = 0;
 	initData();

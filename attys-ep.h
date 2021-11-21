@@ -28,6 +28,8 @@
 #include "stim.h"
 #include <Iir.h>
 
+#include "audiobeep.h"
+
 // maximal length of the VEP (for memory alloctaion) in samples
 #define MAX_VEP_LENGTH 5000
 
@@ -140,6 +142,9 @@ public:
 
   MainWindow( QWidget *parent=0 );
   ~MainWindow();
+  
+private:
+	AudioBeep* audiobeep;	// pointer to the audiobeep class
 
 };
 

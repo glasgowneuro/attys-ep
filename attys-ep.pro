@@ -19,13 +19,15 @@ SOURCES = \
     dataplot.cpp \
     main.cpp \
     attys-ep.cpp \
-    stim.cpp
+    stim.cpp \
+    audiobeep.cpp
 
 HEADERS = \
     attys-ep.h \
     vepplot.h \
     dataplot.h \
-    stim.h
+    stim.h \
+    audiobeep.h
 
 CONFIG		+= qt release c++11
 
