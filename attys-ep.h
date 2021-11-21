@@ -98,9 +98,11 @@ private slots:
 
   // actions:
   void slotClearVEP();
+  void slotClear(); //set parameters in .cpp to clear both graphs at once
   void slotRunVEP();
   void slotSetVEPLength(double l);
   void slotSaveVEP();
+  void slotSaveData();	// to save raw data plot in file
   void slotSelectVEPType(int idx);
   void slotNewSweep();
   void slotSelectNotchFreq(int);

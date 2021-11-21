@@ -135,11 +135,21 @@ MainWindow::MainWindow( QWidget *parent ) :
 	connect(clearVEP, SIGNAL(clicked()), SLOT(slotClearVEP()));
 	
 	QPushButton *saveVEP = new QPushButton(VEPfunGroup);
-	saveVEP->setText("save data");
+	saveVEP->setText("save VEP");
 	saveVEP->setStyleSheet(styleSheetButton);
 	vepFunLayout->addWidget(saveVEP);
 	connect(saveVEP, SIGNAL(clicked()), SLOT(slotSaveVEP()));
 	int inpWidth = saveVEP->width()*3/2;
+	
+	
+	// raw data functions
+	QPushButton *savedata = new QPushButton(RawDataPlot);
+	savedata->setText("save raw data");
+	savedata->setStyleSheet(styleSheetButton);
+	vepFunLayout->addWidget(savedata);
+	connect(savedata, SIGNAL(clicked()), SLOT(slotSaveData()));
+	//int inpWidth2 = savedata->width();
+	
 
 	// VEP params
 	QGroupBox   *vepCounterGroup = new QGroupBox( this );
@@ -255,15 +265,47 @@ void MainWindow::slotSaveVEP()
 	}
 }
 
-void MainWindow::slotClearVEP()
+void MainWindow::slotSaveData()
 {
-	// creo q habria q incluir aqui el sonido, pero comprobar q empieza a record cndo le doy a clear data - sino alomejor es save data 
+	QString fileName = QFileDialog::getSaveFileName();
+	if( !fileName.isNull() )
+	{
+		QFile f(fileName);
+		if( f.open(QIODevice::WriteOnly) )   // to write data into file
+		{
+			QTextStream out(&f);
+			f.close();	// closee file once data has been stored
+		}
+		else
+		{
+			// TODO: warning box
+		}
+	}
+}
+
+
+//void MainWindow::slotClearVEP()  // to clear data from VEP graph
+//{
+	// include sound here, to determine when it starts recording new data 
+	//creo q habria q incluir aqui el sonido, pero comprobar q empieza a record cndo le doy a clear data - sino alomejor es save data 
 	// audiobeep->play();
+//	time = 0;
+//	trialIndex = 0;
+//	initData();
+//	vepActTrial = 0;
+//	vepPlot->replot();
+//}
+
+void MainWindow::slotClear()	// to clear data from both graphs
+{
 	time = 0;
 	trialIndex = 0;
 	initData();
 	vepActTrial = 0;
 	vepPlot->replot();
+	RawDataPlot->replot();	// to clear out raw data at same time as vep
+	// include sound here, to determine when it starts recording new data 
+	audiobeep->play();
 }
 
 void MainWindow::slotRunVEP()
