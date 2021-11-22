@@ -97,7 +97,7 @@ class MainWindow : public QWidget
   /**
   * Button which switches on/off the sound
   **/
-  QPointer<QCheckBox> beepCheckBox;
+  QCheckBox* beepCheckBox;
 
 private slots:
 

@@ -198,11 +198,8 @@ MainWindow::MainWindow( QWidget *parent ) :
 
 	attysScan.getAttysComm(0)->start();
 	
-	recLayout->addWidget(new QLabel(" "));
 	beepCheckBox = new QCheckBox("Play sound");
-	recLayout->addWidget(beepCheckBox);
-	beepCheckBox->setSizePolicy(QSizePolicy(QSizePolicy::Fixed,
-		QSizePolicy::Fixed));
+	controlLayout->addWidget( beepCheckBox );
 	
 	// audiobeep class
 	audiobeep = new AudioBeep(this);	// uses default parameters set in audiobeep.h
@@ -214,8 +211,6 @@ MainWindow::~MainWindow()
 	attysScan.getAttysComm(0)->unregisterCallback();
 	attysScan.getAttysComm(0)->quit();
 	
-	writeSettings(settings);
-	// free the audiobeep object (and its audio buffer)
 	delete audiobeep;
 }
 
