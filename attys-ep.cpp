@@ -198,6 +198,12 @@ MainWindow::MainWindow( QWidget *parent ) :
 
 	attysScan.getAttysComm(0)->start();
 	
+	recLayout->addWidget(new QLabel(" "));
+	beepCheckBox = new QCheckBox("Play sound");
+	recLayout->addWidget(beepCheckBox);
+	beepCheckBox->setSizePolicy(QSizePolicy(QSizePolicy::Fixed,
+		QSizePolicy::Fixed));
+	
 	// audiobeep class
 	audiobeep = new AudioBeep(this);	// uses default parameters set in audiobeep.h
 }
@@ -207,6 +213,10 @@ MainWindow::~MainWindow()
 	sweepTimer->stop();
 	attysScan.getAttysComm(0)->unregisterCallback();
 	attysScan.getAttysComm(0)->quit();
+	
+	writeSettings(settings);
+	// free the audiobeep object (and its audio buffer)
+	delete audiobeep;
 }
 
 void MainWindow::initData() {
@@ -316,7 +326,10 @@ void MainWindow::slotRunVEP()
 		vepPlot->startDisplay();
 		trialIndex = 0;
 		// include sound here, to determine when it starts recording new data 
-		audiobeep->play();
+		if (beepCheckBox->checkState())
+		{
+			audiobeep->play();
+		}
 	}
 	else
 	{

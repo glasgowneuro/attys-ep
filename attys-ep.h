@@ -93,6 +93,11 @@ class MainWindow : public QWidget
   Stimulus *vepStimulus;
 
   QTimer *sweepTimer;
+  
+  /**
+  * Button which switches on/off the sound
+  **/
+  QPointer<QCheckBox> beepCheckBox;
 
 private slots:
 
