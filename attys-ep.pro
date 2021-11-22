@@ -31,7 +31,9 @@ HEADERS = \
 
 CONFIG		+= qt release c++11
 
-QT             	+= widgets
+QT            	+= widgets
+QT		+= network
+QT		+= multimedia
 
 RESOURCES     = application.qrc
 

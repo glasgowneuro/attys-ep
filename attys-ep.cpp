@@ -274,7 +274,7 @@ void MainWindow::slotSaveData()
 		if( f.open(QIODevice::WriteOnly) )   // to write data into file
 		{
 			QTextStream out(&f);
-			f.close();	// closee file once data has been stored
+			f.close();	// close file once data has been stored
 		}
 		else
 		{
@@ -304,8 +304,7 @@ void MainWindow::slotClear()	// to clear data from both graphs
 	vepActTrial = 0;
 	vepPlot->replot();
 	RawDataPlot->replot();	// to clear out raw data at same time as vep
-	// include sound here, to determine when it starts recording new data 
-	audiobeep->play();
+	
 }
 
 void MainWindow::slotRunVEP()
@@ -316,6 +315,8 @@ void MainWindow::slotRunVEP()
 		vepOn = 1;
 		vepPlot->startDisplay();
 		trialIndex = 0;
+		// include sound here, to determine when it starts recording new data 
+		audiobeep->play();
 	}
 	else
 	{
