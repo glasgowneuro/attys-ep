@@ -311,10 +311,6 @@ void MainWindow::slotRunVEP()
 		trialIndex = 0;
 		// save raw data - open file command
 		rawfile = fopen(rawfilename.c_str(),"wt");
-		if (NULL != rawfile)
-		{
-			fprintf(rawfile,"%lf %lf \n", xData, yData);
-		}
 		// include sound here, to determine when it starts recording new data 
 		if (beepCheckBox->checkState())
 		{
@@ -389,6 +385,11 @@ void MainWindow::hasData(double,float *sample)
 	// we take the 1st channel
 	float yNew = sample[AttysComm::INDEX_Analogue_channel_1];
 	float yNew2 = sample[AttysComm::INDEX_Analogue_channel_2];
+
+	if (NULL != rawfile)
+	{
+		fprintf(rawfile,"%f\t%f\t%ld\n", yNew, yNew2, time/vepLength);
+	}
 
 	// save data here
 
