@@ -156,6 +156,7 @@ private:
 private:
 	FILE* rawfile = NULL;
 	std::string rawfilename;
+	bool sweepStartFlag = false;
 
 };
 

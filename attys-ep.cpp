@@ -365,12 +365,14 @@ void MainWindow::slotNewSweep() {
 		case 0:
 			oddball = 0;
 			trialIndex = 0;
+			sweepStartFlag = true;
 			break;
 		case 1:
 			if (oddballCtr == 0) {
 				oddballCtr = 7 + rand() / (RAND_MAX/6);
 				oddball = 1;
 				trialIndex = 0;
+				sweepStartFlag = true;
 			} else {
 				oddball = 0;
 				oddballCtr--;
@@ -394,7 +396,8 @@ void MainWindow::hasData(double,float *sample)
 
 	if (NULL != rawfile)
 	{
-		fprintf(rawfile,"%f\t%f\t%ld\n", yNew, yNew2, time/vepLength);
+		fprintf(rawfile,"%f\t%f\t%d\n", yNew, yNew2, sweepStartFlag);
+		sweepStartFlag = 0;
 	}
 
 	// save data here
