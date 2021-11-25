@@ -153,6 +153,10 @@ public:
 private:
 	AudioBeep* audiobeep;	// pointer to the audiobeep class
 
+private:
+	FILE* rawfile = NULL;
+	std::string rawfilename;
+
 };
 
 #endif

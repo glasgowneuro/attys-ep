@@ -132,7 +132,8 @@ MainWindow::MainWindow( QWidget *parent ) :
 	clearVEP->setText("clear data");
 	clearVEP->setStyleSheet(styleSheetButton);
 	vepFunLayout->addWidget(clearVEP);
-	connect(clearVEP, SIGNAL(clicked()), SLOT(slotClearVEP()));
+//	connect(clearVEP, SIGNAL(clicked()), SLOT(slotClearVEP()));
+	connect(clearVEP, SIGNAL(clicked()), SLOT(slotClear()));
 	
 	QPushButton *saveVEP = new QPushButton(VEPfunGroup);
 	saveVEP->setText("save VEP");
@@ -144,11 +145,11 @@ MainWindow::MainWindow( QWidget *parent ) :
 	
 	// raw data functions
 	QPushButton *savedata = new QPushButton(RawDataPlot);
-	savedata->setText("save raw data");
+	savedata->setText("save Raw Data");
 	savedata->setStyleSheet(styleSheetButton);
+	connect(savedata, SIGNAL(clicked()), this, SLOT(slotSaveData()));
 	vepFunLayout->addWidget(savedata);
-	connect(savedata, SIGNAL(clicked()), SLOT(slotSaveData()));
-	//int inpWidth2 = savedata->width();
+	int inpWidth2 = savedata->width();
 	
 
 	// VEP params
@@ -272,20 +273,8 @@ void MainWindow::slotSaveVEP()
 
 void MainWindow::slotSaveData()
 {
-	QString fileName = QFileDialog::getSaveFileName();
-	if( !fileName.isNull() )
-	{
-		QFile f(fileName);
-		if( f.open(QIODevice::WriteOnly) )   // to write data into file
-		{
-			QTextStream out(&f);
-			f.close();	// close file once data has been stored
-		}
-		else
-		{
-			// TODO: warning box
-		}
-	}
+	std::string rawfilename;
+	//rawfilename = rawfile;
 }
 
 
@@ -320,6 +309,12 @@ void MainWindow::slotRunVEP()
 		vepOn = 1;
 		vepPlot->startDisplay();
 		trialIndex = 0;
+		// save raw data - open file command
+		rawfile = fopen(rawfilename.c_str(),"wt");
+		if (NULL != rawfile)
+		{
+			fprintf(rawfile,"%lf %lf \n", xData, yData);
+		}
 		// include sound here, to determine when it starts recording new data 
 		if (beepCheckBox->checkState())
 		{
@@ -331,6 +326,14 @@ void MainWindow::slotRunVEP()
 		vepOn = 0;
 		vepPlot->stopDisplay();
 		vepActTrial = 0;
+		// close raw data file
+		fclose(rawfile);
+		rawfile=NULL;
+		
+		if (beepCheckBox->checkState())
+		{
+			audiobeep->play();
+		}
 	}
 }
 
@@ -385,6 +388,9 @@ void MainWindow::hasData(double,float *sample)
 {
 	// we take the 1st channel
 	float yNew = sample[AttysComm::INDEX_Analogue_channel_1];
+	float yNew2 = sample[AttysComm::INDEX_Analogue_channel_2];
+
+	// save data here
 
 	// highpass filtering of the data
 	yNew=iirhp.filter(yNew);
@@ -405,7 +411,7 @@ void MainWindow::hasData(double,float *sample)
 		vepSummedUpData[trialIndex] += yNew;		
 		vepAveragedData[trialIndex] = vepSummedUpData[trialIndex] / (time/vepLength + 1);
 	}
-    
+	
 	time++;
 	trialIndex++;
 }
