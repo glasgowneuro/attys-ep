@@ -102,7 +102,7 @@ class MainWindow : public QWidget
 private slots:
 
   // actions:
-  //void slotClearVEP();
+  void slotClearVEP();
   void slotClear(); //set parameters in .cpp to clear both graphs at once
   void slotRunVEP();
   void slotSetVEPLength(double l);

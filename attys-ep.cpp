@@ -132,7 +132,7 @@ MainWindow::MainWindow( QWidget *parent ) :
 	clearVEP->setText("clear data");
 	clearVEP->setStyleSheet(styleSheetButton);
 	vepFunLayout->addWidget(clearVEP);
-//	connect(clearVEP, SIGNAL(clicked()), SLOT(slotClearVEP()));
+	connect(clearVEP, SIGNAL(clicked()), SLOT(slotClearVEP()));
 	connect(clearVEP, SIGNAL(clicked()), SLOT(slotClear()));
 	
 	QPushButton *saveVEP = new QPushButton(VEPfunGroup);
@@ -145,12 +145,11 @@ MainWindow::MainWindow( QWidget *parent ) :
 	
 	// raw data functions
 	QPushButton *savedata = new QPushButton(RawDataPlot);
-	savedata->setText("save Raw Data");
+	savedata->setText("Raw data filename");
 	savedata->setStyleSheet(styleSheetButton);
 	connect(savedata, SIGNAL(clicked()), this, SLOT(slotSaveData()));
 	vepFunLayout->addWidget(savedata);
-	int inpWidth2 = savedata->width();
-	
+
 
 	// VEP params
 	QGroupBox   *vepCounterGroup = new QGroupBox( this );
@@ -273,22 +272,25 @@ void MainWindow::slotSaveVEP()
 
 void MainWindow::slotSaveData()
 {
-	std::string rawfilename;
-	//rawfilename = rawfile;
+	QString fileName = QFileDialog::getSaveFileName();
+	if( !fileName.isNull() )
+	{
+		rawfilename = fileName.toStdString();
+	}
 }
 
 
-//void MainWindow::slotClearVEP()  // to clear data from VEP graph
-//{
+void MainWindow::slotClearVEP()  // to clear data from VEP graph
+{
 	// include sound here, to determine when it starts recording new data 
 	//creo q habria q incluir aqui el sonido, pero comprobar q empieza a record cndo le doy a clear data - sino alomejor es save data 
 	// audiobeep->play();
-//	time = 0;
-//	trialIndex = 0;
-//	initData();
-//	vepActTrial = 0;
-//	vepPlot->replot();
-//}
+	time = 0;
+	trialIndex = 0;
+	initData();
+	vepActTrial = 0;
+	vepPlot->replot();
+}
 
 void MainWindow::slotClear()	// to clear data from both graphs
 {
@@ -311,6 +313,9 @@ void MainWindow::slotRunVEP()
 		trialIndex = 0;
 		// save raw data - open file command
 		rawfile = fopen(rawfilename.c_str(),"wt");
+		if (rawfile == NULL) {
+			fprintf(stderr,"Could not open %s.",rawfilename.c_str());
+		}
 		// include sound here, to determine when it starts recording new data 
 		if (beepCheckBox->checkState())
 		{
@@ -323,9 +328,10 @@ void MainWindow::slotRunVEP()
 		vepPlot->stopDisplay();
 		vepActTrial = 0;
 		// close raw data file
-		fclose(rawfile);
-		rawfile=NULL;
-		
+		if (rawfile != NULL) {
+			fclose(rawfile);
+			rawfile=NULL;
+		}
 		if (beepCheckBox->checkState())
 		{
 			audiobeep->play();
