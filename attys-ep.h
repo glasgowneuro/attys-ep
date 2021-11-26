@@ -18,6 +18,7 @@
 #include <QTextEdit>
 #include <QCheckBox>
 #include <QComboBox>
+#include <QLabel>
 
 #include "AttysComm.h"
 #include <qwt_counter.h>
@@ -91,6 +92,7 @@ class MainWindow : public QWidget
   QComboBox* notchFreq;
   QPushButton *runVEP;
   Stimulus *vepStimulus;
+	QLabel* rawFileNameLabel;
 
   QTimer *sweepTimer;
   

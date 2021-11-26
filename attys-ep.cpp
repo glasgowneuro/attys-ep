@@ -71,8 +71,11 @@ MainWindow::MainWindow( QWidget *parent ) :
 	
 	QVBoxLayout *plotLayout = new QVBoxLayout;
 
+	rawFileNameLabel = new QLabel("No raw data filename");
+	plotLayout->addWidget(rawFileNameLabel);
+
 	mainLayout->addLayout(plotLayout);
-	
+
 	mainLayout->setStretchFactor(controlLayout,1);
 	mainLayout->setStretchFactor(plotLayout,4);
 	
@@ -150,7 +153,6 @@ MainWindow::MainWindow( QWidget *parent ) :
 	connect(savedata, SIGNAL(clicked()), this, SLOT(slotSaveData()));
 	vepFunLayout->addWidget(savedata);
 
-
 	// VEP params
 	QGroupBox   *vepCounterGroup = new QGroupBox( this );
 	vepCounterGroup->setStyleSheet(styleSheetGroupBox);
@@ -160,7 +162,7 @@ MainWindow::MainWindow( QWidget *parent ) :
 	vepCounterGroup->setSizePolicy( QSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed) );
 	vepCounterGroup->setAlignment(Qt::AlignJustify);
 	vepCounterGroup->setSizePolicy( QSizePolicy(QSizePolicy::Fixed,
-					       QSizePolicy::Fixed) );
+						    QSizePolicy::Fixed) );
 	controlLayout->addWidget( vepCounterGroup );
 
 	QLabel *vepLengthLabel = new QLabel("Sweep length", vepCounterGroup);
@@ -276,6 +278,8 @@ void MainWindow::slotSaveData()
 	if( !fileName.isNull() )
 	{
 		rawfilename = fileName.toStdString();
+		rawfilename = rawfilename + ".tsv";
+		rawFileNameLabel->setText(rawfilename.c_str());
 	}
 }
 
@@ -314,7 +318,9 @@ void MainWindow::slotRunVEP()
 		// save raw data - open file command
 		rawfile = fopen(rawfilename.c_str(),"wt");
 		if (rawfile == NULL) {
-			fprintf(stderr,"Could not open %s.",rawfilename.c_str());
+			char tmp[1024];
+			sprintf(tmp,"Could not open %s.\n",rawfilename.c_str());
+			rawFileNameLabel->setText(tmp);
 		}
 		// include sound here, to determine when it starts recording new data 
 		if (beepCheckBox->checkState())
