@@ -214,6 +214,11 @@ MainWindow::~MainWindow()
 	attysScan.getAttysComm(0)->quit();
 	
 	delete audiobeep;
+
+	if (rawfile != NULL) {
+		fclose(rawfile);
+		rawfile=NULL;
+	}
 }
 
 void MainWindow::initData() {
@@ -318,9 +323,11 @@ void MainWindow::slotRunVEP()
 		// save raw data - open file command
 		rawfile = fopen(rawfilename.c_str(),"wt");
 		if (rawfile == NULL) {
-			char tmp[1024];
-			sprintf(tmp,"Could not open %s.\n",rawfilename.c_str());
-			rawFileNameLabel->setText(tmp);
+			std::string s = "Could not open: "+rawfilename;
+			rawFileNameLabel->setText(s.c_str());
+		} else {
+			std::string s = "RECORDING: "+rawfilename;
+			rawFileNameLabel->setText(s.c_str());
 		}
 		// include sound here, to determine when it starts recording new data 
 		if (beepCheckBox->checkState())
@@ -333,6 +340,7 @@ void MainWindow::slotRunVEP()
 		vepOn = 0;
 		vepPlot->stopDisplay();
 		vepActTrial = 0;
+		rawFileNameLabel->setText(rawfilename.c_str());
 		// close raw data file
 		if (rawfile != NULL) {
 			fclose(rawfile);
