@@ -30,32 +30,13 @@ You need the following libraries to compile and run the program:
 - Qt5 / Qwt standard UBUNTU packages: `apt-get install qt5-default libqwt-headers libqwt-qt5-dev`
 - IIR filter library (https://github.com/berndporr/iir1): `apt-get install iir1-dev`
 
-Run "qmake", which generates a Makefile and "make" to compile
-everything.
-
-## Windows
-
-### Installation from source
-
-* Install: Visual Studio 2019 community edition
-* clone iir1 in your root directory: https://github.com/berndporr/iir1 and compile it (debug and release version)
-* Download the open source version of QT5, 64 bits for visual C++ 2017/2019 from www.qt.io.
-* Download Qwt from http://qwt.sf.net (the latest version 6.x), unpack it in the parent directory and compile it (as debug and release)
-* git clone https://github.com/glasgowneuro/AttysComm.git in the parent directory or modify the .pro file
-* Edit attys-ep and adjust the path variables so that AttysComm and IIR can be found
-* "qmake -tp vc" and then re-target the project twice (right click on attys_scope in the Solutions Explorer -> Retarget Projects) 
-* Open the .sln file
-* Build attys-ep
-* go to the "release" subdirectory
-* copy qwt.dll into it
-* run "windeployqt attys-ep.exe qwt.dll" which copies all the DLLs into this directory which are needed to run the app
-* Build the msi installer which will be in the "installer" subdirectory.
+Run `qmake`, which generates a Makefile and `make` to compile it.
 
 # Running attys-ep
 
 ![alt tag](setup.jpg)
 
-Just type: "attys-ep" or start it from the applications menu.
+Just type: `attys-ep` or `./attys-ep`
 
 
 # Credits
