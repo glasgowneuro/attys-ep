@@ -35,10 +35,6 @@ everything.
 
 ## Windows
 
-### msi installer
-
-https://github.com/glasgowneuro/attys-ep/blob/master/installer/Release/attys-ep-installer.msi
-
 ### Installation from source
 
 * Install: Visual Studio 2019 community edition
@@ -54,27 +50,6 @@ https://github.com/glasgowneuro/attys-ep/blob/master/installer/Release/attys-ep-
 * copy qwt.dll into it
 * run "windeployqt attys-ep.exe qwt.dll" which copies all the DLLs into this directory which are needed to run the app
 * Build the msi installer which will be in the "installer" subdirectory.
-
-## MacOS packages
-
-### Homebrew
-
-Install homebrew: https://brew.sh/
-
-Add these two taps
-
-```
-brew tap berndporr/dsp
-brew tap glasgowneuro/attys
-```
-
-and install attys-ep
-
-```
-brew install attys-ep
-```
-
-
 
 # Running attys-ep
 
