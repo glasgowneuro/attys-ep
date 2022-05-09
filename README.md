@@ -34,13 +34,18 @@ You need the following libraries to compile and run the program:
 
 ## Windows
 
+### Installer
+
+Install the MSI file (not signed):
+https://github.com/glasgowneuro/attys-ep/tree/master/installer/Release
+
 ### From source
 Install:
-- attys-comm (https://github.com/glasgowneuro/attys-comm)
-- Qwt for QT5
-- IIR filter library (https://github.com/berndporr/iir1)
+- attys-comm: https://github.com/glasgowneuro/attys-comm
+- Qwt for QT5: https://sourceforge.net/projects/qwt/files/qwt/6.2.0/ (compile it in the VS64bit console)
+- IIR filter library: https://github.com/berndporr/iir1
 
-Edit `attys-ep.pro` and point it to attys-comm, qwt and the iir library
+Edit `attys-ep.pro` and point it to attys-comm, qwt-6.2.0 and the iir library
 
 Run `qmake -tp vc` and compile the solution with Visual Studio 2019.
 
