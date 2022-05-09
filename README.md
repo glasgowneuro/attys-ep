@@ -30,7 +30,19 @@ You need the following libraries to compile and run the program:
 - Qt5 / Qwt standard UBUNTU packages: `apt-get install qt5-default libqwt-headers libqwt-qt5-dev`
 - IIR filter library (https://github.com/berndporr/iir1): `apt-get install iir1-dev`
 
-Run `qmake`, which generates a Makefile and `make` to compile it.
+- Linux: `qmake`, `make`
+
+## Windows
+
+### From source
+Install:
+- attys-comm (https://github.com/glasgowneuro/attys-comm)
+- Qwt for QT5
+- IIR filter library (https://github.com/berndporr/iir1)
+
+Edit `attys-ep.pro` and point it to attys-comm, qwt and the iir library
+
+Run `qmake -tp vc` and compile the solution with Visual Studio 2019.
 
 # Running attys-ep
 
