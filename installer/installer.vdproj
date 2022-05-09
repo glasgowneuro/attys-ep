@@ -21,7 +21,13 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_0947DC7CBD3149B48A5B4D4D4CAD31FF"
+        "MsmKey" = "8:_07BD079BEF014580AB3402B6A043580A"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_0C3701D2CCEB47DB8799144FD627E021"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -33,13 +39,13 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_19A34D2BD5FF40FBA55A2E167765CBFA"
+        "MsmKey" = "8:_1665B8CD723C47E0A48BA3F49C7D046A"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_1A95B87A95034D2AA6EE279291BF6D3D"
+        "MsmKey" = "8:_19A34D2BD5FF40FBA55A2E167765CBFA"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -87,7 +93,19 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_3257A484C6FD44AEAB05D6949F8284AC"
+        "MsmKey" = "8:_31D39A37C0364EEDAC5FFBB4396EA404"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_322855EC238144F2B2589F15B43A2353"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_362C97115E254C8DB40B4BB3C9F3CFA3"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -99,7 +117,31 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_41061D484F2F408985374D79BD4D875F"
+        "MsmKey" = "8:_3EDE22957740441B83124EA41C276A07"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_4047258696EF468DA63A51467E3B1D5E"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_43AF66015E9D4C6DB265F6B666DB81C6"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_443520B62120462E95CC86C1EACA7D80"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_4661496C8EB04BE6A49EDBE1AD97A374"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -123,7 +165,19 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_5607FA8CFE984F7BA6A3FC2E21EA631E"
+        "MsmKey" = "8:_4EF429B6402F450EB261A82FC8A10562"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_4FE4B55DE4DF485DB7EEDBF61AF54A0F"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_5506279E83E2441DB6ED2B47ED981015"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -135,13 +189,31 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_5BF498E948C543A2BDF44B326DEB56E9"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_5E032CE2EAC54E42B7114296F64609CC"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_5EF536C01BAA480080F6DC8AFC6208E5"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_6392C6953BAB42048936A141C22C5C10"
+        "MsmKey" = "8:_645E7C86513247849FD55E24121A5D83"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_6DCF2531AA6B4FD6AC583B177E46994C"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -159,19 +231,25 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_6FFD8E76DECC41819C5B337B041608E3"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_70801D9EEFDF49418E09822E390BFCCE"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_709EF7A03D4F4C39ABE6AFF1479A7CF0"
+        "MsmKey" = "8:_718E521A350B402F801248C7B472BDA9"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_71DFC8CBD2A646DA94EC97E6914BA984"
+        "MsmKey" = "8:_7315180BEB4E4E099CC100C2A36FA296"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -183,7 +261,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_7B8454484942487796C939015240C629"
+        "MsmKey" = "8:_8099D39382B8489CA0D611CC9DC48ACF"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -213,19 +291,25 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_98384B5C050D4C819CD27FEA0DC5C7DE"
+        "MsmKey" = "8:_97C0D1FCC4A44976A1A6BFF11D5FA0CB"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_9C809F4BCDD74471B7187D22A0DC4ADB"
+        "MsmKey" = "8:_989DE43232894C2F890DAF9F343D4CC7"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_9C8B7D45011046FCBA43BA0C217E156E"
+        "MsmKey" = "8:_9F02E2D9B6874BDF953A658CC26C4D9B"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_A56B926E37CD4DDA87FDF116B7BC6405"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -243,13 +327,13 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_A9BB467F46E34F53AF233C0AFF4E5AB1"
+        "MsmKey" = "8:_AC63BB2ABAAC467F83A65BD54198E549"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_AC63BB2ABAAC467F83A65BD54198E549"
+        "MsmKey" = "8:_B0473327137943B99F03A05862AF7881"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -261,7 +345,13 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_C28DFEFC6289464AA26A8CD1F2CCF2CA"
+        "MsmKey" = "8:_B76B32A119BE4F2AA89424A84D74DB66"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_C2855D682FD24B3A92109F322C92D16B"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -279,13 +369,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_CB7799F4DA9240119672A7F57057DB61"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_CD12EA13E39541AC81E238BD2BA32217"
+        "MsmKey" = "8:_CC43593F58E84CB988F748C9778F5B9D"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -297,13 +381,37 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_EBD49A173787432AA0DB2CA9D34DCCB9"
+        "MsmKey" = "8:_EBD8295334F9402CA68DE766C8C883BA"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_ED80C1F22B424A5F8BFA6B8AE1BC1A7A"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_EFE7BC1BE0C344EBBD08EC13BDBB15B3"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_F4961B81A29749038634A9CD295D9A51"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F5813CBD32EA489EA8823B0385D597C6"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F814C400F2A64A33A359BAC810EC9069"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -414,12 +522,32 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0947DC7CBD3149B48A5B4D4D4CAD31FF"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_07BD079BEF014580AB3402B6A043580A"
             {
-            "SourcePath" = "8:..\\release\\translations\\qt_ca.qm"
-            "TargetName" = "8:qt_ca.qm"
+            "SourcePath" = "8:..\\release\\translations\\qt_zh_TW.qm"
+            "TargetName" = "8:qt_zh_TW.qm"
             "Tag" = "8:"
-            "Folder" = "8:_4D3301E476A5491E9DC95CEEDC75BE32"
+            "Folder" = "8:_3D683A79DF9A4B1DA51443FEF3444F5F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0C3701D2CCEB47DB8799144FD627E021"
+            {
+            "SourcePath" = "8:..\\release\\translations\\qt_zh_CN.qm"
+            "TargetName" = "8:qt_zh_CN.qm"
+            "Tag" = "8:"
+            "Folder" = "8:_3D683A79DF9A4B1DA51443FEF3444F5F"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -454,10 +582,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_19A34D2BD5FF40FBA55A2E167765CBFA"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1665B8CD723C47E0A48BA3F49C7D046A"
             {
-            "SourcePath" = "8:..\\release\\Qt5Svg.dll"
-            "TargetName" = "8:Qt5Svg.dll"
+            "SourcePath" = "8:..\\release\\translations\\qt_lv.qm"
+            "TargetName" = "8:qt_lv.qm"
             "Tag" = "8:"
             "Folder" = "8:_3D683A79DF9A4B1DA51443FEF3444F5F"
             "Condition" = "8:"
@@ -474,12 +602,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1A95B87A95034D2AA6EE279291BF6D3D"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_19A34D2BD5FF40FBA55A2E167765CBFA"
             {
-            "SourcePath" = "8:..\\release\\translations\\qt_uk.qm"
-            "TargetName" = "8:qt_uk.qm"
+            "SourcePath" = "8:..\\release\\Qt5Svg.dll"
+            "TargetName" = "8:Qt5Svg.dll"
             "Tag" = "8:"
-            "Folder" = "8:_4D3301E476A5491E9DC95CEEDC75BE32"
+            "Folder" = "8:_3D683A79DF9A4B1DA51443FEF3444F5F"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -634,12 +762,52 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3257A484C6FD44AEAB05D6949F8284AC"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_31D39A37C0364EEDAC5FFBB4396EA404"
             {
-            "SourcePath" = "8:..\\release\\translations\\qt_ja.qm"
-            "TargetName" = "8:qt_ja.qm"
+            "SourcePath" = "8:..\\release\\translations\\qt_sk.qm"
+            "TargetName" = "8:qt_sk.qm"
             "Tag" = "8:"
-            "Folder" = "8:_4D3301E476A5491E9DC95CEEDC75BE32"
+            "Folder" = "8:_3D683A79DF9A4B1DA51443FEF3444F5F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_322855EC238144F2B2589F15B43A2353"
+            {
+            "SourcePath" = "8:..\\release\\translations\\qt_fr.qm"
+            "TargetName" = "8:qt_fr.qm"
+            "Tag" = "8:"
+            "Folder" = "8:_3D683A79DF9A4B1DA51443FEF3444F5F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_362C97115E254C8DB40B4BB3C9F3CFA3"
+            {
+            "SourcePath" = "8:..\\release\\translations\\qt_de.qm"
+            "TargetName" = "8:qt_de.qm"
+            "Tag" = "8:"
+            "Folder" = "8:_3D683A79DF9A4B1DA51443FEF3444F5F"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -674,12 +842,72 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_41061D484F2F408985374D79BD4D875F"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3EDE22957740441B83124EA41C276A07"
             {
-            "SourcePath" = "8:..\\release\\translations\\qt_ru.qm"
-            "TargetName" = "8:qt_ru.qm"
+            "SourcePath" = "8:..\\release\\translations\\qt_bg.qm"
+            "TargetName" = "8:qt_bg.qm"
             "Tag" = "8:"
-            "Folder" = "8:_4D3301E476A5491E9DC95CEEDC75BE32"
+            "Folder" = "8:_3D683A79DF9A4B1DA51443FEF3444F5F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4047258696EF468DA63A51467E3B1D5E"
+            {
+            "SourcePath" = "8:..\\release\\audio\\qtaudio_windows.dll"
+            "TargetName" = "8:qtaudio_windows.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_3D683A79DF9A4B1DA51443FEF3444F5F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_43AF66015E9D4C6DB265F6B666DB81C6"
+            {
+            "SourcePath" = "8:..\\release\\translations\\qt_uk.qm"
+            "TargetName" = "8:qt_uk.qm"
+            "Tag" = "8:"
+            "Folder" = "8:_3D683A79DF9A4B1DA51443FEF3444F5F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4661496C8EB04BE6A49EDBE1AD97A374"
+            {
+            "SourcePath" = "8:..\\release\\translations\\qt_fa.qm"
+            "TargetName" = "8:qt_fa.qm"
+            "Tag" = "8:"
+            "Folder" = "8:_3D683A79DF9A4B1DA51443FEF3444F5F"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -754,12 +982,52 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5607FA8CFE984F7BA6A3FC2E21EA631E"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4EF429B6402F450EB261A82FC8A10562"
             {
-            "SourcePath" = "8:..\\release\\translations\\qt_pl.qm"
-            "TargetName" = "8:qt_pl.qm"
+            "SourcePath" = "8:..\\release\\translations\\qt_hu.qm"
+            "TargetName" = "8:qt_hu.qm"
             "Tag" = "8:"
-            "Folder" = "8:_4D3301E476A5491E9DC95CEEDC75BE32"
+            "Folder" = "8:_3D683A79DF9A4B1DA51443FEF3444F5F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4FE4B55DE4DF485DB7EEDBF61AF54A0F"
+            {
+            "SourcePath" = "8:..\\release\\audio\\qtaudio_wasapi.dll"
+            "TargetName" = "8:qtaudio_wasapi.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_3D683A79DF9A4B1DA51443FEF3444F5F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5506279E83E2441DB6ED2B47ED981015"
+            {
+            "SourcePath" = "8:..\\release\\translations\\qt_ja.qm"
+            "TargetName" = "8:qt_ja.qm"
+            "Tag" = "8:"
+            "Folder" = "8:_3D683A79DF9A4B1DA51443FEF3444F5F"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -794,6 +1062,46 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5BF498E948C543A2BDF44B326DEB56E9"
+            {
+            "SourcePath" = "8:..\\release\\translations\\qt_gd.qm"
+            "TargetName" = "8:qt_gd.qm"
+            "Tag" = "8:"
+            "Folder" = "8:_3D683A79DF9A4B1DA51443FEF3444F5F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5E032CE2EAC54E42B7114296F64609CC"
+            {
+            "SourcePath" = "8:..\\release\\playlistformats\\qtmultimedia_m3u.dll"
+            "TargetName" = "8:qtmultimedia_m3u.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_3D683A79DF9A4B1DA51443FEF3444F5F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5EF536C01BAA480080F6DC8AFC6208E5"
             {
             "SourcePath" = "8:..\\release\\imageformats\\qwebp.dll"
@@ -814,12 +1122,32 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6392C6953BAB42048936A141C22C5C10"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_645E7C86513247849FD55E24121A5D83"
             {
-            "SourcePath" = "8:..\\release\\translations\\qt_cs.qm"
-            "TargetName" = "8:qt_cs.qm"
+            "SourcePath" = "8:..\\release\\translations\\qt_es.qm"
+            "TargetName" = "8:qt_es.qm"
             "Tag" = "8:"
-            "Folder" = "8:_4D3301E476A5491E9DC95CEEDC75BE32"
+            "Folder" = "8:_3D683A79DF9A4B1DA51443FEF3444F5F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6DCF2531AA6B4FD6AC583B177E46994C"
+            {
+            "SourcePath" = "8:..\\release\\translations\\qt_ko.qm"
+            "TargetName" = "8:qt_ko.qm"
+            "Tag" = "8:"
+            "Folder" = "8:_3D683A79DF9A4B1DA51443FEF3444F5F"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -874,6 +1202,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6FFD8E76DECC41819C5B337B041608E3"
+            {
+            "SourcePath" = "8:..\\release\\translations\\qt_ru.qm"
+            "TargetName" = "8:qt_ru.qm"
+            "Tag" = "8:"
+            "Folder" = "8:_3D683A79DF9A4B1DA51443FEF3444F5F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_70801D9EEFDF49418E09822E390BFCCE"
             {
             "SourcePath" = "8:..\\release\\imageformats\\qdds.dll"
@@ -894,12 +1242,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_709EF7A03D4F4C39ABE6AFF1479A7CF0"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_718E521A350B402F801248C7B472BDA9"
             {
             "SourcePath" = "8:..\\release\\translations\\qt_he.qm"
             "TargetName" = "8:qt_he.qm"
             "Tag" = "8:"
-            "Folder" = "8:_4D3301E476A5491E9DC95CEEDC75BE32"
+            "Folder" = "8:_3D683A79DF9A4B1DA51443FEF3444F5F"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -914,12 +1262,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_71DFC8CBD2A646DA94EC97E6914BA984"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7315180BEB4E4E099CC100C2A36FA296"
             {
-            "SourcePath" = "8:..\\release\\translations\\qt_de.qm"
-            "TargetName" = "8:qt_de.qm"
+            "SourcePath" = "8:..\\release\\translations\\qt_cs.qm"
+            "TargetName" = "8:qt_cs.qm"
             "Tag" = "8:"
-            "Folder" = "8:_4D3301E476A5491E9DC95CEEDC75BE32"
+            "Folder" = "8:_3D683A79DF9A4B1DA51443FEF3444F5F"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -954,12 +1302,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7B8454484942487796C939015240C629"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8099D39382B8489CA0D611CC9DC48ACF"
             {
-            "SourcePath" = "8:..\\release\\translations\\qt_lv.qm"
-            "TargetName" = "8:qt_lv.qm"
+            "SourcePath" = "8:..\\release\\translations\\qt_fi.qm"
+            "TargetName" = "8:qt_fi.qm"
             "Tag" = "8:"
-            "Folder" = "8:_4D3301E476A5491E9DC95CEEDC75BE32"
+            "Folder" = "8:_3D683A79DF9A4B1DA51443FEF3444F5F"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1054,12 +1402,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_98384B5C050D4C819CD27FEA0DC5C7DE"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_97C0D1FCC4A44976A1A6BFF11D5FA0CB"
             {
-            "SourcePath" = "8:..\\release\\translations\\qt_en.qm"
-            "TargetName" = "8:qt_en.qm"
+            "SourcePath" = "8:..\\release\\translations\\qt_pl.qm"
+            "TargetName" = "8:qt_pl.qm"
             "Tag" = "8:"
-            "Folder" = "8:_4D3301E476A5491E9DC95CEEDC75BE32"
+            "Folder" = "8:_3D683A79DF9A4B1DA51443FEF3444F5F"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1074,12 +1422,52 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9C809F4BCDD74471B7187D22A0DC4ADB"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_989DE43232894C2F890DAF9F343D4CC7"
             {
-            "SourcePath" = "8:..\\release\\translations\\qt_hu.qm"
-            "TargetName" = "8:qt_hu.qm"
+            "SourcePath" = "8:..\\release\\translations\\qt_it.qm"
+            "TargetName" = "8:qt_it.qm"
             "Tag" = "8:"
-            "Folder" = "8:_4D3301E476A5491E9DC95CEEDC75BE32"
+            "Folder" = "8:_3D683A79DF9A4B1DA51443FEF3444F5F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9F02E2D9B6874BDF953A658CC26C4D9B"
+            {
+            "SourcePath" = "8:..\\release\\translations\\qt_da.qm"
+            "TargetName" = "8:qt_da.qm"
+            "Tag" = "8:"
+            "Folder" = "8:_3D683A79DF9A4B1DA51443FEF3444F5F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A56B926E37CD4DDA87FDF116B7BC6405"
+            {
+            "SourcePath" = "8:..\\release\\mediaservice\\dsengine.dll"
+            "TargetName" = "8:dsengine.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_3D683A79DF9A4B1DA51443FEF3444F5F"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1134,26 +1522,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A9BB467F46E34F53AF233C0AFF4E5AB1"
-            {
-            "SourcePath" = "8:..\\release\\translations\\qt_fr.qm"
-            "TargetName" = "8:qt_fr.qm"
-            "Tag" = "8:"
-            "Folder" = "8:_4D3301E476A5491E9DC95CEEDC75BE32"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_AC63BB2ABAAC467F83A65BD54198E549"
             {
             "SourcePath" = "8:..\\README.md"
@@ -1194,12 +1562,32 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C28DFEFC6289464AA26A8CD1F2CCF2CA"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B76B32A119BE4F2AA89424A84D74DB66"
             {
-            "SourcePath" = "8:..\\release\\translations\\qt_sk.qm"
-            "TargetName" = "8:qt_sk.qm"
+            "SourcePath" = "8:..\\release\\translations\\qt_en.qm"
+            "TargetName" = "8:qt_en.qm"
             "Tag" = "8:"
-            "Folder" = "8:_4D3301E476A5491E9DC95CEEDC75BE32"
+            "Folder" = "8:_3D683A79DF9A4B1DA51443FEF3444F5F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C2855D682FD24B3A92109F322C92D16B"
+            {
+            "SourcePath" = "8:..\\release\\translations\\qt_ca.qm"
+            "TargetName" = "8:qt_ca.qm"
+            "Tag" = "8:"
+            "Folder" = "8:_3D683A79DF9A4B1DA51443FEF3444F5F"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1254,32 +1642,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CB7799F4DA9240119672A7F57057DB61"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CC43593F58E84CB988F748C9778F5B9D"
             {
-            "SourcePath" = "8:..\\release\\translations\\qt_it.qm"
-            "TargetName" = "8:qt_it.qm"
+            "SourcePath" = "8:..\\release\\translations\\qt_ar.qm"
+            "TargetName" = "8:qt_ar.qm"
             "Tag" = "8:"
-            "Folder" = "8:_4D3301E476A5491E9DC95CEEDC75BE32"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CD12EA13E39541AC81E238BD2BA32217"
-            {
-            "SourcePath" = "8:..\\release\\translations\\qt_fi.qm"
-            "TargetName" = "8:qt_fi.qm"
-            "Tag" = "8:"
-            "Folder" = "8:_4D3301E476A5491E9DC95CEEDC75BE32"
+            "Folder" = "8:_3D683A79DF9A4B1DA51443FEF3444F5F"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1314,12 +1682,52 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_EBD49A173787432AA0DB2CA9D34DCCB9"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_EBD8295334F9402CA68DE766C8C883BA"
             {
-            "SourcePath" = "8:..\\release\\translations\\qt_ko.qm"
-            "TargetName" = "8:qt_ko.qm"
+            "SourcePath" = "8:..\\release\\translations\\qt_pt_BR.qm"
+            "TargetName" = "8:qt_pt_BR.qm"
             "Tag" = "8:"
-            "Folder" = "8:_4D3301E476A5491E9DC95CEEDC75BE32"
+            "Folder" = "8:_3D683A79DF9A4B1DA51443FEF3444F5F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_ED80C1F22B424A5F8BFA6B8AE1BC1A7A"
+            {
+            "SourcePath" = "8:..\\release\\mediaservice\\wmfengine.dll"
+            "TargetName" = "8:wmfengine.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_3D683A79DF9A4B1DA51443FEF3444F5F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_EFE7BC1BE0C344EBBD08EC13BDBB15B3"
+            {
+            "SourcePath" = "8:..\\release\\bearer\\qgenericbearer.dll"
+            "TargetName" = "8:qgenericbearer.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_3D683A79DF9A4B1DA51443FEF3444F5F"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1338,6 +1746,46 @@
             {
             "SourcePath" = "8:..\\release\\opengl32sw.dll"
             "TargetName" = "8:opengl32sw.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_3D683A79DF9A4B1DA51443FEF3444F5F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F5813CBD32EA489EA8823B0385D597C6"
+            {
+            "SourcePath" = "8:..\\release\\mediaservice\\qtmedia_audioengine.dll"
+            "TargetName" = "8:qtmedia_audioengine.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_3D683A79DF9A4B1DA51443FEF3444F5F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F814C400F2A64A33A359BAC810EC9069"
+            {
+            "SourcePath" = "8:..\\release\\translations\\qt_nl.qm"
+            "TargetName" = "8:qt_nl.qm"
             "Tag" = "8:"
             "Folder" = "8:_3D683A79DF9A4B1DA51443FEF3444F5F"
             "Condition" = "8:"
@@ -1487,15 +1935,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:attys-ep"
-        "ProductCode" = "8:{1DD0D895-23A1-4409-8FC8-C546AAD57439}"
-        "PackageCode" = "8:{0A63C52A-F5CB-4B31-A84F-5594095DC9D2}"
+        "ProductCode" = "8:{3BE643EE-06E6-4E0D-ACB1-C0A44767C5A4}"
+        "PackageCode" = "8:{E4948DA4-9449-4FF8-8C56-C3CAB39653D8}"
         "UpgradeCode" = "8:{5C798038-39B3-4EBC-8FD1-181B7FD6627E}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.1.2"
+        "ProductVersion" = "8:1.1.3"
         "Manufacturer" = "8:glasgow_neuro"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -1608,7 +2056,7 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_60EE44386334417CB6CC43C710CE5511"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_748E746779714F89B5632D3729725818"
             {
             "Name" = "8:attys-ep"
             "Arguments" = "8:"
@@ -1616,27 +2064,13 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_9C8B7D45011046FCBA43BA0C217E156E"
-            "Folder" = "8:_F30452AE2089452EBB8AEFCCA15E4FD3"
-            "WorkingFolder" = "8:_3D683A79DF9A4B1DA51443FEF3444F5F"
-            "Icon" = "8:"
-            "Feature" = "8:"
-            }
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_83FE01AC7AA845E49E4227F7475FAB7B"
-            {
-            "Name" = "8:attys-ep"
-            "Arguments" = "8:"
-            "Description" = "8:"
-            "ShowCmd" = "3:1"
-            "IconIndex" = "3:0"
-            "Transitive" = "11:FALSE"
-            "Target" = "8:_9C8B7D45011046FCBA43BA0C217E156E"
-            "Folder" = "8:_0BBFDC151A7E42C8A796A44DB4490AC9"
+            "Target" = "8:_443520B62120462E95CC86C1EACA7D80"
+            "Folder" = "8:_9D1D7FB8E6A344E19BF176AE194E5B43"
             "WorkingFolder" = "8:_3D683A79DF9A4B1DA51443FEF3444F5F"
             "Icon" = "8:_2901D4A0F0144765BC710AB99466E24E"
             "Feature" = "8:"
             }
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_D457DBFFC6C3468F9BBF4D9E160E3089"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_C1D7BCAC11764FA4A3066C57CC94FF4F"
             {
             "Name" = "8:attys-ep"
             "Arguments" = "8:"
@@ -1644,10 +2078,24 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_9C8B7D45011046FCBA43BA0C217E156E"
-            "Folder" = "8:_9D1D7FB8E6A344E19BF176AE194E5B43"
+            "Target" = "8:_443520B62120462E95CC86C1EACA7D80"
+            "Folder" = "8:_F30452AE2089452EBB8AEFCCA15E4FD3"
             "WorkingFolder" = "8:_3D683A79DF9A4B1DA51443FEF3444F5F"
-            "Icon" = "8:"
+            "Icon" = "8:_2901D4A0F0144765BC710AB99466E24E"
+            "Feature" = "8:"
+            }
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_CA0BF0D18DF545C49AD1FF425A6FC606"
+            {
+            "Name" = "8:attys-ep"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_443520B62120462E95CC86C1EACA7D80"
+            "Folder" = "8:_0BBFDC151A7E42C8A796A44DB4490AC9"
+            "WorkingFolder" = "8:_3D683A79DF9A4B1DA51443FEF3444F5F"
+            "Icon" = "8:_2901D4A0F0144765BC710AB99466E24E"
             "Feature" = "8:"
             }
         }
@@ -2093,12 +2541,26 @@
         }
         "MergeModule"
         {
+            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_B0473327137943B99F03A05862AF7881"
+            {
+            "UseDynamicProperties" = "11:TRUE"
+            "IsDependency" = "11:FALSE"
+            "SourcePath" = "8:C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Redist\\MSVC\\v142\\MergeModules\\Microsoft_VC142_CRT_x64.msm"
+                "Properties"
+                {
+                }
+            "LanguageId" = "3:0"
+            "Exclude" = "11:FALSE"
+            "Folder" = "8:"
+            "Feature" = "8:"
+            "IsolateTo" = "8:"
+            }
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_9C8B7D45011046FCBA43BA0C217E156E"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_443520B62120462E95CC86C1EACA7D80"
             {
-            "SourcePath" = "8:..\\Release\\attys-ep.exe"
+            "SourcePath" = "8:..\\release\\attys-ep.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_3D683A79DF9A4B1DA51443FEF3444F5F"
@@ -2118,7 +2580,7 @@
             "ProjectOutputGroupRegister" = "3:1"
             "OutputConfiguration" = "8:"
             "OutputGroupCanonicalName" = "8:Built"
-            "OutputProjectGuid" = "8:{899E6E9E-177A-3355-8CEE-0B79DEDD1B90}"
+            "OutputProjectGuid" = "8:{9E4A2036-73A3-3CF5-84BF-09325A1FAA7F}"
             "ShowKeyOutput" = "11:TRUE"
                 "ExcludeFilters"
                 {

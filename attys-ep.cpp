@@ -30,6 +30,8 @@ MainWindow::MainWindow( QWidget *parent ) :
     vepOn(0),
     time(0) {
 
+    audiobeep = new AudioBeep(this);	// uses default parameters set in audiobeep.h
+
 	attysScan.getAttysComm(0)->setAdc_samplingrate_index(AttysComm::ADC_RATE_250HZ);
 	sampling_rate = attysScan.getAttysComm(0)->getSamplingRateInHz();
 
@@ -49,19 +51,12 @@ MainWindow::MainWindow( QWidget *parent ) :
 
 	initData();
 
-#ifdef __APPLE__
-	char styleSheet[] = "";
-	char styleSheetCombo[] = "";
-	char styleSheetGroupBox[] = "";
-	char styleSheetButton[] = "";
-#else
 	setStyleSheet("background-color:rgb(32,32,32);color: white;");
 	setAutoFillBackground( true );
 	char styleSheet[] = "padding:0px;margin:0px;border:0px;";
 	char styleSheetCombo[] = "padding:0px;margin:0px;border:0px;margin-right:2px;font: 16px";
 	char styleSheetGroupBox[] = "padding:1px;margin:0px;border:0px";
 	char styleSheetButton[] = "background-color: grey; border: none; outline: none; border-width: 0px; font: 16px; padding: 5px; color: white;";
-#endif
 
 	QHBoxLayout *mainLayout = new QHBoxLayout( this );
 
@@ -90,7 +85,6 @@ MainWindow::MainWindow( QWidget *parent ) :
 	RawDataPlot->show();
 
 	plotLayout->addSpacing(20);
-
 
 	vepPlot = new VEPPlot(timeData, vepAveragedData, vepLength, this);
 	vepPlot->setMaximumSize(10000,300);
@@ -130,6 +124,10 @@ MainWindow::MainWindow( QWidget *parent ) :
 	runVEP->setCheckable(true);
 	vepFunLayout->addWidget(runVEP);
 	connect(runVEP, SIGNAL(clicked()), SLOT(slotRunVEP()));
+
+	beepCheckBox = new QCheckBox("Play start/stop sound");
+	vepFunLayout->addWidget(beepCheckBox);
+	beepCheckBox->setEnabled(audiobeep->isOK());
 
 	QPushButton *clearVEP = new QPushButton(VEPfunGroup);
 	clearVEP->setText("clear data");
@@ -199,12 +197,6 @@ MainWindow::MainWindow( QWidget *parent ) :
         sweepTimer->start( DEFAULT_SWEEP_LENGTH );
 
 	attysScan.getAttysComm(0)->start();
-	
-	beepCheckBox = new QCheckBox("Play sound");
-	controlLayout->addWidget( beepCheckBox );
-	
-	// audiobeep class
-	audiobeep = new AudioBeep(this);	// uses default parameters set in audiobeep.h
 }
 
 MainWindow::~MainWindow()
@@ -291,9 +283,6 @@ void MainWindow::slotSaveData()
 
 void MainWindow::slotClearVEP()  // to clear data from VEP graph
 {
-	// include sound here, to determine when it starts recording new data 
-	//creo q habria q incluir aqui el sonido, pero comprobar q empieza a record cndo le doy a clear data - sino alomejor es save data 
-	// audiobeep->play();
 	time = 0;
 	trialIndex = 0;
 	initData();
@@ -329,7 +318,6 @@ void MainWindow::slotRunVEP()
 			std::string s = "RECORDING: "+rawfilename;
 			rawFileNameLabel->setText(s.c_str());
 		}
-		// include sound here, to determine when it starts recording new data 
 		if (beepCheckBox->checkState())
 		{
 			audiobeep->play();

@@ -35,7 +35,7 @@
 #define MAX_VEP_LENGTH 5000
 
 // in ms
-#define DEFAULT_SWEEP_LENGTH 500
+#define DEFAULT_SWEEP_LENGTH 750
 
 #define NOTCH_F 50 // filter out 50Hz noise
 #define IIRORDER 4

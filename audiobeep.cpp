@@ -6,17 +6,24 @@
 // constructor
 AudioBeep::AudioBeep(QObject *w, float duration, float frequency, float volume) {
 	qparent = w;
-	
+
+	// 16 bit audio PCM
 	audioFormat.setSampleRate(sampleRate);
 	audioFormat.setChannelCount(1);
 	audioFormat.setSampleSize(16);
 	audioFormat.setCodec("audio/pcm");
 	audioFormat.setByteOrder((QAudioFormat::Endian)QSysInfo::ByteOrder);
 	audioFormat.setSampleType(QAudioFormat::SignedInt);
-		
+
+	// check if we can play it
 	QAudioDeviceInfo deviceInfo(QAudioDeviceInfo::defaultOutputDevice());
 	if(!deviceInfo.isFormatSupported(audioFormat)) {
-		throw "Raw audio format not supported by backend, cannot play audio.";
+		char tmp[] = "QT backend to play audio is not installed. Cannot play audio.";
+		msgBox = new QMessageBox;
+		msgBox->setText(tmp);
+		msgBox->setModal(true);
+		msgBox->show();
+		return;
 	}
 
 	// number of data samples
@@ -31,27 +38,34 @@ AudioBeep::AudioBeep(QObject *w, float duration, float frequency, float volume) 
 		// create sine wave data samples, one at a time
 		qint16 sinVal = (qint16)(sin(2.0 * M_PI * frequency * i / sampleRate)*32767*volume);
 		( (qint16*)byteBuffer.constData() )[i] = sinVal;
-	}	
+	}
+
+	// create the fake streaming buffer
+	input  = new QBuffer(&byteBuffer, qparent);
+	// open the fake stream
+	input->open(QIODevice::ReadOnly);
+	// open the audio output
+	audio = new QAudioOutput(audioFormat, qparent);
 }
+
+
+// destructor
+AudioBeep::~AudioBeep() {
+	if (nullptr != input) {
+		input->close();
+		delete input;
+	}
+	if (nullptr != audio) {
+		delete audio;
+	}
+}
+
 
 // play the audio
 void AudioBeep::play() {
-	QBuffer* input  = new QBuffer(&byteBuffer, qparent);
-	input->open(QIODevice::ReadOnly);
-	QAudioOutput* audio = new QAudioOutput(audioFormat, qparent);
-	// Create a callback as a lambda expression which releases "input" and "audio"
-	// after playing has finished, thus this allows async audio playing without blocking.
-	connect(audio, &QAudioOutput::stateChanged, [audio, input](QAudio::State newState)
-							    {
-								    // finished playing (i.e., no more data)
-								    if (newState == QAudio::IdleState)
-								    {
-									    // delete the classes and release the memory
-									    delete audio;
-									    delete input;
-								    }
-							    });
-	// Start the audio (i.e., play sound from the QAudioOutput object) and return immediately to the caller.
-	audio->start(input);
+	if ((nullptr != input) && (nullptr != audio)) {
+		input->seek(0);
+		audio->reset();
+		audio->start(input);
+	}
 }
-
