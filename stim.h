@@ -28,7 +28,7 @@ public:
 	}
 
 	public slots:
-	void slotInvert(int _oddball) {
+	void slotInvert(bool _oddball) {
 		oddball = _oddball;
 		if (!oddball) {
 			inverted = !inverted;
@@ -45,8 +45,8 @@ private:
 	QPainter* paint2 = NULL;
 	QPainter* paint3 = NULL;
 
-	int inverted = 0;
-	int oddball = 0;
+	bool inverted = false;
+	bool oddball = false;
 };
 
 

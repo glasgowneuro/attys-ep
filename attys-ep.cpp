@@ -19,6 +19,7 @@
 #include <QTextStream>
 #include <QComboBox>
 #include <QTimer>
+#include <QMessageBox>
 
 #include "AttysComm.h"
 #include "AttysScan.h"
@@ -26,13 +27,17 @@
 #define NOTCH_BW 2.5
 
 MainWindow::MainWindow( QWidget *parent ) :
-    QWidget(parent),
-    vepOn(0),
-    time(0) {
+	QWidget(parent),
+	vepOn(false),
+	time(0) {
 
-    audiobeep = new AudioBeep(this);	// uses default parameters set in audiobeep.h
+	audiobeep = new AudioBeep(this,0.5,1000,1);	// uses default parameters set in audiobeep.h
 
-	attysScan.getAttysComm(0)->setAdc_samplingrate_index(AttysComm::ADC_RATE_250HZ);
+	if (strstr(attysScan.getAttysComm(0)->getAttysName(),"ATTYS2")) {
+		attysScan.getAttysComm(0)->setAdc_samplingrate_index(AttysComm::ADC_RATE_500HZ);
+	} else {
+		attysScan.getAttysComm(0)->setAdc_samplingrate_index(AttysComm::ADC_RATE_250HZ);
+	}
 	sampling_rate = attysScan.getAttysComm(0)->getSamplingRateInHz();
 
 	vepLength = DEFAULT_SWEEP_LENGTH / (1000 / sampling_rate);
@@ -51,12 +56,12 @@ MainWindow::MainWindow( QWidget *parent ) :
 
 	initData();
 
-	setStyleSheet("background-color:rgb(32,32,32);color: white;");
+	setStyleSheet("background-color:rgb(64,64,64);color: white;");
 	setAutoFillBackground( true );
-	char styleSheet[] = "padding:0px;margin:0px;border:0px;";
-	char styleSheetCombo[] = "padding:0px;margin:0px;border:0px;margin-right:2px;font: 16px";
+	char styleSheet[] = "padding:0px;margin:0px;border:1px;";
+	char styleSheetCombo[] = "padding:0px;margin:0px;border:1px;margin-right:2px;font: 16px";
 	char styleSheetGroupBox[] = "padding:1px;margin:0px;border:0px";
-	char styleSheetButton[] = "background-color: grey; border: none; outline: none; border-width: 0px; font: 16px; padding: 5px; color: white;";
+	char styleSheetButton[] = "background-color: grey; border: none; outline: none; border-width: 1px; font: 16px; padding: 5px; color: white;";
 
 	QHBoxLayout *mainLayout = new QHBoxLayout( this );
 
@@ -84,6 +89,8 @@ MainWindow::MainWindow( QWidget *parent ) :
 	plotLayout->addWidget(RawDataPlot);
 	RawDataPlot->show();
 
+	auto s = std::string("fs = ")+std::to_string(int(sampling_rate))+" Hz";
+	plotLayout->addWidget(new QLabel(s.c_str()));
 	plotLayout->addSpacing(20);
 
 	vepPlot = new VEPPlot(timeData, vepAveragedData, vepLength, this);
@@ -104,13 +111,6 @@ MainWindow::MainWindow( QWidget *parent ) :
 	VEPfunGroup->setSizePolicy( QSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed) );
 	controlLayout->addWidget( VEPfunGroup );
 
-	notchFreq = new QComboBox(VEPfunGroup);
-	notchFreq->setStyleSheet(styleSheetCombo);
-        notchFreq->addItem(tr("50Hz bandstop "));
-        notchFreq->addItem(tr("60Hz bandstop "));
-        vepFunLayout->addWidget(notchFreq);
-        connect(  notchFreq, SIGNAL(currentIndexChanged(int)), SLOT(slotSelectNotchFreq(int)) );
-
 	vpChoices = new QComboBox(VEPfunGroup);
 	vpChoices->setStyleSheet(styleSheetCombo);
 	vpChoices->addItem(tr("VEP "));
@@ -118,9 +118,16 @@ MainWindow::MainWindow( QWidget *parent ) :
 	vepFunLayout->addWidget(vpChoices);
 	connect( vpChoices, SIGNAL(currentIndexChanged(int)), SLOT(slotSelectVEPType(int)) );
 
+	notchFreq = new QComboBox(VEPfunGroup);
+	notchFreq->setStyleSheet(styleSheetCombo);
+        notchFreq->addItem(tr("50Hz bandstop "));
+        notchFreq->addItem(tr("60Hz bandstop "));
+        vepFunLayout->addWidget(notchFreq);
+        connect(  notchFreq, SIGNAL(currentIndexChanged(int)), SLOT(slotSelectNotchFreq(int)) );
+
 	runVEP = new QPushButton(VEPfunGroup);
 	runVEP->setStyleSheet(styleSheetButton);
-	runVEP->setText("VEP on/off");
+	runVEP->setText("EP on/off");
 	runVEP->setCheckable(true);
 	vepFunLayout->addWidget(runVEP);
 	connect(runVEP, SIGNAL(clicked()), SLOT(slotRunVEP()));
@@ -129,24 +136,25 @@ MainWindow::MainWindow( QWidget *parent ) :
 	vepFunLayout->addWidget(beepCheckBox);
 	beepCheckBox->setEnabled(audiobeep->isOK());
 
-	QPushButton *clearVEP = new QPushButton(VEPfunGroup);
-	clearVEP->setText("clear data");
+	clearVEP = new QPushButton(VEPfunGroup);
+	clearVEP->setText("clear EP");
 	clearVEP->setStyleSheet(styleSheetButton);
 	vepFunLayout->addWidget(clearVEP);
 	connect(clearVEP, SIGNAL(clicked()), SLOT(slotClearVEP()));
 	connect(clearVEP, SIGNAL(clicked()), SLOT(slotClear()));
 	
-	QPushButton *saveVEP = new QPushButton(VEPfunGroup);
-	saveVEP->setText("save VEP");
+	saveVEP = new QPushButton(VEPfunGroup);
+	saveVEP->setText("save EP");
 	saveVEP->setStyleSheet(styleSheetButton);
 	vepFunLayout->addWidget(saveVEP);
 	connect(saveVEP, SIGNAL(clicked()), SLOT(slotSaveVEP()));
 	int inpWidth = saveVEP->width()*3/2;
-	
+
+	vepFunLayout->addWidget(new QLabel());
 	
 	// raw data functions
-	QPushButton *savedata = new QPushButton(RawDataPlot);
-	savedata->setText("Raw data filename");
+	savedata = new QPushButton(RawDataPlot);
+	savedata->setText("raw data filename");
 	savedata->setStyleSheet(styleSheetButton);
 	connect(savedata, SIGNAL(clicked()), this, SLOT(slotSaveData()));
 	vepFunLayout->addWidget(savedata);
@@ -163,10 +171,9 @@ MainWindow::MainWindow( QWidget *parent ) :
 						    QSizePolicy::Fixed) );
 	controlLayout->addWidget( vepCounterGroup );
 
-	QLabel *vepLengthLabel = new QLabel("Sweep length", vepCounterGroup);
-	vepCounterLayout->addWidget(vepLengthLabel);
+	vepCounterLayout->addWidget(new QLabel("Sweep length", vepCounterGroup));
 
-	QwtCounter *cntSLength = new QwtCounter(vepCounterGroup);
+	cntSLength = new QwtCounter(vepCounterGroup);
 	cntSLength->setNumButtons(1);
   	cntSLength->setIncSteps(QwtCounter::Button1, 10000);
 	cntSLength->setRange(1, MAX_VEP_LENGTH);
@@ -177,14 +184,45 @@ MainWindow::MainWindow( QWidget *parent ) :
 		SIGNAL(valueChanged(double)), 
 		SLOT(slotSetVEPLength(double)));
 	
+	vepCounterLayout->addWidget(new QLabel());
+
+	vepCounterLayout->addWidget(new QLabel("Avg oddball interval", vepCounterGroup));
+	oddballAverage = new QwtCounter(vepCounterGroup);
+	oddballAverage->setNumButtons(1);
+  	oddballAverage->setIncSteps(QwtCounter::Button1, 1000);
+	oddballAverage->setRange(5, MAX_ODDBALL_AVERAGE);
+	oddballAverage->setValue(DEFAULT_ODDBALL_AVERAGE);
+	oddballAverage->setMaximumWidth(inpWidth);
+	vepCounterLayout->addWidget(oddballAverage);
+	connect(oddballAverage, 
+		SIGNAL(valueChanged(double)), 
+		SLOT(slotSetP300OddballAverage(double)));	
+
+	vepCounterLayout->addWidget(new QLabel());
+
+	vepCounterLayout->addWidget(new QLabel("Oddball +/- deviation", vepCounterGroup));
+	oddballDev = new QwtCounter(vepCounterGroup);
+	oddballDev->setNumButtons(1);
+  	oddballDev->setIncSteps(QwtCounter::Button1, 1000);
+	oddballDev->setRange(2, MAX_ODDBALL_DEV);
+	oddballDev->setValue(DEFAULT_ODDBALL_DEV);
+	oddballDev->setMaximumWidth(inpWidth);
+	vepCounterLayout->addWidget(oddballDev);
+	connect(oddballDev, 
+		SIGNAL(valueChanged(double)), 
+		SLOT(slotSetP300OddballDev(double)));	
+
 	vepStimulus = new Stimulus(this);
 	vepStimulus->setMinimumSize(300,300);
 	vepStimulus->show();
 	connect ( this,
-		  SIGNAL(sweepStarted(int)),
+		  SIGNAL(sweepStarted(bool)),
 		  vepStimulus,
-		  SLOT(slotInvert(int)) );
+		  SLOT(slotInvert(bool)) );
 	
+	oddballAverage->setEnabled(mode == P300);
+	oddballDev->setEnabled(mode == P300);
+
 	// Generate timer event every 50ms
 	startTimer(50);
 
@@ -243,6 +281,20 @@ void MainWindow::slotSelectNotchFreq(int f) {
 }
 
 
+void MainWindow::slotSetP300OddballAverage(double l) {
+	auto d = oddballDev->value();
+	if (d > (l/2)) {
+		oddballDev->setValue(floor(l/2));
+	}
+}
+
+void MainWindow::slotSetP300OddballDev(double l) {
+	auto a = oddballAverage->value();
+	if (l > (a/2)) {
+		oddballDev->setValue(floor(a/2));
+	}
+}
+
 
 
 void MainWindow::slotSaveVEP()
@@ -264,7 +316,11 @@ void MainWindow::slotSaveVEP()
 		}
 		else
 		{
-			// TODO: warning box
+			QString s = "Could not save to: "+fileName;
+			QMessageBox msgBox;
+			msgBox.setText(s);
+			msgBox.setModal(true);
+			msgBox.exec();
 		}
 	}
 }
@@ -284,7 +340,7 @@ void MainWindow::slotSaveData()
 void MainWindow::slotClearVEP()  // to clear data from VEP graph
 {
 	time = 0;
-	trialIndex = 0;
+	trialIndex = vepLength;
 	initData();
 	vepActTrial = 0;
 	vepPlot->replot();
@@ -293,7 +349,7 @@ void MainWindow::slotClearVEP()  // to clear data from VEP graph
 void MainWindow::slotClear()	// to clear data from both graphs
 {
 	time = 0;
-	trialIndex = 0;
+	trialIndex = vepLength;
 	initData();
 	vepActTrial = 0;
 	vepPlot->replot();
@@ -304,19 +360,23 @@ void MainWindow::slotClear()	// to clear data from both graphs
 void MainWindow::slotRunVEP()
 {
 	// toggle VEP recording
-	if(vepOn == 0)
+	if(!vepOn)
 	{
-		vepOn = 1;
+		vepOn = true;
 		vepPlot->startDisplay();
-		trialIndex = 0;
+		trialIndex = vepLength;
+		sweepStartFlag = false;
+		oddballCtr = (int)(oddballAverage->value());
 		// save raw data - open file command
-		rawfile = fopen(rawfilename.c_str(),"wt");
-		if (rawfile == NULL) {
-			std::string s = "Could not open: "+rawfilename;
-			rawFileNameLabel->setText(s.c_str());
-		} else {
-			std::string s = "RECORDING: "+rawfilename;
-			rawFileNameLabel->setText(s.c_str());
+		if (!rawfilename.empty()) {
+			rawfile = fopen(rawfilename.c_str(),"wt");
+			if (rawfile == NULL) {
+				std::string s = "Could not open: "+rawfilename;
+				rawFileNameLabel->setText(s.c_str());
+			} else {
+				std::string s = "RECORDING: "+rawfilename;
+				rawFileNameLabel->setText(s.c_str());
+			}
 		}
 		if (beepCheckBox->checkState())
 		{
@@ -325,7 +385,7 @@ void MainWindow::slotRunVEP()
 	}
 	else
 	{
-		vepOn = 0;
+		vepOn = false;
 		vepPlot->stopDisplay();
 		vepActTrial = 0;
 		rawFileNameLabel->setText(rawfilename.c_str());
@@ -339,6 +399,12 @@ void MainWindow::slotRunVEP()
 			audiobeep->play();
 		}
 	}
+	vpChoices->setDisabled(vepOn);
+	notchFreq->setDisabled(vepOn);
+	oddballDev->setDisabled(vepOn);
+	oddballAverage->setDisabled(vepOn);
+	savedata->setDisabled(vepOn);
+	cntSLength->setDisabled(vepOn);
 }
 
 void MainWindow::slotSetVEPLength(double l)
@@ -348,35 +414,40 @@ void MainWindow::slotSetVEPLength(double l)
 	initData();
 	vepActTrial = 0;
 	time = 0;
-	trialIndex = 0;
+	trialIndex = vepLength;
 	sweepTimer->setInterval((int)l);
 	RawDataPlot->setVEPLength(vepLength);
 	vepPlot->setVEPLength(vepLength);
+	vepPlot->replot();
 }
 
 void MainWindow::slotSelectVEPType(int idx)
 {
-	mode = idx;
+	mode = (Mode)idx;
+	oddballAverage->setEnabled(mode == P300);
+	oddballDev->setEnabled(mode == P300);
 }
 
 
 void MainWindow::slotNewSweep() {
-	int oddball = 0;
 	if (vepOn) {
+		bool oddball = false;
 		switch (mode) {
 		case 0:
-			oddball = 0;
+			oddball = false;
 			trialIndex = 0;
 			sweepStartFlag = true;
 			break;
 		case 1:
+			int min = (int)(oddballAverage->value()) - ((int)(oddballDev->value()));
+			int dev = (int)(oddballDev->value())*2;
 			if (oddballCtr == 0) {
-				oddballCtr = 7 + rand() / (RAND_MAX/6);
-				oddball = 1;
+				oddballCtr = min + rand() / (RAND_MAX/dev);
+				oddball = true;
 				trialIndex = 0;
 				sweepStartFlag = true;
 			} else {
-				oddball = 0;
+				oddball = false;
 				oddballCtr--;
 			}
 		}
@@ -398,8 +469,8 @@ void MainWindow::hasData(double,float *sample)
 
 	if (NULL != rawfile)
 	{
-		fprintf(rawfile,"%e\t%e\t%d\n", yNew, yNew2, sweepStartFlag);
-		sweepStartFlag = 0;
+		fprintf(rawfile,"%e\t%e\t%d\n", yNew, yNew2, (int)sweepStartFlag);
+		sweepStartFlag = false;
 	}
 
 	// save data here
