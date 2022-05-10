@@ -45,8 +45,15 @@
 #define DEFAULT_ODDBALL_DEV 3
 
 #define NOTCH_F 50 // filter out 50Hz noise
+#define NOTCH_BW 2.5
 #define IIRORDER 4
 
+#define styleSheetAll "padding:0px;margin:0px;border:1px;"
+#define styleSheetCombo "padding:0px;margin:0px;border:1px;margin-right:2px;font: 16px;"
+#define styleSheetGroupBox "padding:1px;margin:0px;border:0px"
+#define styleSheetButton "background-color: grey; border: none; outline: none; border-width: 1px; font: 16px; padding: 5px; color: white;"
+#define styleSheetRecButtonOn "background-color: red; border: none; outline: none; border-width: 1px; font: 16px; padding: 5px; color: white;"
+#define styleSheetRecButtonOff "background-color: grey; border: none; outline: none; border-width: 1px; font: 16px; padding: 5px; color: white;"
 
 class MainWindow : public QWidget
 {
@@ -156,13 +163,6 @@ private:
 	QPushButton *savedata;
 	QwtCounter *cntSLength;
 	QPushButton* cleardata;
-
-	static constexpr char styleSheet[] = "padding:0px;margin:0px;border:1px;";
-	static constexpr char styleSheetCombo[] = "padding:0px;margin:0px;border:1px;margin-right:2px;font: 16px";
-	static constexpr char styleSheetGroupBox[] = "padding:1px;margin:0px;border:0px";
-	static constexpr char styleSheetButton[] = "background-color: grey; border: none; outline: none; border-width: 1px; font: 16px; padding: 5px; color: white;";
-	static constexpr char styleSheetRecButtonOn[] = "background-color: red; border: none; outline: none; border-width: 1px; font: 16px; padding: 5px; color: white;";
-	static constexpr char styleSheetRecButtonOff[] = "background-color: grey; border: none; outline: none; border-width: 1px; font: 16px; padding: 5px; color: white;";
 
 	private slots:
 

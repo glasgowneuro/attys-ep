@@ -24,8 +24,6 @@
 #include "AttysComm.h"
 #include "AttysScan.h"
 
-#define NOTCH_BW 2.5
-
 MainWindow::MainWindow( QWidget *parent ) :
 	QWidget(parent),
 	vepOn(false),
@@ -81,7 +79,7 @@ MainWindow::MainWindow( QWidget *parent ) :
 				   -attysScan.getAttysComm(0)->getADCFullScaleRange(0),
 				   this);
 	RawDataPlot->setMaximumSize(10000,300);
-	RawDataPlot->setStyleSheet(styleSheet);
+	RawDataPlot->setStyleSheet(styleSheetAll);
 	plotLayout->addWidget(RawDataPlot);
 	RawDataPlot->show();
 
@@ -91,7 +89,7 @@ MainWindow::MainWindow( QWidget *parent ) :
 
 	vepPlot = new VEPPlot(timeData, vepAveragedData, vepLength, this);
 	vepPlot->setMaximumSize(10000,300);
-	vepPlot->setStyleSheet(styleSheet);
+	vepPlot->setStyleSheet(styleSheetAll);
 	plotLayout->addWidget(vepPlot);
 	vepPlot->show();
 	
@@ -306,8 +304,14 @@ void MainWindow::slotSaveVEP()
 	QString fileName = QFileDialog::getSaveFileName();
 	if( !fileName.isNull() )
 	{
+		const char suffix[] = ".tsv";
 		QFileInfo fileinfo(fileName);
-		QFile file(fileinfo.baseName()+".tsv");
+		QFile file;
+		if (fileinfo.completeSuffix().contains(suffix, Qt::CaseInsensitive)) {
+			file.setFileName(fileName);
+		} else {
+			file.setFileName(fileName+suffix);
+		}
 		
 		if( file.open(QIODevice::WriteOnly | QFile::Truncate) )
 		{
@@ -335,8 +339,13 @@ void MainWindow::slotSaveData()
 	QString fileName = QFileDialog::getSaveFileName();
 	if( !fileName.isNull() )
 	{
+		const char suffix[] = ".tsv";
 		QFileInfo fileinfo(fileName);
-		rawfilename = fileinfo.baseName().toStdString() + ".tsv";
+		if (fileinfo.completeSuffix().contains(suffix, Qt::CaseInsensitive)) {
+			rawfilename = fileName.toStdString();
+		} else {
+			rawfilename = fileName.toStdString() + ".tsv";
+		}
 		rawFileNameLabel->setText(rawfilename.c_str());
 	}
 }
