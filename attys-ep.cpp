@@ -307,10 +307,10 @@ void MainWindow::slotSaveVEP()
 		const char suffix[] = ".tsv";
 		QFileInfo fileinfo(fileName);
 		QFile file;
-		if (fileinfo.completeSuffix().contains(suffix, Qt::CaseInsensitive)) {
-			file.setFileName(fileName);
-		} else {
+		if (fileinfo.completeSuffix().isEmpty()) {
 			file.setFileName(fileName+suffix);
+		} else {
+			file.setFileName(fileName);
 		}
 		
 		if( file.open(QIODevice::WriteOnly | QFile::Truncate) )
@@ -341,10 +341,10 @@ void MainWindow::slotSaveData()
 	{
 		const char suffix[] = ".tsv";
 		QFileInfo fileinfo(fileName);
-		if (fileinfo.completeSuffix().contains(suffix, Qt::CaseInsensitive)) {
-			rawfilename = fileName.toStdString();
+		if (fileinfo.completeSuffix().isEmpty()) {
+			rawfilename = fileName.toStdString() + suffix;;
 		} else {
-			rawfilename = fileName.toStdString() + ".tsv";
+			rawfilename = fileName.toStdString();
 		}
 		rawFileNameLabel->setText(rawfilename.c_str());
 	}
