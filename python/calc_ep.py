@@ -48,8 +48,7 @@ class Evoked_potentials:
         averages over them.
         Returns: timestamps,vep
         """
-        mean, stddev, tmin, tmax = self.get_stimulus_stats()
-        self.navg = int(self.Fs * mean)
+        self.navg = int(self.Fs * 0.75)
         self.avg = np.zeros(self.navg)
         
         n = 0
@@ -96,7 +95,7 @@ def plotEP(filename):
 
 filename = "fake_vep_eeg_with_ldr.tsv"
 if len(sys.argv) > 1:
-    participant = int(sys.argv[1])
+    filename = sys.argv[1]
 else:
     print("You can specify a filename with: {} <filname>"
           .format(sys.argv[0]))

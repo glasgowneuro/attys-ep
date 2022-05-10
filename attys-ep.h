@@ -156,6 +156,14 @@ private:
 	QPushButton *savedata;
 	QwtCounter *cntSLength;
 	QPushButton* cleardata;
+
+	static constexpr char styleSheet[] = "padding:0px;margin:0px;border:1px;";
+	static constexpr char styleSheetCombo[] = "padding:0px;margin:0px;border:1px;margin-right:2px;font: 16px";
+	static constexpr char styleSheetGroupBox[] = "padding:1px;margin:0px;border:0px";
+	static constexpr char styleSheetButton[] = "background-color: grey; border: none; outline: none; border-width: 1px; font: 16px; padding: 5px; color: white;";
+	static constexpr char styleSheetRecButtonOn[] = "background-color: red; border: none; outline: none; border-width: 1px; font: 16px; padding: 5px; color: white;";
+	static constexpr char styleSheetRecButtonOff[] = "background-color: grey; border: none; outline: none; border-width: 1px; font: 16px; padding: 5px; color: white;";
+
 	private slots:
 
 	// actions:

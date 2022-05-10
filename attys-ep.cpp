@@ -58,10 +58,6 @@ MainWindow::MainWindow( QWidget *parent ) :
 
 	setStyleSheet("background-color:rgb(64,64,64);color: white;");
 	setAutoFillBackground( true );
-	char styleSheet[] = "padding:0px;margin:0px;border:1px;";
-	char styleSheetCombo[] = "padding:0px;margin:0px;border:1px;margin-right:2px;font: 16px";
-	char styleSheetGroupBox[] = "padding:1px;margin:0px;border:0px";
-	char styleSheetButton[] = "background-color: grey; border: none; outline: none; border-width: 1px; font: 16px; padding: 5px; color: white;";
 
 	QHBoxLayout *mainLayout = new QHBoxLayout( this );
 
@@ -71,7 +67,7 @@ MainWindow::MainWindow( QWidget *parent ) :
 	
 	QVBoxLayout *plotLayout = new QVBoxLayout;
 
-	rawFileNameLabel = new QLabel("No raw data filename");
+	rawFileNameLabel = new QLabel();
 	plotLayout->addWidget(rawFileNameLabel);
 
 	mainLayout->addLayout(plotLayout);
@@ -126,7 +122,7 @@ MainWindow::MainWindow( QWidget *parent ) :
 
 	vepFunLayout->addWidget(new QLabel());
 	runVEP = new QPushButton(VEPfunGroup);
-	runVEP->setStyleSheet(styleSheetButton);
+	runVEP->setStyleSheet(styleSheetRecButtonOff);
 	runVEP->setText("EP start/stop");
 	runVEP->setCheckable(true);
 	vepFunLayout->addWidget(runVEP);
@@ -310,7 +306,8 @@ void MainWindow::slotSaveVEP()
 	QString fileName = QFileDialog::getSaveFileName();
 	if( !fileName.isNull() )
 	{
-		QFile file(fileName+".tsv");
+		QFileInfo fileinfo(fileName);
+		QFile file(fileinfo.baseName()+".tsv");
 		
 		if( file.open(QIODevice::WriteOnly | QFile::Truncate) )
 		{
@@ -338,8 +335,8 @@ void MainWindow::slotSaveData()
 	QString fileName = QFileDialog::getSaveFileName();
 	if( !fileName.isNull() )
 	{
-		rawfilename = fileName.toStdString();
-		rawfilename = rawfilename + ".tsv";
+		QFileInfo fileinfo(fileName);
+		rawfilename = fileinfo.baseName().toStdString() + ".tsv";
 		rawFileNameLabel->setText(rawfilename.c_str());
 	}
 }
@@ -395,12 +392,14 @@ void MainWindow::slotRunVEP()
 		{
 			audiobeep->play();
 		}
+		runVEP->setStyleSheet(styleSheetRecButtonOn);
 	}
 	else
 	{
 		vepOn = false;
 		vepPlot->stopDisplay();
 		vepActTrial = 0;
+		rawfilename = "";
 		rawFileNameLabel->setText(rawfilename.c_str());
 		// close raw data file
 		if (rawfile != NULL) {
@@ -411,6 +410,7 @@ void MainWindow::slotRunVEP()
 		{
 			audiobeep->play();
 		}
+		runVEP->setStyleSheet(styleSheetRecButtonOff);
 	}
 	vpChoices->setDisabled(vepOn);
 	notchFreq->setDisabled(vepOn);
