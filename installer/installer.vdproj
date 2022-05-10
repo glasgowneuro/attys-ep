@@ -153,6 +153,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_48DD2CABF48E4E28B9AE5FC2605E01D2"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_4DC2320F6482454B968458973EFE6CB9"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -262,12 +268,6 @@
         "Entry"
         {
         "MsmKey" = "8:_8099D39382B8489CA0D611CC9DC48ACF"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_837AD10EC5D848ED93BF05399E29CAE6"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -387,6 +387,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_EC29262A7C824BC7A4DEC3407E91896C"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_ED80C1F22B424A5F8BFA6B8AE1BC1A7A"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -406,6 +412,12 @@
         "Entry"
         {
         "MsmKey" = "8:_F5813CBD32EA489EA8823B0385D597C6"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F6593AB05E3C44CB8157F60A1BB9E891"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -942,6 +954,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_48DD2CABF48E4E28B9AE5FC2605E01D2"
+            {
+            "SourcePath" = "8:..\\qwt.dll"
+            "TargetName" = "8:qwt.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_3D683A79DF9A4B1DA51443FEF3444F5F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4DC2320F6482454B968458973EFE6CB9"
             {
             "SourcePath" = "8:..\\release\\imageformats\\qsvg.dll"
@@ -1322,26 +1354,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_837AD10EC5D848ED93BF05399E29CAE6"
-            {
-            "SourcePath" = "8:..\\release\\qwt.dll"
-            "TargetName" = "8:qwt.dll"
-            "Tag" = "8:"
-            "Folder" = "8:_3D683A79DF9A4B1DA51443FEF3444F5F"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_889AF15E631E4F90AF5EE3B0EDD7D6FA"
             {
             "SourcePath" = "8:..\\release\\imageformats\\qwbmp.dll"
@@ -1702,6 +1714,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_EC29262A7C824BC7A4DEC3407E91896C"
+            {
+            "SourcePath" = "8:..\\release\\Qt5Network.dll"
+            "TargetName" = "8:Qt5Network.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_3D683A79DF9A4B1DA51443FEF3444F5F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_ED80C1F22B424A5F8BFA6B8AE1BC1A7A"
             {
             "SourcePath" = "8:..\\release\\mediaservice\\wmfengine.dll"
@@ -1766,6 +1798,26 @@
             {
             "SourcePath" = "8:..\\release\\mediaservice\\qtmedia_audioengine.dll"
             "TargetName" = "8:qtmedia_audioengine.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_3D683A79DF9A4B1DA51443FEF3444F5F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F6593AB05E3C44CB8157F60A1BB9E891"
+            {
+            "SourcePath" = "8:..\\release\\Qt5Multimedia.dll"
+            "TargetName" = "8:Qt5Multimedia.dll"
             "Tag" = "8:"
             "Folder" = "8:_3D683A79DF9A4B1DA51443FEF3444F5F"
             "Condition" = "8:"
@@ -1936,7 +1988,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:attys-ep"
         "ProductCode" = "8:{3BE643EE-06E6-4E0D-ACB1-C0A44767C5A4}"
-        "PackageCode" = "8:{E4948DA4-9449-4FF8-8C56-C3CAB39653D8}"
+        "PackageCode" = "8:{F88A938F-420F-49B5-8B9D-DFC391CAD749}"
         "UpgradeCode" = "8:{5C798038-39B3-4EBC-8FD1-181B7FD6627E}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -2560,7 +2612,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_443520B62120462E95CC86C1EACA7D80"
             {
-            "SourcePath" = "8:..\\release\\attys-ep.exe"
+            "SourcePath" = "8:..\\debug\\attys-ep.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_3D683A79DF9A4B1DA51443FEF3444F5F"

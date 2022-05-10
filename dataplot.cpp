@@ -9,6 +9,7 @@
  ***************************************************************************/
 
 #include "dataplot.h"
+#include <qpen.h>
 
 DataPlot::DataPlot(double *xData, double *yData, int length,
 		   double maxY, double minY, QWidget *parent) :

@@ -55,7 +55,7 @@ MOC_DIR = moc
 OBJECTS_DIR = obj
 
 Debug:LIBS += \
-    -L/qwt-6.2.0/lib \
+    -L/qwt-6.1.3/lib \
     -lqwtd \
 	-L/iir1/Debug \
     -liir_static \
@@ -64,7 +64,7 @@ Debug:LIBS += \
     -lattyscomm_static
 
 Release:LIBS += \
-    -L/qwt-6.2.0/lib \
+    -L/qwt-6.1.3/lib \
     -lqwt \
 	-L/iir1/Release \
     -liir_static \
@@ -74,7 +74,7 @@ Release:LIBS += \
 
 INCLUDEPATH += /iir1
 INCLUDEPATH += ../attys-comm
-INCLUDEPATH += /qwt-6.2.0/src
+INCLUDEPATH += /qwt-6.1.3/src
 
 SOURCES = \
     vepplot.cpp \

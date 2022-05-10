@@ -11,6 +11,7 @@
 #include "vepplot.h"
 
 #include <QTimerEvent>
+#include <qpen.h>
 
 VEPPlot::VEPPlot(double *xData, double *yData, int length, QWidget *parent) :
     QwtPlot(parent),
