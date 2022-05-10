@@ -99,8 +99,6 @@ MainWindow::MainWindow( QWidget *parent ) :
 	plotLayout->addWidget(vepPlot);
 	vepPlot->show();
 	
-	/*---- Buttons ----*/
-
 	// vep functions
 	QGroupBox   *VEPfunGroup  = new QGroupBox( this );
 	VEPfunGroup->setStyleSheet(styleSheetGroupBox);
@@ -113,21 +111,23 @@ MainWindow::MainWindow( QWidget *parent ) :
 
 	vpChoices = new QComboBox(VEPfunGroup);
 	vpChoices->setStyleSheet(styleSheetCombo);
-	vpChoices->addItem(tr("VEP "));
-	vpChoices->addItem(tr("P300 "));
+	vpChoices->addItem(tr("VEP"));
+	vpChoices->addItem(tr("P300"));
 	vepFunLayout->addWidget(vpChoices);
 	connect( vpChoices, SIGNAL(currentIndexChanged(int)), SLOT(slotSelectVEPType(int)) );
 
+	vepFunLayout->addWidget(new QLabel());
 	notchFreq = new QComboBox(VEPfunGroup);
 	notchFreq->setStyleSheet(styleSheetCombo);
-        notchFreq->addItem(tr("50Hz bandstop "));
-        notchFreq->addItem(tr("60Hz bandstop "));
+        notchFreq->addItem(tr("50Hz bandstop"));
+        notchFreq->addItem(tr("60Hz bandstop"));
         vepFunLayout->addWidget(notchFreq);
         connect(  notchFreq, SIGNAL(currentIndexChanged(int)), SLOT(slotSelectNotchFreq(int)) );
 
+	vepFunLayout->addWidget(new QLabel());
 	runVEP = new QPushButton(VEPfunGroup);
 	runVEP->setStyleSheet(styleSheetButton);
-	runVEP->setText("EP on/off");
+	runVEP->setText("EP start/stop");
 	runVEP->setCheckable(true);
 	vepFunLayout->addWidget(runVEP);
 	connect(runVEP, SIGNAL(clicked()), SLOT(slotRunVEP()));
@@ -137,27 +137,35 @@ MainWindow::MainWindow( QWidget *parent ) :
 	beepCheckBox->setEnabled(audiobeep->isOK());
 
 	clearVEP = new QPushButton(VEPfunGroup);
-	clearVEP->setText("clear EP");
+	clearVEP->setText("Clear EP");
 	clearVEP->setStyleSheet(styleSheetButton);
 	vepFunLayout->addWidget(clearVEP);
 	connect(clearVEP, SIGNAL(clicked()), SLOT(slotClearVEP()));
 	connect(clearVEP, SIGNAL(clicked()), SLOT(slotClear()));
 	
 	saveVEP = new QPushButton(VEPfunGroup);
-	saveVEP->setText("save EP");
+	saveVEP->setText("Save EP");
 	saveVEP->setStyleSheet(styleSheetButton);
 	vepFunLayout->addWidget(saveVEP);
 	connect(saveVEP, SIGNAL(clicked()), SLOT(slotSaveVEP()));
 	int inpWidth = saveVEP->width()*3/2;
 
 	vepFunLayout->addWidget(new QLabel());
-	
+	vepFunLayout->addWidget(new QLabel("Raw EEG data:"));
+
 	// raw data functions
-	savedata = new QPushButton(RawDataPlot);
-	savedata->setText("raw data filename");
+	savedata = new QPushButton(VEPfunGroup);
+	savedata->setText("Saving EEG On");
 	savedata->setStyleSheet(styleSheetButton);
 	connect(savedata, SIGNAL(clicked()), this, SLOT(slotSaveData()));
 	vepFunLayout->addWidget(savedata);
+
+	// raw data functions
+	cleardata = new QPushButton(VEPfunGroup);
+	cleardata->setText("Saving EEG Off");
+	cleardata->setStyleSheet(styleSheetButton);
+	connect(cleardata, SIGNAL(clicked()), this, SLOT(slotClearData()));
+	vepFunLayout->addWidget(cleardata);
 
 	// VEP params
 	QGroupBox   *vepCounterGroup = new QGroupBox( this );
@@ -300,17 +308,15 @@ void MainWindow::slotSetP300OddballDev(double l) {
 void MainWindow::slotSaveVEP()
 {
 	QString fileName = QFileDialog::getSaveFileName();
-	
 	if( !fileName.isNull() )
 	{
-		QFile file(fileName);
+		QFile file(fileName+".tsv");
 		
 		if( file.open(QIODevice::WriteOnly | QFile::Truncate) )
 		{
 			QTextStream out(&file);
-			
 			for(int i=0; i<vepLength; i++)
-				out << timeData[i] << "\t" << vepAveragedData[i] << "\n";
+				out << ((double)i/sampling_rate) << "\t" << vepAveragedData[i] << "\n";
 			
 			file.close();
 		}
@@ -325,6 +331,8 @@ void MainWindow::slotSaveVEP()
 	}
 }
 
+
+
 void MainWindow::slotSaveData()
 {
 	QString fileName = QFileDialog::getSaveFileName();
@@ -334,6 +342,11 @@ void MainWindow::slotSaveData()
 		rawfilename = rawfilename + ".tsv";
 		rawFileNameLabel->setText(rawfilename.c_str());
 	}
+}
+
+void MainWindow::slotClearData() {
+	rawfilename = "";
+	rawFileNameLabel->setText("");
 }
 
 
@@ -405,6 +418,7 @@ void MainWindow::slotRunVEP()
 	oddballAverage->setDisabled(vepOn);
 	savedata->setDisabled(vepOn);
 	cntSLength->setDisabled(vepOn);
+	
 }
 
 void MainWindow::slotSetVEPLength(double l)

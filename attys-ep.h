@@ -52,21 +52,6 @@ class MainWindow : public QWidget
 {
 	Q_OBJECT
     
-private slots:
-
-	// actions:
-	void slotClearVEP();
-	void slotClear(); //set parameters in .cpp to clear both graphs at once
-	void slotRunVEP();
-	void slotSetVEPLength(double l);
-	void slotSaveVEP();
-	void slotSaveData();	// to save raw data plot in file
-	void slotSelectVEPType(int idx);
-	void slotNewSweep();
-	void slotSelectNotchFreq(int);
-	void slotSetP300OddballAverage(double l);
-	void slotSetP300OddballDev(double l);
-
 protected:
 
 	// set notch frequency
@@ -170,6 +155,23 @@ private:
 	QPushButton *saveVEP;
 	QPushButton *savedata;
 	QwtCounter *cntSLength;
+	QPushButton* cleardata;
+	private slots:
+
+	// actions:
+	void slotClearVEP();
+	void slotClear(); //set parameters in .cpp to clear both graphs at once
+	void slotRunVEP();
+	void slotSetVEPLength(double l);
+	void slotSaveVEP();
+	void slotSaveData();	// to save raw data plot in file
+	void slotClearData();	// to clear raw data plot in filename
+	void slotSelectVEPType(int idx);
+	void slotNewSweep();
+	void slotSelectNotchFreq(int);
+	void slotSetP300OddballAverage(double l);
+	void slotSetP300OddballDev(double l);
+
 };
 
 #endif
