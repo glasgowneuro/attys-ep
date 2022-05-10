@@ -1,6 +1,6 @@
 /***************************************************************************
- *   Copyright (C) 2003 by Matthias H. Hennig                              *
- *   hennig@cn.stir.ac.uk                                                  *
+ *   Copyright (C) 2003 by Matthias H. Hennig, hennig@cn.stir.ac.uk        *
+ *                 2023 by Bernd Porr, mail@berndporr.me.uk                *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -18,11 +18,11 @@ VEPPlot::VEPPlot(double *xData, double *yData, int length, QWidget *parent) :
     yData(yData)
 {
   // Assign a title
-  setTitle("VEP");
+  setTitle("EP");
   setAxisTitle(QwtPlot::xBottom, "Time/ms");
-  setAxisTitle(QwtPlot::yLeft, "VEP/V");
+  setAxisTitle(QwtPlot::yLeft, "EP/V");
 
-  dataCurve = new QwtPlotCurve("VEP");
+  dataCurve = new QwtPlotCurve("EP");
   dataCurve->setRawSamples(xData, yData, length);
   dataCurve->attach(this);
   dataCurve->setPen( QPen(Qt::cyan, 2) );

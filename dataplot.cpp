@@ -25,8 +25,6 @@ DataPlot::DataPlot(double *xData, double *yData, int length,
   setSizePolicy ( QSizePolicy(QSizePolicy::Minimum,
 			      QSizePolicy::Fixed ) );
 
-  // setAxisAutoScale(QwtPlot::yLeft,true);
-
   // Insert new curve for raw data
   dataCurve = new QwtPlotCurve("Raw Data");
   dataCurve->setPen( QPen(Qt::yellow, 2) );
