@@ -1,8 +1,7 @@
 /***************************************************************************
- *   Copyright (C) 2003 by Matthias H. Hennig                              *
- *   hennig@cn.stir.ac.uk                                                  *
- *   Copyright (C) 2005-2022 by Bernd Porr                                 *
- *   mail@berndporr.me.uk                                                  *
+ *   Copyright (C) 2003 by Matthias H. Hennig, hennig@cn.stir.ac.uk        *
+ *   Copyright (C) 2005-2022 by Bernd Porr, mail@berndporr.me.uk           *
+ *   Copyright (C) 2022 by Lucía Muñoz Bohollo                             *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
  *   the Free Software Foundation; either version 2 of the License, or     *
@@ -130,13 +129,6 @@ MainWindow::MainWindow( QWidget *parent ) :
 	vepFunLayout->addWidget(beepCheckBox);
 	beepCheckBox->setEnabled(audiobeep->isOK());
 
-	clearVEP = new QPushButton(VEPfunGroup);
-	clearVEP->setText("Clear EP");
-	clearVEP->setStyleSheet(styleSheetButton);
-	vepFunLayout->addWidget(clearVEP);
-	connect(clearVEP, SIGNAL(clicked()), SLOT(slotClearVEP()));
-	connect(clearVEP, SIGNAL(clicked()), SLOT(slotClear()));
-	
 	saveVEP = new QPushButton(VEPfunGroup);
 	saveVEP->setText("Save EP");
 	saveVEP->setStyleSheet(styleSheetButton);
@@ -212,8 +204,17 @@ MainWindow::MainWindow( QWidget *parent ) :
 	vepCounterLayout->addWidget(oddballDev);
 	connect(oddballDev, 
 		SIGNAL(valueChanged(double)), 
-		SLOT(slotSetP300OddballDev(double)));	
+		SLOT(slotSetP300OddballDev(double)));
 
+	controlLayout->addWidget(new QLabel());
+
+	clearVEP = new QPushButton();
+	clearVEP->setText("Clear EP");
+	clearVEP->setStyleSheet(styleSheetButton);
+	controlLayout->addWidget(clearVEP);
+	connect(clearVEP, SIGNAL(clicked()), SLOT(slotClearVEP()));
+	connect(clearVEP, SIGNAL(clicked()), SLOT(slotClear()));
+	
 	vepStimulus = new Stimulus(this);
 	vepStimulus->setMinimumSize(300,300);
 	vepStimulus->show();
