@@ -5,9 +5,8 @@ for Windows/Linux
 
 ![alt tag](screenshot.png)
 
-attys-ep performs averaging over repetitive stimuli. It
-works on continous data such as visually evoked potentials and
-also on discrete events such as spikes.
+attys-ep performs averaging over repetitive stimuli: visually
+evoked potentials and P300.
 
 # Installation
 
