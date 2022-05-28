@@ -80,7 +80,7 @@ INCLUDEPATH += /qwt-6.1.3/src
 SOURCES = \
     vepplot.cpp \
     dataplot.cpp \
-    main.cpp \
+    mainwindow.cpp \
     attys-ep.cpp \
     stim.cpp \
     audiobeep.cpp
@@ -90,7 +90,8 @@ HEADERS = \
     vepplot.h \
     dataplot.h \
     stim.h \
-    audiobeep.h
+    audiobeep.h \
+    mainwindow.h
 
 Debug:CONFIG		+= qt debug c++11
 Release:CONFIG		+= qt release c++11
@@ -99,5 +100,7 @@ QT   	+= widgets
 QT		+= multimedia
 
 RESOURCES     = application.qrc
+
+DEFINES += QWT_DLL
 
 }

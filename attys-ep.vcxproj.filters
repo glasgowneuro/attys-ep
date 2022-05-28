@@ -46,7 +46,7 @@
     <ClCompile Include="dataplot.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="mainwindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="stim.cpp">
@@ -66,6 +66,9 @@
     <ClInclude Include="dataplot.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <CustomBuild Include="mainwindow.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
     <CustomBuild Include="stim.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
@@ -78,6 +81,9 @@
       <Filter>Generated Files</Filter>
     </ClCompile>
     <ClCompile Include="moc\moc_audiobeep.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="moc\moc_mainwindow.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
     <CustomBuild Include="moc\moc_predefs.h.cbt">
