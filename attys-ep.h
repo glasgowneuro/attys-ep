@@ -55,7 +55,7 @@
 #define styleSheetRecButtonOn "background-color: red; border: none; outline: none; border-width: 1px; font: 16px; padding: 5px; color: white;"
 #define styleSheetRecButtonOff "background-color: grey; border: none; outline: none; border-width: 1px; font: 16px; padding: 5px; color: white;"
 
-class MainWindow : public QWidget
+class Attys_ep : public QWidget
 {
 	Q_OBJECT
     
@@ -70,9 +70,9 @@ protected:
 	// implements the callback via this interface
 	struct AttysCallback : AttysCommListener {
 		// pointer to an instance of the parent class
-		MainWindow* mainwindow;
+		Attys_ep* mainwindow;
 		// new constructor
-		AttysCallback(MainWindow* _mainwindow) { mainwindow = _mainwindow; };
+		AttysCallback(Attys_ep* _mainwindow) { mainwindow = _mainwindow; };
 		// is called from the Attys whenever a sample has arrived
 		virtual void hasSample(double ts,float *data) {
 			mainwindow->hasData(ts,data);
@@ -94,8 +94,8 @@ signals:
 
 public:
 
-	MainWindow( QWidget *parent=0 );
-	~MainWindow();
+	Attys_ep( QWidget *parent=0 );
+	~Attys_ep();
   
 private:
 	AudioBeep* audiobeep;	// pointer to the audiobeep class

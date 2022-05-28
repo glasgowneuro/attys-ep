@@ -11,9 +11,45 @@
 #include "attys-ep.h"
 #include "AttysComm.h"
 #include "AttysScan.h"
+#include "mainwindow.h"
 
 #include <QApplication>
 #include <QSplashScreen>
+#include <QDesktopServices>
+#include <QUrl>
+#include <QFile>
+#include <QMenu>
+#include <QAction>
+#include <QMenuBar>
+
+
+MainWindow::MainWindow()
+	: attys_ep(new Attys_ep(this))
+{
+	setCentralWidget(attys_ep);
+
+	setStyleSheet("background-color:rgb(64,64,64);color: white;");
+	setAutoFillBackground( true );
+
+        setAutoFillBackground(true);
+
+	QMenu *attysEpMenu = menuBar()->addMenu(tr("&attys-ep"));
+	QAction *quitAct = new QAction(tr("&Exit"), this);
+	attysEpMenu->addAction(quitAct);
+	connect(quitAct,&QAction::triggered,attys_ep,&QCoreApplication::quit);
+	
+	QMenu *helpMenu = menuBar()->addMenu(tr("&Help"));
+	QAction *runGithub = new QAction(tr("&github"), this);
+	helpMenu->addAction(runGithub);
+	connect(runGithub,&QAction::triggered,this,&MainWindow::slotGithub);
+}
+
+void MainWindow::slotGithub() {
+	QDesktopServices::openUrl(QUrl("https://github.com/glasgowneuro/attys-ep")); 
+}
+
+
+
 
 int main(int argc, char **argv)
 {

@@ -23,7 +23,7 @@
 #include "AttysComm.h"
 #include "AttysScan.h"
 
-MainWindow::MainWindow( QWidget *parent ) :
+Attys_ep::Attys_ep( QWidget *parent ) :
 	QWidget(parent),
 	vepOn(false),
 	time(0) {
@@ -52,9 +52,6 @@ MainWindow::MainWindow( QWidget *parent ) :
 	iirhp.setup (sampling_rate, 0.5);
 
 	initData();
-
-	setStyleSheet("background-color:rgb(64,64,64);color: white;");
-	setAutoFillBackground( true );
 
 	QHBoxLayout *mainLayout = new QHBoxLayout( this );
 
@@ -240,7 +237,7 @@ MainWindow::MainWindow( QWidget *parent ) :
 	attysScan.getAttysComm(0)->start();
 }
 
-MainWindow::~MainWindow()
+Attys_ep::~Attys_ep()
 {
 	sweepTimer->stop();
 	attysScan.getAttysComm(0)->unregisterCallback();
@@ -254,7 +251,7 @@ MainWindow::~MainWindow()
 	}
 }
 
-void MainWindow::initData() {
+void Attys_ep::initData() {
 	//  Initialize data for plots
 	for(int i=0; i<MAX_VEP_LENGTH; i++)
 	{
@@ -267,12 +264,12 @@ void MainWindow::initData() {
 }
 
 
-void MainWindow::setNotch(double f) {
+void Attys_ep::setNotch(double f) {
 	iirnotch.setup(sampling_rate, f, NOTCH_BW);
 }
 
 
-void MainWindow::slotSelectNotchFreq(int f) {
+void Attys_ep::slotSelectNotchFreq(int f) {
 	switch (f) {
 	case 0:
 		setNotch(50);
@@ -284,14 +281,14 @@ void MainWindow::slotSelectNotchFreq(int f) {
 }
 
 
-void MainWindow::slotSetP300OddballAverage(double l) {
+void Attys_ep::slotSetP300OddballAverage(double l) {
 	auto d = oddballDev->value();
 	if (d > (l/2)) {
 		oddballDev->setValue(floor(l/2));
 	}
 }
 
-void MainWindow::slotSetP300OddballDev(double l) {
+void Attys_ep::slotSetP300OddballDev(double l) {
 	auto a = oddballAverage->value();
 	if (l > (a/2)) {
 		oddballDev->setValue(floor(a/2));
@@ -300,7 +297,7 @@ void MainWindow::slotSetP300OddballDev(double l) {
 
 
 
-void MainWindow::slotSaveVEP()
+void Attys_ep::slotSaveVEP()
 {
 	QString fileName = QFileDialog::getSaveFileName();
 	if( !fileName.isNull() )
@@ -335,7 +332,7 @@ void MainWindow::slotSaveVEP()
 
 
 
-void MainWindow::slotSaveData()
+void Attys_ep::slotSaveData()
 {
 	QString fileName = QFileDialog::getSaveFileName();
 	if( !fileName.isNull() )
@@ -351,13 +348,13 @@ void MainWindow::slotSaveData()
 	}
 }
 
-void MainWindow::slotClearData() {
+void Attys_ep::slotClearData() {
 	rawfilename = "";
 	rawFileNameLabel->setText("");
 }
 
 
-void MainWindow::slotClearVEP()  // to clear data from VEP graph
+void Attys_ep::slotClearVEP()  // to clear data from VEP graph
 {
 	time = 0;
 	trialIndex = vepLength;
@@ -366,7 +363,7 @@ void MainWindow::slotClearVEP()  // to clear data from VEP graph
 	vepPlot->replot();
 }
 
-void MainWindow::slotClear()	// to clear data from both graphs
+void Attys_ep::slotClear()	// to clear data from both graphs
 {
 	time = 0;
 	trialIndex = vepLength;
@@ -377,7 +374,7 @@ void MainWindow::slotClear()	// to clear data from both graphs
 	
 }
 
-void MainWindow::slotRunVEP()
+void Attys_ep::slotRunVEP()
 {
 	// toggle VEP recording
 	if(!vepOn)
@@ -431,7 +428,7 @@ void MainWindow::slotRunVEP()
 	
 }
 
-void MainWindow::slotSetVEPLength(double l)
+void Attys_ep::slotSetVEPLength(double l)
 {
 	vepLength = (int)(l / (1000.0 / sampling_rate));
 	if (vepLength > MAX_VEP_LENGTH) vepLength = MAX_VEP_LENGTH;
@@ -445,7 +442,7 @@ void MainWindow::slotSetVEPLength(double l)
 	vepPlot->replot();
 }
 
-void MainWindow::slotSelectVEPType(int idx)
+void Attys_ep::slotSelectVEPType(int idx)
 {
 	mode = (Mode)idx;
 	oddballAverage->setEnabled(mode == P300);
@@ -453,7 +450,7 @@ void MainWindow::slotSelectVEPType(int idx)
 }
 
 
-void MainWindow::slotNewSweep() {
+void Attys_ep::slotNewSweep() {
 	if (vepOn) {
 		bool oddball = false;
 		switch (mode) {
@@ -479,13 +476,13 @@ void MainWindow::slotNewSweep() {
 	}
 }
 
-void MainWindow::timerEvent(QTimerEvent *) {
+void Attys_ep::timerEvent(QTimerEvent *) {
 	repaint();
 	RawDataPlot->replot();
 }
 
 
-void MainWindow::hasData(double,float *sample)
+void Attys_ep::hasData(double,float *sample)
 {
 	// we take the 1st channel
 	float yNew = sample[AttysComm::INDEX_Analogue_channel_1];

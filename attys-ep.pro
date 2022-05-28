@@ -17,7 +17,7 @@ TMAKE_CXXFLAGS += -fno-exceptions
 SOURCES = \
     vepplot.cpp \
     dataplot.cpp \
-    main.cpp \
+    mainwindow.cpp \
     attys-ep.cpp \
     stim.cpp \
     audiobeep.cpp
@@ -27,7 +27,8 @@ HEADERS = \
     vepplot.h \
     dataplot.h \
     stim.h \
-    audiobeep.h
+    audiobeep.h \
+    mainwindow.h
 
 CONFIG		+= qt release c++11
 
