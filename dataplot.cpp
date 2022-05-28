@@ -42,7 +42,7 @@ void DataPlot::setVEPLength(int length)
 }
 
 void DataPlot::setNewData(double yNew) {
-    memmove( yData, yData+1, (psthLength - 1) * sizeof(yData[0]) );
+    memmove( yData, yData+1, ((long)psthLength - 1) * sizeof(yData[0]) );
     yData[psthLength-1] = yNew;
     if (yNew>max) {
 	    max = yNew;

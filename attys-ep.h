@@ -105,6 +105,9 @@ private:
 
 	FILE* rawfile = NULL;
 	std::string rawfilename;
+
+	const QString filefilters = QString(tr("tab separated values (*.tsv)"));
+
 	bool sweepStartFlag = false;
 
 	// show the raw serai data here
@@ -138,6 +141,9 @@ private:
   
 	// time counter
 	long int time = 0;
+
+	// bluetooth latency
+	double bluetoothLatencyMS = 90;
 
 	enum Mode {VEP=0, P300=1};
 

@@ -222,7 +222,7 @@ void Attys_ep::initData() {
 	{
 		xData[i] = i/(double)sampling_rate*1000;
 		yData[i] = 0;
-		timeData[i] = i/(double)sampling_rate*1000;
+		timeData[i] = i/(double)sampling_rate*1000 - bluetoothLatencyMS;
 		vepSummedUpData[i] = 0;
 		vepAveragedData[i] = 0;
 	}
@@ -264,9 +264,14 @@ void Attys_ep::slotSetP300OddballDev(double l) {
 
 void Attys_ep::slotSaveVEP()
 {
-	QString fileName = QFileDialog::getSaveFileName();
-	if( !fileName.isNull() )
+	QFileDialog dialog(this);
+	dialog.setFileMode(QFileDialog::AnyFile);
+	dialog.setNameFilter(filefilters);
+	dialog.setViewMode(QFileDialog::Detail);
+	dialog.setAcceptMode(QFileDialog::AcceptMode::AcceptSave);
+	if( dialog.exec() )
 	{
+		QString fileName = dialog.selectedFiles()[0];
 		const char suffix[] = ".tsv";
 		QFileInfo fileinfo(fileName);
 		QFile file;
@@ -279,8 +284,9 @@ void Attys_ep::slotSaveVEP()
 		if( file.open(QIODevice::WriteOnly | QFile::Truncate) )
 		{
 			QTextStream out(&file);
+			out.setRealNumberPrecision(13);
 			for(int i=0; i<vepLength; i++)
-				out << ((double)i/sampling_rate) << "\t" << vepAveragedData[i] << "\n";
+				out << timeData[i] << "\t" << vepAveragedData[i] << "\n";
 			
 			file.close();
 		}
@@ -300,10 +306,14 @@ void Attys_ep::slotSaveVEP()
 void Attys_ep::slotSaveData()
 {
 	if (NULL != rawfile) return;
-	QString fileName = QFileDialog::getSaveFileName();
-	if( !fileName.isNull() )
-	{
+	QFileDialog dialog(this);
+	dialog.setFileMode(QFileDialog::AnyFile);
+	dialog.setNameFilter(filefilters);
+	dialog.setViewMode(QFileDialog::Detail);
+	dialog.setAcceptMode(QFileDialog::AcceptMode::AcceptSave);
+	if (dialog.exec()) {
 		const char suffix[] = ".tsv";
+		QString fileName = dialog.selectedFiles()[0];
 		QFileInfo fileinfo(fileName);
 		if (fileinfo.completeSuffix().isEmpty()) {
 			rawfilename = fileName.toStdString() + suffix;;

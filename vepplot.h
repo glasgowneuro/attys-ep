@@ -20,30 +20,30 @@
 */
 class VEPPlot : public QwtPlot
 {
-  ///pointer to the curve widget
-  QwtPlotCurve *dataCurve;
+	///pointer to the curve widget
+	QwtPlotCurve* dataCurve = {};
 
-  // pointer to the x and y data
-  double *xData, *yData;
-  
-  ///timer id
-  int currtimer;
+	// pointer to the x and y data
+	double* xData = {}, * yData = {};
 
-  double max,min;
-  int updateCtr;
+	///timer id
+	int currtimer = 0;
 
-  int nDatapoints;
+	double max = 0, min = 0;
+	int updateCtr = 0;
+
+	int nDatapoints = 0;
 
 protected:
-  // replot the data regularly
-  virtual void timerEvent(QTimerEvent *e);
+	// replot the data regularly
+	virtual void timerEvent(QTimerEvent* e);
 
 public:
-  VEPPlot(double *xData, double *yData, int length, QWidget *parent = 0);
-  void setVEPLength(int length);
-  void startDisplay();
-  void stopDisplay();
-  void setYaxisLabel(const QString &label) { setAxisTitle(QwtPlot::yLeft, label); }
+	VEPPlot(double* xData, double* yData, int length, QWidget* parent = 0);
+	void setVEPLength(int length);
+	void startDisplay();
+	void stopDisplay();
+	void setYaxisLabel(const QString& label) { setAxisTitle(QwtPlot::yLeft, label); }
 };
 
 #endif

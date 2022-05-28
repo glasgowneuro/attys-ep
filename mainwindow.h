@@ -9,8 +9,10 @@ class MainWindow;
 const char stylesheet[] = "background-color:rgb(64,64,64);color: white;";
 
 const char menuStylesheet[] =
+"QMenuBar::item{ background-color: rgb(64, 64, 64); color: white; }"
+"QMenuBar::item::selected{ background: rgb(0, 128, 128); white; }"
 "QMenu::item{ background-color: rgb(64, 64, 64); color: white; }"
-"QMenu::item:selected{ background-color: rgb(0, 64, 64); white; }";
+"QMenu::item::selected{ background-color: rgb(0, 128, 128); white; }";
 
 class MainWindow : public QMainWindow
 {
