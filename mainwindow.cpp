@@ -1,6 +1,6 @@
 /***************************************************************************
  *   Copyright (C) 2003 by Matthias H. Hennig                              *
- *             (C) 2013-2020 by Bernd Porr                                 *
+ *             (C) 2013-2022 by Bernd Porr                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -28,8 +28,10 @@ MainWindow::MainWindow()
 {
 	setCentralWidget(attys_ep);
 
-	setStyleSheet("background-color:rgb(64,64,64);color: white;");
+	setStyleSheet(stylesheet);
 	setAutoFillBackground( true );
+
+	menuBar()->setStyleSheet(menuStylesheet);
 
 	QMenu *attysEpMenu = menuBar()->addMenu(tr("&attys-ep"));
 	QAction *quitAct = new QAction(tr("&Exit"), this);
@@ -41,11 +43,11 @@ MainWindow::MainWindow()
 	connect(saveEpAct,&QAction::triggered,attys_ep,&Attys_ep::slotSaveVEP);
 	epMenu->addAction(saveEpAct);
 	
-	QMenu *eegMenu = menuBar()->addMenu(tr("&EEG rec"));
-	QAction *enableRecordEEGAct = new QAction(tr("&Enable continous EP recording"), this);
+	QMenu *eegMenu = menuBar()->addMenu(tr("&Rec"));
+	enableRecordEEGAct = new QAction(tr("&Enable continous EP recording"), this);
 	eegMenu->addAction(enableRecordEEGAct);
 	connect(enableRecordEEGAct,&QAction::triggered,attys_ep,&Attys_ep::slotSaveData);
-	QAction *disableRecordEEGAct = new QAction(tr("&Disable continous EP recording"), this);
+	disableRecordEEGAct = new QAction(tr("&Disable continous EP recording"), this);
 	eegMenu->addAction(disableRecordEEGAct);
 	connect(disableRecordEEGAct,&QAction::triggered,attys_ep,&Attys_ep::slotClearData);
 	

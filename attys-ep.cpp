@@ -23,12 +23,10 @@
 #include "AttysComm.h"
 #include "AttysScan.h"
 
-Attys_ep::Attys_ep( QWidget *parent ) :
+Attys_ep::Attys_ep( MainWindow *parent ) :
 	QWidget(parent),
-	vepOn(false),
-	time(0) {
-
-	audiobeep = new AudioBeep(this,0.5,1000,1);	// uses default parameters set in audiobeep.h
+	audiobeep(new AudioBeep(this,0.5,1000,1)),
+	mainWindow(parent) {
 
 	if (strstr(attysScan.getAttysComm(0)->getAttysName(),"ATTYS2")) {
 		attysScan.getAttysComm(0)->setAdc_samplingrate_index(AttysComm::ADC_RATE_500HZ);
@@ -393,7 +391,8 @@ void Attys_ep::slotRunVEP()
 	oddballDev->setDisabled(vepOn);
 	oddballAverage->setDisabled(vepOn);
 	cntSLength->setDisabled(vepOn);
-	
+	mainWindow->enableRecordEEGAct->setDisabled(vepOn);
+	mainWindow->disableRecordEEGAct->setDisabled(vepOn);
 }
 
 void Attys_ep::slotSetVEPLength(double l)

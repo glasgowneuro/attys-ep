@@ -9,6 +9,7 @@
  *   the Free Software Foundation; either version 2 of the License, or     *
  *   (at your option) any later version.                                   *
  ***************************************************************************/
+class Attys_ep;
 
 #ifndef ATTYS_EP
 #define ATTYS_EP
@@ -19,6 +20,7 @@
 #include <QCheckBox>
 #include <QComboBox>
 #include <QLabel>
+#include <QAction>
 
 #include "AttysComm.h"
 #include <qwt_counter.h>
@@ -26,6 +28,7 @@
 
 #include "vepplot.h"
 #include "dataplot.h"
+#include "mainwindow.h"
 #include "stim.h"
 #include <Iir.h>
 
@@ -94,7 +97,7 @@ signals:
 
 public:
 
-	Attys_ep( QWidget *parent=0 );
+	Attys_ep( MainWindow *parent=0 );
 	~Attys_ep();
   
 private:
@@ -114,27 +117,27 @@ private:
 	int vepLength;
 
 	// sampling rate
-	double sampling_rate;
+	double sampling_rate = 250;
 
 	// sample index within one sweep
-	int trialIndex;
+	int trialIndex = 0;
 
 	// bool, activate/deactivate the vep plot
-	bool vepOn;
+	bool vepOn = false;
 
 	// count trials while recording
-	int vepActTrial;
+	int vepActTrial = 0;
   
 	// data
-	double xData[MAX_VEP_LENGTH], yData[MAX_VEP_LENGTH];
+	double xData[MAX_VEP_LENGTH] = {}, yData[MAX_VEP_LENGTH] = {};
   
 	// VEP
-	double timeData[MAX_VEP_LENGTH];
-	double vepSummedUpData[MAX_VEP_LENGTH];
-	double vepAveragedData[MAX_VEP_LENGTH];
+	double timeData[MAX_VEP_LENGTH] = {};
+	double vepSummedUpData[MAX_VEP_LENGTH] = {};
+	double vepAveragedData[MAX_VEP_LENGTH] = {};
   
 	// time counter
-	long int time;
+	long int time = 0;
 
 	enum Mode {VEP=0, P300=1};
 
@@ -161,6 +164,8 @@ private:
 	QPushButton *clearVEP;
 	QwtCounter *cntSLength;
 	QPushButton* cleardata;
+
+	const MainWindow* mainWindow;
 
 public:
 
