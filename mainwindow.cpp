@@ -31,12 +31,23 @@ MainWindow::MainWindow()
 	setStyleSheet("background-color:rgb(64,64,64);color: white;");
 	setAutoFillBackground( true );
 
-        setAutoFillBackground(true);
-
 	QMenu *attysEpMenu = menuBar()->addMenu(tr("&attys-ep"));
 	QAction *quitAct = new QAction(tr("&Exit"), this);
 	attysEpMenu->addAction(quitAct);
 	connect(quitAct,&QAction::triggered,attys_ep,&QCoreApplication::quit);
+
+	QMenu *epMenu = menuBar()->addMenu(tr("&EP"));
+	QAction *saveEpAct = new QAction(tr("&Save current EP"), this);
+	connect(saveEpAct,&QAction::triggered,attys_ep,&Attys_ep::slotSaveVEP);
+	epMenu->addAction(saveEpAct);
+	
+	QMenu *eegMenu = menuBar()->addMenu(tr("&EEG rec"));
+	QAction *enableRecordEEGAct = new QAction(tr("&Enable continous EP recording"), this);
+	eegMenu->addAction(enableRecordEEGAct);
+	connect(enableRecordEEGAct,&QAction::triggered,attys_ep,&Attys_ep::slotSaveData);
+	QAction *disableRecordEEGAct = new QAction(tr("&Disable continous EP recording"), this);
+	eegMenu->addAction(disableRecordEEGAct);
+	connect(disableRecordEEGAct,&QAction::triggered,attys_ep,&Attys_ep::slotClearData);
 	
 	QMenu *helpMenu = menuBar()->addMenu(tr("&Help"));
 	QAction *runGithub = new QAction(tr("&github"), this);

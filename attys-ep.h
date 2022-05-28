@@ -159,12 +159,10 @@ private:
 	QTimer *sweepTimer;
   	QCheckBox* beepCheckBox;
 	QPushButton *clearVEP;
-	QPushButton *saveVEP;
-	QPushButton *savedata;
 	QwtCounter *cntSLength;
 	QPushButton* cleardata;
 
-	private slots:
+public:
 
 	// actions:
 	void slotClearVEP();

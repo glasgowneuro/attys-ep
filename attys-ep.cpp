@@ -104,7 +104,7 @@ Attys_ep::Attys_ep( QWidget *parent ) :
 	vpChoices->addItem(tr("VEP"));
 	vpChoices->addItem(tr("P300"));
 	vepFunLayout->addWidget(vpChoices);
-	connect( vpChoices, SIGNAL(currentIndexChanged(int)), SLOT(slotSelectVEPType(int)) );
+	connect( vpChoices, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &Attys_ep::slotSelectVEPType);
 
 	vepFunLayout->addWidget(new QLabel());
 	notchFreq = new QComboBox(VEPfunGroup);
@@ -112,7 +112,7 @@ Attys_ep::Attys_ep( QWidget *parent ) :
         notchFreq->addItem(tr("50Hz bandstop"));
         notchFreq->addItem(tr("60Hz bandstop"));
         vepFunLayout->addWidget(notchFreq);
-        connect(  notchFreq, SIGNAL(currentIndexChanged(int)), SLOT(slotSelectNotchFreq(int)) );
+        connect(  notchFreq, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &Attys_ep::slotSelectNotchFreq);
 
 	vepFunLayout->addWidget(new QLabel());
 	runVEP = new QPushButton(VEPfunGroup);
@@ -120,36 +120,12 @@ Attys_ep::Attys_ep( QWidget *parent ) :
 	runVEP->setText("EP start/stop");
 	runVEP->setCheckable(true);
 	vepFunLayout->addWidget(runVEP);
-	connect(runVEP, SIGNAL(clicked()), SLOT(slotRunVEP()));
+	connect(runVEP, &QPushButton::clicked, this, &Attys_ep::slotRunVEP);
 
 	beepCheckBox = new QCheckBox("Play start/stop sound");
 	vepFunLayout->addWidget(beepCheckBox);
 	beepCheckBox->setEnabled(audiobeep->isOK());
-
-	saveVEP = new QPushButton(VEPfunGroup);
-	saveVEP->setText("Save EP");
-	saveVEP->setStyleSheet(styleSheetButton);
-	vepFunLayout->addWidget(saveVEP);
-	connect(saveVEP, SIGNAL(clicked()), SLOT(slotSaveVEP()));
-	int inpWidth = saveVEP->width()*3/2;
-
-	vepFunLayout->addWidget(new QLabel());
-	vepFunLayout->addWidget(new QLabel("Raw EEG data:"));
-
-	// raw data functions
-	savedata = new QPushButton(VEPfunGroup);
-	savedata->setText("Saving EEG On");
-	savedata->setStyleSheet(styleSheetButton);
-	connect(savedata, SIGNAL(clicked()), this, SLOT(slotSaveData()));
-	vepFunLayout->addWidget(savedata);
-
-	// raw data functions
-	cleardata = new QPushButton(VEPfunGroup);
-	cleardata->setText("Saving EEG Off");
-	cleardata->setStyleSheet(styleSheetButton);
-	connect(cleardata, SIGNAL(clicked()), this, SLOT(slotClearData()));
-	vepFunLayout->addWidget(cleardata);
-
+	
 	// VEP params
 	QGroupBox   *vepCounterGroup = new QGroupBox( this );
 	vepCounterGroup->setStyleSheet(styleSheetGroupBox);
@@ -169,11 +145,8 @@ Attys_ep::Attys_ep( QWidget *parent ) :
   	cntSLength->setIncSteps(QwtCounter::Button1, 10000);
 	cntSLength->setRange(1, MAX_VEP_LENGTH);
 	cntSLength->setValue(DEFAULT_SWEEP_LENGTH);
-	cntSLength->setMaximumWidth(inpWidth);
 	vepCounterLayout->addWidget(cntSLength);
-	connect(cntSLength, 
-		SIGNAL(valueChanged(double)), 
-		SLOT(slotSetVEPLength(double)));
+	connect(cntSLength, &QwtCounter::valueChanged, this, &Attys_ep::slotSetVEPLength);
 	
 	vepCounterLayout->addWidget(new QLabel());
 
@@ -183,11 +156,8 @@ Attys_ep::Attys_ep( QWidget *parent ) :
   	oddballAverage->setIncSteps(QwtCounter::Button1, 1000);
 	oddballAverage->setRange(5, MAX_ODDBALL_AVERAGE);
 	oddballAverage->setValue(DEFAULT_ODDBALL_AVERAGE);
-	oddballAverage->setMaximumWidth(inpWidth);
 	vepCounterLayout->addWidget(oddballAverage);
-	connect(oddballAverage, 
-		SIGNAL(valueChanged(double)), 
-		SLOT(slotSetP300OddballAverage(double)));	
+	connect(oddballAverage,&QwtCounter::valueChanged,this, &Attys_ep::slotSetP300OddballAverage);
 
 	vepCounterLayout->addWidget(new QLabel());
 
@@ -197,11 +167,8 @@ Attys_ep::Attys_ep( QWidget *parent ) :
   	oddballDev->setIncSteps(QwtCounter::Button1, 1000);
 	oddballDev->setRange(2, MAX_ODDBALL_DEV);
 	oddballDev->setValue(DEFAULT_ODDBALL_DEV);
-	oddballDev->setMaximumWidth(inpWidth);
 	vepCounterLayout->addWidget(oddballDev);
-	connect(oddballDev, 
-		SIGNAL(valueChanged(double)), 
-		SLOT(slotSetP300OddballDev(double)));
+	connect(oddballDev, &QwtCounter::valueChanged, this, &Attys_ep::slotSetP300OddballDev);
 
 	controlLayout->addWidget(new QLabel());
 
@@ -209,16 +176,16 @@ Attys_ep::Attys_ep( QWidget *parent ) :
 	clearVEP->setText("Clear EP");
 	clearVEP->setStyleSheet(styleSheetButton);
 	controlLayout->addWidget(clearVEP);
-	connect(clearVEP, SIGNAL(clicked()), SLOT(slotClearVEP()));
-	connect(clearVEP, SIGNAL(clicked()), SLOT(slotClear()));
+	connect(clearVEP, &QPushButton::clicked, this,&Attys_ep::slotClearVEP);
+	connect(clearVEP, &QPushButton::clicked, this,&Attys_ep::slotClear);
 	
 	vepStimulus = new Stimulus(this);
 	vepStimulus->setMinimumSize(300,300);
 	vepStimulus->show();
 	connect ( this,
-		  SIGNAL(sweepStarted(bool)),
+		  &Attys_ep::sweepStarted,
 		  vepStimulus,
-		  SLOT(slotInvert(bool)) );
+		  &Stimulus::slotInvert);
 	
 	oddballAverage->setEnabled(mode == P300);
 	oddballDev->setEnabled(mode == P300);
@@ -229,9 +196,9 @@ Attys_ep::Attys_ep( QWidget *parent ) :
 	sweepTimer = new QTimer( this );
 	sweepTimer->setTimerType(Qt::PreciseTimer);
         connect( sweepTimer, 
-                 SIGNAL(timeout()),
+                 &QTimer::timeout,
                  this, 
-                 SLOT(slotNewSweep()) );
+                 &Attys_ep::slotNewSweep );
         sweepTimer->start( DEFAULT_SWEEP_LENGTH );
 
 	attysScan.getAttysComm(0)->start();
@@ -334,6 +301,7 @@ void Attys_ep::slotSaveVEP()
 
 void Attys_ep::slotSaveData()
 {
+	if (NULL != rawfile) return;
 	QString fileName = QFileDialog::getSaveFileName();
 	if( !fileName.isNull() )
 	{
@@ -344,11 +312,12 @@ void Attys_ep::slotSaveData()
 		} else {
 			rawfilename = fileName.toStdString();
 		}
-		rawFileNameLabel->setText(rawfilename.c_str());
+		rawFileNameLabel->setText(("Ready to record: "+rawfilename).c_str());
 	}
 }
 
 void Attys_ep::slotClearData() {
+	if (NULL != rawfile) return;
 	rawfilename = "";
 	rawFileNameLabel->setText("");
 }
@@ -423,7 +392,6 @@ void Attys_ep::slotRunVEP()
 	notchFreq->setDisabled(vepOn);
 	oddballDev->setDisabled(vepOn);
 	oddballAverage->setDisabled(vepOn);
-	savedata->setDisabled(vepOn);
 	cntSLength->setDisabled(vepOn);
 	
 }
