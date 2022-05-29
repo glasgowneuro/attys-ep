@@ -37,6 +37,10 @@ class Attys_ep;
 // maximal length of the VEP (for memory alloctaion) in samples
 #define MAX_VEP_LENGTH 5000
 
+// bluetooth latency
+#define DEFAULT_BT_LATENCY 90 //ms
+#define MAX_BT_LATENCY 150 //ms
+
 // in ms
 #define DEFAULT_SWEEP_LENGTH 750
 
@@ -100,7 +104,6 @@ public:
 	Attys_ep( MainWindow *parent=0 );
 	~Attys_ep();
   
-private:
 	AudioBeep* audiobeep;	// pointer to the audiobeep class
 
 	FILE* rawfile = NULL;
@@ -130,6 +133,9 @@ private:
 
 	// count trials while recording
 	int vepActTrial = 0;
+
+	// double bt latency
+	double btLatency = DEFAULT_BT_LATENCY;
   
 	// data
 	double xData[MAX_VEP_LENGTH] = {}, yData[MAX_VEP_LENGTH] = {};
@@ -141,9 +147,6 @@ private:
   
 	// time counter
 	long int time = 0;
-
-	// bluetooth latency
-	double bluetoothLatencyMS = 90;
 
 	enum Mode {VEP=0, P300=1};
 
@@ -158,28 +161,27 @@ private:
 	// highpass
 	Iir::Butterworth::HighPass<IIRORDER> iirhp;
 
-	QComboBox *vpChoices;
-	QComboBox* notchFreq;
-	QPushButton *runVEP;
-	Stimulus *vepStimulus;
-	QLabel* rawFileNameLabel;
-	QwtCounter* oddballDev;
-	QwtCounter* oddballAverage;
-	QTimer *sweepTimer;
-  	QCheckBox* beepCheckBox;
-	QPushButton *clearVEP;
-	QwtCounter *cntSLength;
-	QPushButton* cleardata;
+	QComboBox *vpChoices = nullptr;
+	QComboBox* notchFreq = nullptr;
+	QPushButton *runVEP = nullptr;
+	Stimulus *vepStimulus = nullptr;
+	QLabel* rawFileNameLabel = nullptr;
+	QwtCounter* oddballDev = nullptr;
+	QwtCounter* oddballAverage = nullptr;
+	QTimer *sweepTimer = nullptr;
+  	QCheckBox* beepCheckBox = nullptr;
+	QPushButton *clearVEP = nullptr;
+	QwtCounter *cntSLength = nullptr;
+	QPushButton* cleardata = nullptr;
+	QwtCounter *cntBTlatency = nullptr;
 
 	const MainWindow* mainWindow;
 
-public:
-
 	// actions:
-	void slotClearVEP();
-	void slotClear(); //set parameters in .cpp to clear both graphs at once
+	void slotClear();
 	void slotRunVEP();
 	void slotSetVEPLength(double l);
+	void slotSetBTlatency(double l);
 	void slotSaveVEP();
 	void slotSaveData();	// to save raw data plot in file
 	void slotClearData();	// to clear raw data plot in filename

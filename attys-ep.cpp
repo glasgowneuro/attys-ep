@@ -146,6 +146,16 @@ Attys_ep::Attys_ep( MainWindow *parent ) :
 	vepCounterLayout->addWidget(cntSLength);
 	connect(cntSLength, &QwtCounter::valueChanged, this, &Attys_ep::slotSetVEPLength);
 	
+	vepCounterLayout->addWidget(new QLabel("Bluetooth latency", vepCounterGroup));
+
+	cntBTlatency = new QwtCounter(vepCounterGroup);
+	cntBTlatency->setNumButtons(1);
+  	cntBTlatency->setIncSteps(QwtCounter::Button1, 1000);
+	cntBTlatency->setRange(0, MAX_BT_LATENCY);
+	cntBTlatency->setValue(DEFAULT_BT_LATENCY);
+	vepCounterLayout->addWidget(cntBTlatency);
+	connect(cntBTlatency, &QwtCounter::valueChanged, this, &Attys_ep::slotSetBTlatency);
+	
 	vepCounterLayout->addWidget(new QLabel());
 
 	vepCounterLayout->addWidget(new QLabel("Avg oddball interval", vepCounterGroup));
@@ -156,8 +166,6 @@ Attys_ep::Attys_ep( MainWindow *parent ) :
 	oddballAverage->setValue(DEFAULT_ODDBALL_AVERAGE);
 	vepCounterLayout->addWidget(oddballAverage);
 	connect(oddballAverage,&QwtCounter::valueChanged,this, &Attys_ep::slotSetP300OddballAverage);
-
-	vepCounterLayout->addWidget(new QLabel());
 
 	vepCounterLayout->addWidget(new QLabel("Oddball +/- deviation", vepCounterGroup));
 	oddballDev = new QwtCounter(vepCounterGroup);
@@ -174,7 +182,6 @@ Attys_ep::Attys_ep( MainWindow *parent ) :
 	clearVEP->setText("Clear EP");
 	clearVEP->setStyleSheet(styleSheetButton);
 	controlLayout->addWidget(clearVEP);
-	connect(clearVEP, &QPushButton::clicked, this,&Attys_ep::slotClearVEP);
 	connect(clearVEP, &QPushButton::clicked, this,&Attys_ep::slotClear);
 	
 	vepStimulus = new Stimulus(this);
@@ -222,7 +229,7 @@ void Attys_ep::initData() {
 	{
 		xData[i] = i/(double)sampling_rate*1000;
 		yData[i] = 0;
-		timeData[i] = i/(double)sampling_rate*1000 - bluetoothLatencyMS;
+		timeData[i] = i/(double)sampling_rate*1000 - btLatency;
 		vepSummedUpData[i] = 0;
 		vepAveragedData[i] = 0;
 	}
@@ -331,15 +338,6 @@ void Attys_ep::slotClearData() {
 }
 
 
-void Attys_ep::slotClearVEP()  // to clear data from VEP graph
-{
-	time = 0;
-	trialIndex = vepLength;
-	initData();
-	vepActTrial = 0;
-	vepPlot->replot();
-}
-
 void Attys_ep::slotClear()	// to clear data from both graphs
 {
 	time = 0;
@@ -347,8 +345,7 @@ void Attys_ep::slotClear()	// to clear data from both graphs
 	initData();
 	vepActTrial = 0;
 	vepPlot->replot();
-	RawDataPlot->replot();	// to clear out raw data at same time as vep
-	
+	RawDataPlot->replot();	// to clear out raw data at same time as vep	
 }
 
 void Attys_ep::slotRunVEP()
@@ -401,6 +398,7 @@ void Attys_ep::slotRunVEP()
 	oddballDev->setDisabled(vepOn);
 	oddballAverage->setDisabled(vepOn);
 	cntSLength->setDisabled(vepOn);
+	cntBTlatency->setDisabled(vepOn);
 	mainWindow->enableRecordEEGAct->setDisabled(vepOn);
 	mainWindow->disableRecordEEGAct->setDisabled(vepOn);
 }
@@ -409,14 +407,16 @@ void Attys_ep::slotSetVEPLength(double l)
 {
 	vepLength = (int)(l / (1000.0 / sampling_rate));
 	if (vepLength > MAX_VEP_LENGTH) vepLength = MAX_VEP_LENGTH;
-	initData();
-	vepActTrial = 0;
-	time = 0;
-	trialIndex = vepLength;
 	sweepTimer->setInterval((int)l);
 	RawDataPlot->setVEPLength(vepLength);
 	vepPlot->setVEPLength(vepLength);
-	vepPlot->replot();
+	slotClear();
+}
+
+void Attys_ep::slotSetBTlatency(double l) {
+	btLatency = l;
+	vepPlot->setVEPLength(vepLength);
+	slotClear();
 }
 
 void Attys_ep::slotSelectVEPType(int idx)
@@ -431,12 +431,12 @@ void Attys_ep::slotNewSweep() {
 	if (vepOn) {
 		bool oddball = false;
 		switch (mode) {
-		case 0:
+		case VEP:
 			oddball = false;
 			trialIndex = 0;
 			sweepStartFlag = true;
 			break;
-		case 1:
+		case P300:
 			int min = (int)(oddballAverage->value()) - ((int)(oddballDev->value()));
 			int dev = (int)(oddballDev->value())*2;
 			if (oddballCtr == 0) {

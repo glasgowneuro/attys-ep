@@ -39,6 +39,9 @@ MainWindow::MainWindow()
 	connect(quitAct,&QAction::triggered,attys_ep,&QCoreApplication::quit);
 
 	QMenu *epMenu = menuBar()->addMenu(tr("&EP"));
+	QAction *showEpAct = new QAction(tr("Show stimulus"), this);
+	connect(showEpAct,&QAction::triggered,attys_ep->vepStimulus,&Stimulus::show);
+	epMenu->addAction(showEpAct);
 	QAction *saveEpAct = new QAction(tr("&Save current EP"), this);
 	connect(saveEpAct,&QAction::triggered,attys_ep,&Attys_ep::slotSaveVEP);
 	epMenu->addAction(saveEpAct);
