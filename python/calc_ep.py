@@ -93,7 +93,7 @@ def plotEP(filename):
     ax.set_title("Evoked potential")
 
 
-filename = "fake_vep_eeg_with_ldr.tsv"
+filename = "p300raw.tsv"
 if len(sys.argv) > 1:
     filename = sys.argv[1]
 else:
