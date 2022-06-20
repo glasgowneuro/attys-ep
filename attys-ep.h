@@ -31,6 +31,7 @@ class Attys_ep;
 #include "mainwindow.h"
 #include "stim.h"
 #include <Iir.h>
+#include <mutex>
 
 #include "audiobeep.h"
 
@@ -191,6 +192,7 @@ public:
 	void slotSetP300OddballAverage(double l);
 	void slotSetP300OddballDev(double l);
 
+	std::mutex rawfilemtx; 
 };
 
 #endif

@@ -312,7 +312,7 @@ void Attys_ep::slotSaveVEP()
 
 void Attys_ep::slotSaveData()
 {
-	QFileDialog dialog(this);
+	QFileDialog dialog(this,"Saving raw EEG and trigger");
 	dialog.setFileMode(QFileDialog::AnyFile);
 	dialog.setNameFilter(filefilters);
 	dialog.setViewMode(QFileDialog::Detail);
@@ -326,7 +326,7 @@ void Attys_ep::slotSaveData()
 		} else {
 			rawfilename = fileName.toStdString();
 		}
-				// save raw data - open file command
+		// save raw data - open file command
 		if (!rawfilename.empty()) {
 			if (nullptr != rawfile) {
 				fclose(rawfile);
@@ -337,6 +337,9 @@ void Attys_ep::slotSaveData()
 				rawFileNameLabel->setText(s.c_str());
 			} else {
 				rawFileNameLabel->setText(("Recording to: "+rawfilename).c_str());
+				if (beepCheckBox->checkState()) {
+					audiobeep->play();
+				}
 			}
 		}
 	}
@@ -345,10 +348,16 @@ void Attys_ep::slotSaveData()
 
 void Attys_ep::slotStopSavingData() {
 	if (nullptr == rawfile) return;
+	rawfilemtx.lock();
 	fclose(rawfile);
 	rawfile = nullptr;
+	rawfilemtx.unlock();
 	rawfilename = "";
 	rawFileNameLabel->setText("");
+	if (beepCheckBox->checkState())
+	{
+		audiobeep->play();
+	}
 }
 
 
@@ -372,10 +381,6 @@ void Attys_ep::slotRunVEP()
 		trialIndex = vepLength;
 		sweepStartFlag = false;
 		oddballCtr = (int)(oddballAverage->value());
-		if (beepCheckBox->checkState())
-		{
-			audiobeep->play();
-		}
 		runVEP->setStyleSheet(styleSheetRecButtonOn);
 	}
 	else
@@ -383,10 +388,6 @@ void Attys_ep::slotRunVEP()
 		vepOn = false;
 		vepPlot->stopDisplay();
 		vepActTrial = 0;
-		if (beepCheckBox->checkState())
-		{
-			audiobeep->play();
-		}
 		runVEP->setStyleSheet(styleSheetRecButtonOff);
 	}
 	vpChoices->setDisabled(vepOn);
@@ -461,11 +462,13 @@ void Attys_ep::hasData(double,float *sample)
 	float yNew = sample[AttysComm::INDEX_Analogue_channel_1];
 	float yNew2 = sample[AttysComm::INDEX_Analogue_channel_2];
 
+	rawfilemtx.lock();
 	if (nullptr != rawfile)
 	{
 		fprintf(rawfile,"%e\t%e\t%d\n", yNew, yNew2, (int)sweepStartFlag);
 		sweepStartFlag = false;
 	}
+	rawfilemtx.unlock();
 
 	// save data here
 
