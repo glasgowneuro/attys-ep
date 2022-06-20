@@ -47,12 +47,12 @@ MainWindow::MainWindow()
 	epMenu->addAction(saveEpAct);
 	
 	QMenu *eegMenu = menuBar()->addMenu(tr("&Rec"));
-	enableRecordEEGAct = new QAction(tr("&Enable continous EP recording"), this);
+	enableRecordEEGAct = new QAction(tr("&Start continous recording"), this);
 	eegMenu->addAction(enableRecordEEGAct);
 	connect(enableRecordEEGAct,&QAction::triggered,attys_ep,&Attys_ep::slotSaveData);
-	disableRecordEEGAct = new QAction(tr("&Disable continous EP recording"), this);
+	disableRecordEEGAct = new QAction(tr("&Stop continous recording"), this);
 	eegMenu->addAction(disableRecordEEGAct);
-	connect(disableRecordEEGAct,&QAction::triggered,attys_ep,&Attys_ep::slotClearData);
+	connect(disableRecordEEGAct,&QAction::triggered,attys_ep,&Attys_ep::slotStopSavingData);
 	
 	QMenu *helpMenu = menuBar()->addMenu(tr("&Help"));
 	QAction *runGithub = new QAction(tr("&github"), this);

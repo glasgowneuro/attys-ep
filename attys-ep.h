@@ -183,8 +183,8 @@ public:
 	void slotSetVEPLength(double l);
 	void slotSetBTlatency(double l);
 	void slotSaveVEP();
-	void slotSaveData();	// to save raw data plot in file
-	void slotClearData();	// to clear raw data plot in filename
+	void slotSaveData();
+	void slotStopSavingData();
 	void slotSelectVEPType(int idx);
 	void slotNewSweep();
 	void slotSelectNotchFreq(int);

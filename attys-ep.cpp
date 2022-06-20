@@ -217,9 +217,9 @@ Attys_ep::~Attys_ep()
 	
 	delete audiobeep;
 
-	if (rawfile != NULL) {
+	if (rawfile != nullptr) {
 		fclose(rawfile);
-		rawfile=NULL;
+		rawfile=nullptr;
 	}
 }
 
@@ -312,7 +312,6 @@ void Attys_ep::slotSaveVEP()
 
 void Attys_ep::slotSaveData()
 {
-	if (NULL != rawfile) return;
 	QFileDialog dialog(this);
 	dialog.setFileMode(QFileDialog::AnyFile);
 	dialog.setNameFilter(filefilters);
@@ -327,12 +326,27 @@ void Attys_ep::slotSaveData()
 		} else {
 			rawfilename = fileName.toStdString();
 		}
-		rawFileNameLabel->setText(("Ready to record: "+rawfilename).c_str());
+				// save raw data - open file command
+		if (!rawfilename.empty()) {
+			if (nullptr != rawfile) {
+				fclose(rawfile);
+			}
+			rawfile = fopen(rawfilename.c_str(),"wt");
+			if (rawfile == nullptr) {
+				std::string s = "!! Could not open: "+rawfilename+" !!";
+				rawFileNameLabel->setText(s.c_str());
+			} else {
+				rawFileNameLabel->setText(("Recording to: "+rawfilename).c_str());
+			}
+		}
 	}
 }
 
-void Attys_ep::slotClearData() {
-	if (NULL != rawfile) return;
+
+void Attys_ep::slotStopSavingData() {
+	if (nullptr == rawfile) return;
+	fclose(rawfile);
+	rawfile = nullptr;
 	rawfilename = "";
 	rawFileNameLabel->setText("");
 }
@@ -358,17 +372,6 @@ void Attys_ep::slotRunVEP()
 		trialIndex = vepLength;
 		sweepStartFlag = false;
 		oddballCtr = (int)(oddballAverage->value());
-		// save raw data - open file command
-		if (!rawfilename.empty()) {
-			rawfile = fopen(rawfilename.c_str(),"wt");
-			if (rawfile == NULL) {
-				std::string s = "Could not open: "+rawfilename;
-				rawFileNameLabel->setText(s.c_str());
-			} else {
-				std::string s = "RECORDING: "+rawfilename;
-				rawFileNameLabel->setText(s.c_str());
-			}
-		}
 		if (beepCheckBox->checkState())
 		{
 			audiobeep->play();
@@ -380,13 +383,6 @@ void Attys_ep::slotRunVEP()
 		vepOn = false;
 		vepPlot->stopDisplay();
 		vepActTrial = 0;
-		rawfilename = "";
-		rawFileNameLabel->setText(rawfilename.c_str());
-		// close raw data file
-		if (rawfile != NULL) {
-			fclose(rawfile);
-			rawfile=NULL;
-		}
 		if (beepCheckBox->checkState())
 		{
 			audiobeep->play();
@@ -465,7 +461,7 @@ void Attys_ep::hasData(double,float *sample)
 	float yNew = sample[AttysComm::INDEX_Analogue_channel_1];
 	float yNew2 = sample[AttysComm::INDEX_Analogue_channel_2];
 
-	if (NULL != rawfile)
+	if (nullptr != rawfile)
 	{
 		fprintf(rawfile,"%e\t%e\t%d\n", yNew, yNew2, (int)sweepStartFlag);
 		sweepStartFlag = false;
