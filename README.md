@@ -8,6 +8,11 @@ for Windows/Linux
 attys-ep performs averaging over repetitive stimuli: visually
 evoked potentials and P300.
 
+Both the raw data with the trigger and the averaged EP can
+be saved. Both formats use tab separated values which can
+be imported by virtually any program, for example python,
+MATLAB or excel.
+
 # Installation
 
 ## Linux
@@ -54,6 +59,27 @@ Run `qmake -tp vc` and compile the solution with Visual Studio 2019.
 
 Just type: `attys-ep` or `./attys-ep`
 
+# Data formats
+
+## Evoked potental (event triggered averaging)
+
+Every row contains two columns:
+```
+time (ms)      evoked potential (volt)
+```
+
+See `example_vep.tsv` for an example of a visually evoked potential.
+
+## Continous recording
+
+Every row contains three columns:
+```
+unfiltered channel 1 (volt)      unfiltered channel 2 (volt)      trigger
+```
+the sampling rate is 500Hz for the Attys2 and 250Hz for the Attys1.
+
+In the `python` directory is the script `calc_ep.py` which calculates the evoked
+potential from the raw data.
 
 # Credits
 
