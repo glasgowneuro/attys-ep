@@ -39,7 +39,7 @@ class Attys_ep;
 #define MAX_VEP_LENGTH 5000
 
 // bluetooth latency
-#define DEFAULT_BT_LATENCY 90 //ms
+#define DEFAULT_BT_LATENCY 100 //ms
 #define MAX_BT_LATENCY 150 //ms
 
 // in ms
