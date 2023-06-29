@@ -51,7 +51,7 @@ Install:
 
 Edit `attys-ep.pro` and point it to attys-comm, qwt-6.1.3 and the iir library
 
-Run `qmake -tp vc` and compile the solution with Visual Studio 2019.
+Run `qmake -tp vc` and compile the solution with Visual Studio 2022.
 
 # Running attys-ep
 
